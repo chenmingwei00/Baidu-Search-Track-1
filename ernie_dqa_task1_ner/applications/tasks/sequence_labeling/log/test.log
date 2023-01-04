@@ -1,0 +1,555 @@
+INFO: 01-03 17:20:09: params.py:43 * 140140368967424 ./examples/seqlab_ernie_fc_ch.json
+INFO: 01-03 17:20:09: params.py:52 * 140140368967424 {
+    "dataset_reader": {
+        "dev_reader": {
+            "config": {
+                "batch_size": 8,
+                "data_path": "./data/dev_data",
+                "epoch": 1,
+                "need_data_distribute": true,
+                "need_generate_examples": false,
+                "sampling_rate": 1.0,
+                "shuffle": false
+            },
+            "fields": [
+                {
+                    "data_type": "string",
+                    "embedding": null,
+                    "max_seq_len": 512,
+                    "name": "text_a",
+                    "need_convert": true,
+                    "padding_id": 0,
+                    "reader": {
+                        "type": "ErnieTextFieldReader"
+                    },
+                    "tokenizer": {
+                        "params": null,
+                        "split_char": " ",
+                        "type": "FullTokenizer",
+                        "unk_token": "[UNK]"
+                    },
+                    "truncation_type": 0,
+                    "vocab_path": "/home/aistudio/work/ernie_dqa_task1/applications/models_hub/ernie_3.0_x_base_ch/vocab.txt"
+                }
+            ],
+            "name": "dev_reader",
+            "type": "BasicDataSetReader"
+        },
+        "test_reader": {
+            "config": {
+                "batch_size": 8,
+                "data_path": "./data/test_data",
+                "epoch": 1,
+                "need_data_distribute": true,
+                "need_generate_examples": false,
+                "sampling_rate": 1.0,
+                "shuffle": false
+            },
+            "fields": [
+                {
+                    "data_type": "string",
+                    "embedding": null,
+                    "max_seq_len": 512,
+                    "name": "text_a",
+                    "need_convert": true,
+                    "padding_id": 0,
+                    "reader": {
+                        "type": "ErnieTextFieldReader"
+                    },
+                    "tokenizer": {
+                        "params": null,
+                        "split_char": " ",
+                        "type": "FullTokenizer",
+                        "unk_token": "[UNK]"
+                    },
+                    "truncation_type": 0,
+                    "vocab_path": "/home/aistudio/work/ernie_dqa_task1/applications/models_hub/ernie_3.0_x_base_ch/vocab.txt"
+                }
+            ],
+            "name": "test_reader",
+            "type": "BasicDataSetReader"
+        },
+        "train_reader": {
+            "config": {
+                "batch_size": 14,
+                "data_path": "./data/train_data",
+                "epoch": 3,
+                "need_data_distribute": true,
+                "need_generate_examples": false,
+                "sampling_rate": 1.0,
+                "shuffle": true
+            },
+            "fields": [
+                {
+                    "data_type": "string",
+                    "embedding": null,
+                    "max_seq_len": 512,
+                    "name": "text_a",
+                    "need_convert": true,
+                    "padding_id": 0,
+                    "reader": {
+                        "type": "ErnieTextFieldReader"
+                    },
+                    "tokenizer": {
+                        "params": null,
+                        "split_char": " ",
+                        "type": "FullTokenizer",
+                        "unk_token": "[UNK]"
+                    },
+                    "truncation_type": 0,
+                    "vocab_path": "/home/aistudio/work/ernie_dqa_task1/applications/models_hub/ernie_3.0_x_base_ch/vocab.txt"
+                }
+            ],
+            "name": "train_reader",
+            "type": "BasicDataSetReader"
+        }
+    },
+    "model": {
+        "embedding": {
+            "config_path": "/home/aistudio/work/ernie_dqa_task1/applications/models_hub/ernie_3.0_x_base_ch/ernie_config.json"
+        },
+        "is_dygraph": 1,
+        "optimization": {
+            "decr_every_n_nan_or_inf": 2,
+            "decr_ratio": 0.8,
+            "incr_every_n_steps": 100,
+            "incr_ratio": 2.0,
+            "init_loss_scaling": 128,
+            "learning_rate": 2e-05,
+            "use_dynamic_loss_scaling": false,
+            "use_lr_decay": true,
+            "warmup_proportion": 0.1,
+            "warmup_steps": 0,
+            "weight_decay": 0.01
+        },
+        "type": "ErnieFcSeqLabel"
+    },
+    "trainer": {
+        "PADDLE_IS_FLEET": 0,
+        "PADDLE_PLACE_TYPE": "gpu",
+        "eval_step": 100,
+        "extra_param": {
+            "meta": {
+                "job_type": "sequence_labeling"
+            }
+        },
+        "is_eval_dev": 0,
+        "is_eval_test": 1,
+        "load_checkpoint": "/home/aistudio/work/ernie_dqa_task1_ner/applications/tasks/sequence_labeling/output/seqlab_ernie_3.0_base_fc_ch/save_checkpoints/checkpoints_step_5000",
+        "load_parameters": "",
+        "output_path": "./output/seqlab_ernie_3.0_base_fc_ch",
+        "pre_train_model": [
+            {
+                "name": "ernie_3.0_base_ch",
+                "params_path": "/home/aistudio/work/ernie_dqa_task1/applications/models_hub/ernie_3.0_x_base_ch/params"
+            }
+        ],
+        "save_model_step": 1,
+        "train_log_step": 100,
+        "type": "CustomTrainer",
+        "use_amp": false
+    }
+}
+WARNING: 01-03 17:20:09: register.py:25 * 140140368967424 Key WordsegTokenizer already in registry tokenizer.
+INFO: 01-03 17:20:10: run_trainer.py:87 * 140140368967424 run trainer.... pid = 2270
+INFO: 01-03 17:20:13: run_trainer.py:54 * 140140368967424 Device count: 1
+INFO: 01-03 17:20:13: run_trainer.py:55 * 140140368967424 Num train examples: 31296
+INFO: 01-03 17:20:13: run_trainer.py:56 * 140140368967424 Max train steps: 6706
+INFO: 01-03 17:20:13: run_trainer.py:57 * 140140368967424 Num warmup steps: 670
+INFO: 01-03 17:20:13: static_trainer.py:196 * 140140368967424 parser meta ....
+INFO: 01-03 17:21:23: params.py:43 * 140071723169536 ./examples/seqlab_ernie_fc_ch.json
+INFO: 01-03 17:21:23: params.py:52 * 140071723169536 {
+    "dataset_reader": {
+        "dev_reader": {
+            "config": {
+                "batch_size": 8,
+                "data_path": "./data/dev_data",
+                "epoch": 1,
+                "need_data_distribute": true,
+                "need_generate_examples": false,
+                "sampling_rate": 1.0,
+                "shuffle": false
+            },
+            "fields": [
+                {
+                    "data_type": "string",
+                    "embedding": null,
+                    "max_seq_len": 512,
+                    "name": "text_a",
+                    "need_convert": true,
+                    "padding_id": 0,
+                    "reader": {
+                        "type": "ErnieTextFieldReader"
+                    },
+                    "tokenizer": {
+                        "params": null,
+                        "split_char": " ",
+                        "type": "FullTokenizer",
+                        "unk_token": "[UNK]"
+                    },
+                    "truncation_type": 0,
+                    "vocab_path": "/home/aistudio/work/ernie_dqa_task1/applications/models_hub/ernie_3.0_x_base_ch/vocab.txt"
+                }
+            ],
+            "name": "dev_reader",
+            "type": "BasicDataSetReader"
+        },
+        "test_reader": {
+            "config": {
+                "batch_size": 8,
+                "data_path": "./data/test_data",
+                "epoch": 1,
+                "need_data_distribute": true,
+                "need_generate_examples": false,
+                "sampling_rate": 1.0,
+                "shuffle": false
+            },
+            "fields": [
+                {
+                    "data_type": "string",
+                    "embedding": null,
+                    "max_seq_len": 512,
+                    "name": "text_a",
+                    "need_convert": true,
+                    "padding_id": 0,
+                    "reader": {
+                        "type": "ErnieTextFieldReader"
+                    },
+                    "tokenizer": {
+                        "params": null,
+                        "split_char": " ",
+                        "type": "FullTokenizer",
+                        "unk_token": "[UNK]"
+                    },
+                    "truncation_type": 0,
+                    "vocab_path": "/home/aistudio/work/ernie_dqa_task1/applications/models_hub/ernie_3.0_x_base_ch/vocab.txt"
+                }
+            ],
+            "name": "test_reader",
+            "type": "BasicDataSetReader"
+        },
+        "train_reader": {
+            "config": {
+                "batch_size": 14,
+                "data_path": "./data/train_data",
+                "epoch": 3,
+                "need_data_distribute": true,
+                "need_generate_examples": false,
+                "sampling_rate": 1.0,
+                "shuffle": true
+            },
+            "fields": [
+                {
+                    "data_type": "string",
+                    "embedding": null,
+                    "max_seq_len": 512,
+                    "name": "text_a",
+                    "need_convert": true,
+                    "padding_id": 0,
+                    "reader": {
+                        "type": "ErnieTextFieldReader"
+                    },
+                    "tokenizer": {
+                        "params": null,
+                        "split_char": " ",
+                        "type": "FullTokenizer",
+                        "unk_token": "[UNK]"
+                    },
+                    "truncation_type": 0,
+                    "vocab_path": "/home/aistudio/work/ernie_dqa_task1/applications/models_hub/ernie_3.0_x_base_ch/vocab.txt"
+                }
+            ],
+            "name": "train_reader",
+            "type": "BasicDataSetReader"
+        }
+    },
+    "model": {
+        "embedding": {
+            "config_path": "/home/aistudio/work/ernie_dqa_task1/applications/models_hub/ernie_3.0_x_base_ch/ernie_config.json"
+        },
+        "is_dygraph": 1,
+        "optimization": {
+            "decr_every_n_nan_or_inf": 2,
+            "decr_ratio": 0.8,
+            "incr_every_n_steps": 100,
+            "incr_ratio": 2.0,
+            "init_loss_scaling": 128,
+            "learning_rate": 2e-05,
+            "use_dynamic_loss_scaling": false,
+            "use_lr_decay": true,
+            "warmup_proportion": 0.1,
+            "warmup_steps": 0,
+            "weight_decay": 0.01
+        },
+        "type": "ErnieFcSeqLabel"
+    },
+    "trainer": {
+        "PADDLE_IS_FLEET": 0,
+        "PADDLE_PLACE_TYPE": "gpu",
+        "eval_step": 100,
+        "extra_param": {
+            "meta": {
+                "job_type": "sequence_labeling"
+            }
+        },
+        "is_eval_dev": 0,
+        "is_eval_test": 1,
+        "load_checkpoint": "",
+        "load_parameters": "",
+        "output_path": "./output/seqlab_ernie_3.0_base_fc_ch",
+        "pre_train_model": [
+            {
+                "name": "ernie_3.0_base_ch",
+                "params_path": "/home/aistudio/work/ernie_dqa_task1/applications/models_hub/ernie_3.0_x_base_ch/params"
+            }
+        ],
+        "save_model_step": 1,
+        "train_log_step": 100,
+        "type": "CustomTrainer",
+        "use_amp": false
+    }
+}
+WARNING: 01-03 17:21:23: register.py:25 * 140071723169536 Key WordsegTokenizer already in registry tokenizer.
+INFO: 01-03 17:21:23: run_trainer.py:87 * 140071723169536 run trainer.... pid = 2480
+INFO: 01-03 17:21:27: run_trainer.py:54 * 140071723169536 Device count: 1
+INFO: 01-03 17:21:27: run_trainer.py:55 * 140071723169536 Num train examples: 31296
+INFO: 01-03 17:21:27: run_trainer.py:56 * 140071723169536 Max train steps: 6706
+INFO: 01-03 17:21:27: run_trainer.py:57 * 140071723169536 Num warmup steps: 670
+INFO: 01-03 17:21:27: static_trainer.py:196 * 140071723169536 parser meta ....
+INFO: 01-03 17:21:27: static_trainer.py:698 * 140071723169536 pre_train_model's name = ernie_3.0_base_ch
+INFO: 01-03 17:21:27: static_trainer.py:226 * 140071723169536 init environment on static mode......
+INFO: 01-03 17:21:27: static_trainer.py:260 * 140071723169536 gpu place....
+INFO: 01-03 17:21:27: static_trainer.py:422 * 140071723169536 init_model_net.....
+INFO: 01-03 17:21:39: static_trainer.py:592 * 140071723169536 load_model_params on static mode....
+INFO: 01-03 17:21:39: static_trainer.py:612 * 140071723169536 pre_train_model's name = ernie_3.0_base_ch
+INFO: 01-03 17:21:52: static_trainer.py:623 * 140071723169536 save model on static....
+INFO: 01-03 17:22:22: params.py:43 * 140163065014016 ./examples/seqlab_ernie_fc_ch.json
+INFO: 01-03 17:22:22: params.py:52 * 140163065014016 {
+    "dataset_reader": {
+        "dev_reader": {
+            "config": {
+                "batch_size": 8,
+                "data_path": "./data/dev_data",
+                "epoch": 1,
+                "need_data_distribute": true,
+                "need_generate_examples": false,
+                "sampling_rate": 1.0,
+                "shuffle": false
+            },
+            "fields": [
+                {
+                    "data_type": "string",
+                    "embedding": null,
+                    "max_seq_len": 512,
+                    "name": "text_a",
+                    "need_convert": true,
+                    "padding_id": 0,
+                    "reader": {
+                        "type": "ErnieTextFieldReader"
+                    },
+                    "tokenizer": {
+                        "params": null,
+                        "split_char": " ",
+                        "type": "FullTokenizer",
+                        "unk_token": "[UNK]"
+                    },
+                    "truncation_type": 0,
+                    "vocab_path": "/home/aistudio/work/ernie_dqa_task1/applications/models_hub/ernie_3.0_x_base_ch/vocab.txt"
+                }
+            ],
+            "name": "dev_reader",
+            "type": "BasicDataSetReader"
+        },
+        "test_reader": {
+            "config": {
+                "batch_size": 8,
+                "data_path": "./data/test_data",
+                "epoch": 1,
+                "need_data_distribute": true,
+                "need_generate_examples": false,
+                "sampling_rate": 1.0,
+                "shuffle": false
+            },
+            "fields": [
+                {
+                    "data_type": "string",
+                    "embedding": null,
+                    "max_seq_len": 512,
+                    "name": "text_a",
+                    "need_convert": true,
+                    "padding_id": 0,
+                    "reader": {
+                        "type": "ErnieTextFieldReader"
+                    },
+                    "tokenizer": {
+                        "params": null,
+                        "split_char": " ",
+                        "type": "FullTokenizer",
+                        "unk_token": "[UNK]"
+                    },
+                    "truncation_type": 0,
+                    "vocab_path": "/home/aistudio/work/ernie_dqa_task1/applications/models_hub/ernie_3.0_x_base_ch/vocab.txt"
+                }
+            ],
+            "name": "test_reader",
+            "type": "BasicDataSetReader"
+        },
+        "train_reader": {
+            "config": {
+                "batch_size": 14,
+                "data_path": "./data/train_data",
+                "epoch": 3,
+                "need_data_distribute": true,
+                "need_generate_examples": false,
+                "sampling_rate": 1.0,
+                "shuffle": true
+            },
+            "fields": [
+                {
+                    "data_type": "string",
+                    "embedding": null,
+                    "max_seq_len": 512,
+                    "name": "text_a",
+                    "need_convert": true,
+                    "padding_id": 0,
+                    "reader": {
+                        "type": "ErnieTextFieldReader"
+                    },
+                    "tokenizer": {
+                        "params": null,
+                        "split_char": " ",
+                        "type": "FullTokenizer",
+                        "unk_token": "[UNK]"
+                    },
+                    "truncation_type": 0,
+                    "vocab_path": "/home/aistudio/work/ernie_dqa_task1/applications/models_hub/ernie_3.0_x_base_ch/vocab.txt"
+                }
+            ],
+            "name": "train_reader",
+            "type": "BasicDataSetReader"
+        }
+    },
+    "model": {
+        "embedding": {
+            "config_path": "/home/aistudio/work/ernie_dqa_task1/applications/models_hub/ernie_3.0_x_base_ch/ernie_config.json"
+        },
+        "is_dygraph": 1,
+        "optimization": {
+            "decr_every_n_nan_or_inf": 2,
+            "decr_ratio": 0.8,
+            "incr_every_n_steps": 100,
+            "incr_ratio": 2.0,
+            "init_loss_scaling": 128,
+            "learning_rate": 2e-05,
+            "use_dynamic_loss_scaling": false,
+            "use_lr_decay": true,
+            "warmup_proportion": 0.1,
+            "warmup_steps": 0,
+            "weight_decay": 0.01
+        },
+        "type": "ErnieFcSeqLabel"
+    },
+    "trainer": {
+        "PADDLE_IS_FLEET": 0,
+        "PADDLE_PLACE_TYPE": "gpu",
+        "eval_step": 100,
+        "extra_param": {
+            "meta": {
+                "job_type": "sequence_labeling"
+            }
+        },
+        "is_eval_dev": 0,
+        "is_eval_test": 1,
+        "load_checkpoint": "",
+        "load_parameters": "",
+        "output_path": "./output/seqlab_ernie_3.0_base_fc_ch",
+        "pre_train_model": [
+            {
+                "name": "ernie_3.0_base_ch",
+                "params_path": "/home/aistudio/work/ernie_dqa_task1/applications/models_hub/ernie_3.0_x_base_ch/params"
+            }
+        ],
+        "save_model_step": 1000,
+        "train_log_step": 100,
+        "type": "CustomTrainer",
+        "use_amp": false
+    }
+}
+WARNING: 01-03 17:22:22: register.py:25 * 140163065014016 Key WordsegTokenizer already in registry tokenizer.
+INFO: 01-03 17:22:22: run_trainer.py:87 * 140163065014016 run trainer.... pid = 2675
+INFO: 01-03 17:22:26: run_trainer.py:54 * 140163065014016 Device count: 1
+INFO: 01-03 17:22:26: run_trainer.py:55 * 140163065014016 Num train examples: 31296
+INFO: 01-03 17:22:26: run_trainer.py:56 * 140163065014016 Max train steps: 6706
+INFO: 01-03 17:22:26: run_trainer.py:57 * 140163065014016 Num warmup steps: 670
+INFO: 01-03 17:22:26: static_trainer.py:196 * 140163065014016 parser meta ....
+INFO: 01-03 17:22:26: static_trainer.py:698 * 140163065014016 pre_train_model's name = ernie_3.0_base_ch
+INFO: 01-03 17:22:26: static_trainer.py:226 * 140163065014016 init environment on static mode......
+INFO: 01-03 17:22:26: static_trainer.py:260 * 140163065014016 gpu place....
+INFO: 01-03 17:22:26: static_trainer.py:422 * 140163065014016 init_model_net.....
+INFO: 01-03 17:22:38: static_trainer.py:592 * 140163065014016 load_model_params on static mode....
+INFO: 01-03 17:22:38: static_trainer.py:612 * 140163065014016 pre_train_model's name = ernie_3.0_base_ch
+INFO: 01-03 17:24:42: params.py:43 * 139776936314624 ./examples/seqlab_ernie_fc_ch_infer.json
+INFO: 01-03 17:24:42: params.py:52 * 139776936314624 {
+    "dataset_reader": {
+        "predict_reader": {
+            "config": {
+                "batch_size": 10,
+                "data_path": "./data/test_data",
+                "epoch": 1,
+                "need_data_distribute": false,
+                "need_generate_examples": true,
+                "sampling_rate": 1.0,
+                "shuffle": false
+            },
+            "fields": [
+                {
+                    "data_type": "string",
+                    "embedding": null,
+                    "max_seq_len": 512,
+                    "name": "text_a",
+                    "need_convert": true,
+                    "padding_id": 0,
+                    "reader": {
+                        "type": "ErnieTextFieldReader"
+                    },
+                    "tokenizer": {
+                        "params": null,
+                        "split_char": " ",
+                        "type": "FullTokenizer",
+                        "unk_token": "[UNK]"
+                    },
+                    "truncation_type": 0,
+                    "vocab_path": "/home/aistudio/work/ernie_dqa_task1/applications/models_hub/ernie_3.0_x_base_ch/vocab.txt"
+                }
+            ],
+            "name": "predict_reader",
+            "type": "BasicDataSetReader"
+        }
+    },
+    "inference": {
+        "PADDLE_IS_LOCAL": 1,
+        "PADDLE_PLACE_TYPE": "gpu",
+        "extra_param": {
+            "meta": {
+                "job_type": "sequence_labeling"
+            }
+        },
+        "inference_model_path": "./output/seqlab_ernie_3.0_base_fc_ch/save_inference_model/inference_step_1",
+        "is_ernie": true,
+        "output_path": "./output/4000.txt"
+    }
+}
+WARNING: 01-03 17:24:42: register.py:25 * 139776936314624 Key WordsegTokenizer already in registry tokenizer.
+INFO: 01-03 17:24:42: params.py:43 * 139776936314624 ./output/seqlab_ernie_3.0_base_fc_ch/save_inference_model/inference_step_1/infer_data_params.json
+INFO: 01-03 17:24:42: params.py:52 * 139776936314624 {
+    "fields": [
+        "text_a#src_ids",
+        "text_a#sent_ids",
+        "text_a#mask_ids"
+    ]
+}
+INFO: 01-03 17:24:42: inference.py:53 * 139776936314624 init env, build inference....
+INFO: 01-03 17:24:42: inference.py:82 * 139776936314624 gpu inference....
+INFO: 01-03 17:24:46: custom_inference.py:31 * 139776936314624 start do inference....
+INFO: 01-03 17:29:31: custom_inference.py:79 * 139776936314624 total_time:21.74555277824402
+INFO: 01-03 17:29:31: run_infer.py:141 * 139776936314624 os exit.

@@ -1,0 +1,23 @@
+WARNING: 11-23 13:38:48: register.py:25 * 140445961484032 Key WordsegTokenizer already in registry tokenizer.
+WARNING: 11-23 14:00:37: register.py:25 * 140519607674624 Key WordsegTokenizer already in registry tokenizer.
+WARNING: 11-23 14:01:33: register.py:25 * 140488084530944 Key WordsegTokenizer already in registry tokenizer.
+WARNING: 11-23 14:42:29: register.py:25 * 140296538760960 Key WordsegTokenizer already in registry tokenizer.
+WARNING: 11-23 14:50:20: register.py:25 * 140498554210048 Key WordsegTokenizer already in registry tokenizer.
+WARNING: 11-23 15:06:20: register.py:25 * 140453070464768 Key WordsegTokenizer already in registry tokenizer.
+WARNING: 11-24 08:48:47: register.py:25 * 139904746993408 Key WordsegTokenizer already in registry tokenizer.
+WARNING: 11-24 08:50:37: register.py:25 * 140628627339008 Key WordsegTokenizer already in registry tokenizer.
+WARNING: 11-24 08:56:20: register.py:25 * 140574326523648 Key WordsegTokenizer already in registry tokenizer.
+ERROR: 11-24 08:56:25: basic_dataset_reader.py:187 * 140568221923072 error occur! msg: Traceback (most recent call last):
+  File "../../../erniekit/data/data_set_reader/basic_dataset_reader.py", line 180, in pad_batch_records
+    id_list, token_list = self.fields[index].field_reader.convert_texts_to_ids(text_batch)
+  File "../../../erniekit/data/field_reader/ernie_text_field_reader.py", line 192, in convert_texts_to_ids
+    assert len(tokens_doc)==len(label)
+AssertionError
+, batch data: 
+ 
+WARNING: 11-24 09:49:40: register.py:25 * 140532099237632 Key WordsegTokenizer already in registry tokenizer.
+WARNING: 11-24 09:51:06: register.py:25 * 139979982747392 Key WordsegTokenizer already in registry tokenizer.
+WARNING: 11-24 09:52:07: register.py:25 * 140284251195136 Key WordsegTokenizer already in registry tokenizer.
+WARNING: 11-24 10:13:12: register.py:25 * 140129239230208 Key WordsegTokenizer already in registry tokenizer.
+WARNING: 11-24 11:30:16: register.py:25 * 140512481253120 Key WordsegTokenizer already in registry tokenizer.
+WARNING: 11-24 14:41:04: register.py:25 * 140311930259200 Key WordsegTokenizer already in registry tokenizer.
