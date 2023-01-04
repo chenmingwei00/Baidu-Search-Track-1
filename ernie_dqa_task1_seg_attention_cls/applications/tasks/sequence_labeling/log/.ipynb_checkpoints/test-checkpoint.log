@@ -1,0 +1,2267 @@
+INFO: 12-09 10:30:10: params.py:43 * 140090313426688 ./examples/seqlab_ernie_fc_ch.json
+INFO: 12-09 10:30:10: params.py:52 * 140090313426688 {
+    "dataset_reader": {
+        "dev_reader": {
+            "config": {
+                "batch_size": 8,
+                "data_path": "./data/dev_data",
+                "epoch": 1,
+                "need_data_distribute": true,
+                "need_generate_examples": false,
+                "sampling_rate": 1.0,
+                "shuffle": false
+            },
+            "fields": [
+                {
+                    "data_type": "string",
+                    "embedding": null,
+                    "max_seq_len": 512,
+                    "name": "text_a",
+                    "need_convert": true,
+                    "padding_id": 0,
+                    "reader": {
+                        "type": "ErnieTextFieldReader"
+                    },
+                    "tokenizer": {
+                        "params": null,
+                        "split_char": " ",
+                        "type": "FullTokenizer",
+                        "unk_token": "[UNK]"
+                    },
+                    "truncation_type": 0,
+                    "vocab_path": "/home/aistudio/work/ernie_dqa_task1/applications/models_hub/ernie_3.0_x_base_ch/vocab.txt"
+                }
+            ],
+            "name": "dev_reader",
+            "type": "BasicDataSetReader"
+        },
+        "test_reader": {
+            "config": {
+                "batch_size": 8,
+                "data_path": "./data/test_data",
+                "epoch": 1,
+                "need_data_distribute": true,
+                "need_generate_examples": false,
+                "sampling_rate": 1.0,
+                "shuffle": false
+            },
+            "fields": [
+                {
+                    "data_type": "string",
+                    "embedding": null,
+                    "max_seq_len": 512,
+                    "name": "text_a",
+                    "need_convert": true,
+                    "padding_id": 0,
+                    "reader": {
+                        "type": "ErnieTextFieldReader"
+                    },
+                    "tokenizer": {
+                        "params": null,
+                        "split_char": " ",
+                        "type": "FullTokenizer",
+                        "unk_token": "[UNK]"
+                    },
+                    "truncation_type": 0,
+                    "vocab_path": "/home/aistudio/work/ernie_dqa_task1/applications/models_hub/ernie_3.0_x_base_ch/vocab.txt"
+                }
+            ],
+            "name": "test_reader",
+            "type": "BasicDataSetReader"
+        },
+        "train_reader": {
+            "config": {
+                "batch_size": 8,
+                "data_path": "./data/train_data",
+                "epoch": 5,
+                "need_data_distribute": true,
+                "need_generate_examples": false,
+                "sampling_rate": 1.0,
+                "shuffle": true
+            },
+            "fields": [
+                {
+                    "data_type": "string",
+                    "embedding": null,
+                    "max_seq_len": 512,
+                    "name": "text_a",
+                    "need_convert": true,
+                    "padding_id": 0,
+                    "reader": {
+                        "type": "ErnieTextFieldReader"
+                    },
+                    "tokenizer": {
+                        "params": null,
+                        "split_char": " ",
+                        "type": "FullTokenizer",
+                        "unk_token": "[UNK]"
+                    },
+                    "truncation_type": 0,
+                    "vocab_path": "/home/aistudio/work/ernie_dqa_task1/applications/models_hub/ernie_3.0_x_base_ch/vocab.txt"
+                }
+            ],
+            "name": "train_reader",
+            "type": "BasicDataSetReader"
+        }
+    },
+    "model": {
+        "embedding": {
+            "config_path": "/home/aistudio/work/ernie_dqa_task1/applications/models_hub/ernie_3.0_x_base_ch/ernie_config.json"
+        },
+        "is_dygraph": 1,
+        "optimization": {
+            "decr_every_n_nan_or_inf": 2,
+            "decr_ratio": 0.8,
+            "incr_every_n_steps": 100,
+            "incr_ratio": 2.0,
+            "init_loss_scaling": 128,
+            "learning_rate": 2e-05,
+            "use_dynamic_loss_scaling": false,
+            "use_lr_decay": true,
+            "warmup_proportion": 0.1,
+            "warmup_steps": 0,
+            "weight_decay": 0.01
+        },
+        "type": "ErnieFcSeqLabel"
+    },
+    "trainer": {
+        "PADDLE_IS_FLEET": 0,
+        "PADDLE_PLACE_TYPE": "gpu",
+        "eval_step": 100,
+        "extra_param": {
+            "meta": {
+                "job_type": "sequence_labeling"
+            }
+        },
+        "is_eval_dev": 0,
+        "is_eval_test": 1,
+        "load_checkpoint": "",
+        "load_parameters": "",
+        "output_path": "./output/seqlab_ernie_3.0_base_fc_ch",
+        "pre_train_model": [
+            {
+                "name": "ernie_3.0_base_ch",
+                "params_path": "/home/aistudio/work/ernie_dqa_task1/applications/models_hub/ernie_3.0_x_base_ch/params"
+            }
+        ],
+        "save_model_step": 1500,
+        "train_log_step": 100,
+        "type": "CustomTrainer",
+        "use_amp": false
+    }
+}
+WARNING: 12-09 10:30:10: register.py:25 * 140090313426688 Key WordsegTokenizer already in registry tokenizer.
+INFO: 12-09 10:30:10: run_trainer.py:87 * 140090313426688 run trainer.... pid = 1781
+INFO: 12-09 10:30:14: run_trainer.py:54 * 140090313426688 Device count: 1
+INFO: 12-09 10:30:14: run_trainer.py:55 * 140090313426688 Num train examples: 31296
+INFO: 12-09 10:30:14: run_trainer.py:56 * 140090313426688 Max train steps: 19560
+INFO: 12-09 10:30:14: run_trainer.py:57 * 140090313426688 Num warmup steps: 1956
+INFO: 12-09 10:30:14: static_trainer.py:196 * 140090313426688 parser meta ....
+INFO: 12-09 10:30:14: static_trainer.py:698 * 140090313426688 pre_train_model's name = ernie_3.0_base_ch
+INFO: 12-09 10:30:14: static_trainer.py:226 * 140090313426688 init environment on static mode......
+INFO: 12-09 10:30:14: static_trainer.py:260 * 140090313426688 gpu place....
+INFO: 12-09 10:30:14: static_trainer.py:422 * 140090313426688 init_model_net.....
+INFO: 12-09 10:30:31: static_trainer.py:592 * 140090313426688 load_model_params on static mode....
+INFO: 12-09 10:30:31: static_trainer.py:612 * 140090313426688 pre_train_model's name = ernie_3.0_base_ch
+INFO: 12-09 10:31:41: custom_trainer.py:66 * 140090313426688 epoch 0 progress 841/31296
+INFO: 12-09 10:31:41: custom_trainer.py:77 * 140090313426688 phase = training step = 100 time_cost = 67.12128853797913
+INFO: 12-09 10:31:41: custom_trainer.py:78 * 140090313426688 current loss: [9.262213]
+INFO: 12-09 10:32:37: custom_trainer.py:66 * 140090313426688 epoch 0 progress 1641/31296
+INFO: 12-09 10:32:37: custom_trainer.py:77 * 140090313426688 phase = training step = 200 time_cost = 56.808940410614014
+INFO: 12-09 10:32:37: custom_trainer.py:78 * 140090313426688 current loss: [2.8362632]
+INFO: 12-09 10:33:34: custom_trainer.py:66 * 140090313426688 epoch 0 progress 2441/31296
+INFO: 12-09 10:33:34: custom_trainer.py:77 * 140090313426688 phase = training step = 300 time_cost = 56.627376317977905
+INFO: 12-09 10:33:34: custom_trainer.py:78 * 140090313426688 current loss: [1.9151522]
+INFO: 12-09 10:34:30: custom_trainer.py:66 * 140090313426688 epoch 0 progress 3241/31296
+INFO: 12-09 10:34:30: custom_trainer.py:77 * 140090313426688 phase = training step = 400 time_cost = 56.188772439956665
+INFO: 12-09 10:34:30: custom_trainer.py:78 * 140090313426688 current loss: [1.3031981]
+INFO: 12-09 10:35:27: custom_trainer.py:66 * 140090313426688 epoch 0 progress 4041/31296
+INFO: 12-09 10:35:27: custom_trainer.py:77 * 140090313426688 phase = training step = 500 time_cost = 56.86502194404602
+INFO: 12-09 10:35:27: custom_trainer.py:78 * 140090313426688 current loss: [1.1293988]
+INFO: 12-09 10:36:23: custom_trainer.py:66 * 140090313426688 epoch 0 progress 4841/31296
+INFO: 12-09 10:36:23: custom_trainer.py:77 * 140090313426688 phase = training step = 600 time_cost = 56.12428426742554
+INFO: 12-09 10:36:23: custom_trainer.py:78 * 140090313426688 current loss: [1.0882021]
+INFO: 12-09 10:37:20: custom_trainer.py:66 * 140090313426688 epoch 0 progress 5641/31296
+INFO: 12-09 10:37:20: custom_trainer.py:77 * 140090313426688 phase = training step = 700 time_cost = 56.414822816848755
+INFO: 12-09 10:37:20: custom_trainer.py:78 * 140090313426688 current loss: [1.1814101]
+INFO: 12-09 10:38:16: custom_trainer.py:66 * 140090313426688 epoch 0 progress 6441/31296
+INFO: 12-09 10:38:16: custom_trainer.py:77 * 140090313426688 phase = training step = 800 time_cost = 56.1058235168457
+INFO: 12-09 10:38:16: custom_trainer.py:78 * 140090313426688 current loss: [1.2520529]
+INFO: 12-09 10:39:13: custom_trainer.py:66 * 140090313426688 epoch 0 progress 7241/31296
+INFO: 12-09 10:39:13: custom_trainer.py:77 * 140090313426688 phase = training step = 900 time_cost = 57.24357056617737
+INFO: 12-09 10:39:13: custom_trainer.py:78 * 140090313426688 current loss: [2.2279327]
+INFO: 12-09 10:40:10: custom_trainer.py:66 * 140090313426688 epoch 0 progress 8041/31296
+INFO: 12-09 10:40:10: custom_trainer.py:77 * 140090313426688 phase = training step = 1000 time_cost = 56.887081146240234
+INFO: 12-09 10:40:10: custom_trainer.py:78 * 140090313426688 current loss: [1.432378]
+INFO: 12-09 10:41:07: custom_trainer.py:66 * 140090313426688 epoch 0 progress 8841/31296
+INFO: 12-09 10:41:07: custom_trainer.py:77 * 140090313426688 phase = training step = 1100 time_cost = 56.96684980392456
+INFO: 12-09 10:41:07: custom_trainer.py:78 * 140090313426688 current loss: [1.6609359]
+INFO: 12-09 10:42:04: custom_trainer.py:66 * 140090313426688 epoch 0 progress 9641/31296
+INFO: 12-09 10:42:04: custom_trainer.py:77 * 140090313426688 phase = training step = 1200 time_cost = 56.65302038192749
+INFO: 12-09 10:42:04: custom_trainer.py:78 * 140090313426688 current loss: [1.1690738]
+INFO: 12-09 10:43:00: custom_trainer.py:66 * 140090313426688 epoch 0 progress 10441/31296
+INFO: 12-09 10:43:00: custom_trainer.py:77 * 140090313426688 phase = training step = 1300 time_cost = 56.49305248260498
+INFO: 12-09 10:43:00: custom_trainer.py:78 * 140090313426688 current loss: [1.7614658]
+INFO: 12-09 10:43:56: custom_trainer.py:66 * 140090313426688 epoch 0 progress 11241/31296
+INFO: 12-09 10:43:56: custom_trainer.py:77 * 140090313426688 phase = training step = 1400 time_cost = 56.332544565200806
+INFO: 12-09 10:43:56: custom_trainer.py:78 * 140090313426688 current loss: [0.90266085]
+INFO: 12-09 10:44:53: custom_trainer.py:66 * 140090313426688 epoch 0 progress 12041/31296
+INFO: 12-09 10:44:53: custom_trainer.py:77 * 140090313426688 phase = training step = 1500 time_cost = 56.77578854560852
+INFO: 12-09 10:44:53: custom_trainer.py:78 * 140090313426688 current loss: [1.2045187]
+INFO: 12-09 10:45:50: custom_trainer.py:66 * 140090313426688 epoch 0 progress 12841/31296
+INFO: 12-09 10:45:50: custom_trainer.py:77 * 140090313426688 phase = training step = 1600 time_cost = 57.00249361991882
+INFO: 12-09 10:45:50: custom_trainer.py:78 * 140090313426688 current loss: [0.97099835]
+INFO: 12-09 10:46:47: custom_trainer.py:66 * 140090313426688 epoch 0 progress 13641/31296
+INFO: 12-09 10:46:47: custom_trainer.py:77 * 140090313426688 phase = training step = 1700 time_cost = 56.9947566986084
+INFO: 12-09 10:46:47: custom_trainer.py:78 * 140090313426688 current loss: [1.0704898]
+INFO: 12-09 10:47:44: custom_trainer.py:66 * 140090313426688 epoch 0 progress 14441/31296
+INFO: 12-09 10:47:44: custom_trainer.py:77 * 140090313426688 phase = training step = 1800 time_cost = 56.55591368675232
+INFO: 12-09 10:47:44: custom_trainer.py:78 * 140090313426688 current loss: [0.7165184]
+INFO: 12-09 10:48:40: custom_trainer.py:66 * 140090313426688 epoch 0 progress 15241/31296
+INFO: 12-09 10:48:40: custom_trainer.py:77 * 140090313426688 phase = training step = 1900 time_cost = 56.785526752471924
+INFO: 12-09 10:48:40: custom_trainer.py:78 * 140090313426688 current loss: [0.4011947]
+INFO: 12-09 10:49:37: custom_trainer.py:66 * 140090313426688 epoch 0 progress 16041/31296
+INFO: 12-09 10:49:37: custom_trainer.py:77 * 140090313426688 phase = training step = 2000 time_cost = 56.14382815361023
+INFO: 12-09 10:49:37: custom_trainer.py:78 * 140090313426688 current loss: [0.30083972]
+INFO: 12-09 10:50:33: custom_trainer.py:66 * 140090313426688 epoch 0 progress 16841/31296
+INFO: 12-09 10:50:33: custom_trainer.py:77 * 140090313426688 phase = training step = 2100 time_cost = 56.25915765762329
+INFO: 12-09 10:50:33: custom_trainer.py:78 * 140090313426688 current loss: [2.700211]
+INFO: 12-09 10:51:29: custom_trainer.py:66 * 140090313426688 epoch 0 progress 17641/31296
+INFO: 12-09 10:51:29: custom_trainer.py:77 * 140090313426688 phase = training step = 2200 time_cost = 56.22025275230408
+INFO: 12-09 10:51:29: custom_trainer.py:78 * 140090313426688 current loss: [0.8427012]
+INFO: 12-09 10:52:26: custom_trainer.py:66 * 140090313426688 epoch 0 progress 18441/31296
+INFO: 12-09 10:52:26: custom_trainer.py:77 * 140090313426688 phase = training step = 2300 time_cost = 56.64238381385803
+INFO: 12-09 10:52:26: custom_trainer.py:78 * 140090313426688 current loss: [0.86134225]
+INFO: 12-09 10:53:22: custom_trainer.py:66 * 140090313426688 epoch 0 progress 19241/31296
+INFO: 12-09 10:53:22: custom_trainer.py:77 * 140090313426688 phase = training step = 2400 time_cost = 56.38318061828613
+INFO: 12-09 10:53:22: custom_trainer.py:78 * 140090313426688 current loss: [0.65429235]
+INFO: 12-09 10:54:19: custom_trainer.py:66 * 140090313426688 epoch 0 progress 20041/31296
+INFO: 12-09 10:54:19: custom_trainer.py:77 * 140090313426688 phase = training step = 2500 time_cost = 56.438382148742676
+INFO: 12-09 10:54:19: custom_trainer.py:78 * 140090313426688 current loss: [1.4682444]
+INFO: 12-09 10:55:14: custom_trainer.py:66 * 140090313426688 epoch 0 progress 20841/31296
+INFO: 12-09 10:55:14: custom_trainer.py:77 * 140090313426688 phase = training step = 2600 time_cost = 55.918604373931885
+INFO: 12-09 10:55:14: custom_trainer.py:78 * 140090313426688 current loss: [0.9782618]
+INFO: 12-09 10:56:11: custom_trainer.py:66 * 140090313426688 epoch 0 progress 21641/31296
+INFO: 12-09 10:56:11: custom_trainer.py:77 * 140090313426688 phase = training step = 2700 time_cost = 56.73657774925232
+INFO: 12-09 10:56:11: custom_trainer.py:78 * 140090313426688 current loss: [0.57953995]
+INFO: 12-09 10:57:08: custom_trainer.py:66 * 140090313426688 epoch 0 progress 22441/31296
+INFO: 12-09 10:57:08: custom_trainer.py:77 * 140090313426688 phase = training step = 2800 time_cost = 56.55183291435242
+INFO: 12-09 10:57:08: custom_trainer.py:78 * 140090313426688 current loss: [0.8111588]
+INFO: 12-09 10:58:04: custom_trainer.py:66 * 140090313426688 epoch 0 progress 23241/31296
+INFO: 12-09 10:58:04: custom_trainer.py:77 * 140090313426688 phase = training step = 2900 time_cost = 56.37775635719299
+INFO: 12-09 10:58:04: custom_trainer.py:78 * 140090313426688 current loss: [1.2885036]
+INFO: 12-09 10:59:01: custom_trainer.py:66 * 140090313426688 epoch 0 progress 24041/31296
+INFO: 12-09 10:59:01: custom_trainer.py:77 * 140090313426688 phase = training step = 3000 time_cost = 56.49431562423706
+INFO: 12-09 10:59:01: custom_trainer.py:78 * 140090313426688 current loss: [0.6412293]
+INFO: 12-09 10:59:57: custom_trainer.py:66 * 140090313426688 epoch 0 progress 24841/31296
+INFO: 12-09 10:59:57: custom_trainer.py:77 * 140090313426688 phase = training step = 3100 time_cost = 56.55634117126465
+INFO: 12-09 10:59:57: custom_trainer.py:78 * 140090313426688 current loss: [2.2462525]
+INFO: 12-09 11:00:54: custom_trainer.py:66 * 140090313426688 epoch 0 progress 25641/31296
+INFO: 12-09 11:00:54: custom_trainer.py:77 * 140090313426688 phase = training step = 3200 time_cost = 56.77615237236023
+INFO: 12-09 11:00:54: custom_trainer.py:78 * 140090313426688 current loss: [0.5847824]
+INFO: 12-09 11:01:51: custom_trainer.py:66 * 140090313426688 epoch 0 progress 26441/31296
+INFO: 12-09 11:01:51: custom_trainer.py:77 * 140090313426688 phase = training step = 3300 time_cost = 56.71370792388916
+INFO: 12-09 11:01:51: custom_trainer.py:78 * 140090313426688 current loss: [1.596079]
+INFO: 12-09 11:02:47: custom_trainer.py:66 * 140090313426688 epoch 0 progress 27241/31296
+INFO: 12-09 11:02:47: custom_trainer.py:77 * 140090313426688 phase = training step = 3400 time_cost = 56.397019147872925
+INFO: 12-09 11:02:47: custom_trainer.py:78 * 140090313426688 current loss: [0.78916484]
+INFO: 12-09 11:03:44: custom_trainer.py:66 * 140090313426688 epoch 0 progress 28041/31296
+INFO: 12-09 11:03:44: custom_trainer.py:77 * 140090313426688 phase = training step = 3500 time_cost = 56.52543568611145
+INFO: 12-09 11:03:44: custom_trainer.py:78 * 140090313426688 current loss: [0.66754484]
+INFO: 12-09 11:04:40: custom_trainer.py:66 * 140090313426688 epoch 0 progress 28841/31296
+INFO: 12-09 11:04:40: custom_trainer.py:77 * 140090313426688 phase = training step = 3600 time_cost = 56.74945020675659
+INFO: 12-09 11:04:40: custom_trainer.py:78 * 140090313426688 current loss: [0.7727234]
+INFO: 12-09 11:05:36: custom_trainer.py:66 * 140090313426688 epoch 0 progress 29641/31296
+INFO: 12-09 11:05:36: custom_trainer.py:77 * 140090313426688 phase = training step = 3700 time_cost = 56.11315846443176
+INFO: 12-09 11:05:36: custom_trainer.py:78 * 140090313426688 current loss: [0.35303855]
+INFO: 12-09 11:06:33: custom_trainer.py:66 * 140090313426688 epoch 0 progress 30441/31296
+INFO: 12-09 11:06:33: custom_trainer.py:77 * 140090313426688 phase = training step = 3800 time_cost = 56.161152362823486
+INFO: 12-09 11:06:33: custom_trainer.py:78 * 140090313426688 current loss: [0.61267203]
+INFO: 12-09 11:07:29: custom_trainer.py:66 * 140090313426688 epoch 0 progress 31241/31296
+INFO: 12-09 11:07:29: custom_trainer.py:77 * 140090313426688 phase = training step = 3900 time_cost = 56.76251816749573
+INFO: 12-09 11:07:29: custom_trainer.py:78 * 140090313426688 current loss: [0.8045733]
+INFO: 12-09 11:08:27: custom_trainer.py:66 * 140090313426688 epoch 1 progress 745/31296
+INFO: 12-09 11:08:27: custom_trainer.py:77 * 140090313426688 phase = training step = 4000 time_cost = 57.6278178691864
+INFO: 12-09 11:08:27: custom_trainer.py:78 * 140090313426688 current loss: [2.5018415]
+INFO: 12-09 11:09:23: custom_trainer.py:66 * 140090313426688 epoch 1 progress 1545/31296
+INFO: 12-09 11:09:23: custom_trainer.py:77 * 140090313426688 phase = training step = 4100 time_cost = 56.39842867851257
+INFO: 12-09 11:09:23: custom_trainer.py:78 * 140090313426688 current loss: [0.57065]
+INFO: 12-09 11:10:20: custom_trainer.py:66 * 140090313426688 epoch 1 progress 2345/31296
+INFO: 12-09 11:10:20: custom_trainer.py:77 * 140090313426688 phase = training step = 4200 time_cost = 56.49956488609314
+INFO: 12-09 11:10:20: custom_trainer.py:78 * 140090313426688 current loss: [0.8091568]
+INFO: 12-09 11:11:17: custom_trainer.py:66 * 140090313426688 epoch 1 progress 3145/31296
+INFO: 12-09 11:11:17: custom_trainer.py:77 * 140090313426688 phase = training step = 4300 time_cost = 56.869850397109985
+INFO: 12-09 11:11:17: custom_trainer.py:78 * 140090313426688 current loss: [0.3059953]
+INFO: 12-09 11:12:14: custom_trainer.py:66 * 140090313426688 epoch 1 progress 3945/31296
+INFO: 12-09 11:12:14: custom_trainer.py:77 * 140090313426688 phase = training step = 4400 time_cost = 56.72789978981018
+INFO: 12-09 11:12:14: custom_trainer.py:78 * 140090313426688 current loss: [0.20110446]
+INFO: 12-09 11:13:10: custom_trainer.py:66 * 140090313426688 epoch 1 progress 4745/31296
+INFO: 12-09 11:13:10: custom_trainer.py:77 * 140090313426688 phase = training step = 4500 time_cost = 56.17805051803589
+INFO: 12-09 11:13:10: custom_trainer.py:78 * 140090313426688 current loss: [0.76925606]
+INFO: 12-09 11:14:06: custom_trainer.py:66 * 140090313426688 epoch 1 progress 5545/31296
+INFO: 12-09 11:14:06: custom_trainer.py:77 * 140090313426688 phase = training step = 4600 time_cost = 56.16741967201233
+INFO: 12-09 11:14:06: custom_trainer.py:78 * 140090313426688 current loss: [0.44706613]
+INFO: 12-09 11:15:02: custom_trainer.py:66 * 140090313426688 epoch 1 progress 6345/31296
+INFO: 12-09 11:15:02: custom_trainer.py:77 * 140090313426688 phase = training step = 4700 time_cost = 56.55191397666931
+INFO: 12-09 11:15:02: custom_trainer.py:78 * 140090313426688 current loss: [0.7002082]
+INFO: 12-09 11:16:00: custom_trainer.py:66 * 140090313426688 epoch 1 progress 7145/31296
+INFO: 12-09 11:16:00: custom_trainer.py:77 * 140090313426688 phase = training step = 4800 time_cost = 57.151564836502075
+INFO: 12-09 11:16:00: custom_trainer.py:78 * 140090313426688 current loss: [0.31606108]
+INFO: 12-09 11:16:56: custom_trainer.py:66 * 140090313426688 epoch 1 progress 7945/31296
+INFO: 12-09 11:16:56: custom_trainer.py:77 * 140090313426688 phase = training step = 4900 time_cost = 56.242849349975586
+INFO: 12-09 11:16:56: custom_trainer.py:78 * 140090313426688 current loss: [0.7454576]
+INFO: 12-09 11:17:52: custom_trainer.py:66 * 140090313426688 epoch 1 progress 8745/31296
+INFO: 12-09 11:17:52: custom_trainer.py:77 * 140090313426688 phase = training step = 5000 time_cost = 56.12752103805542
+INFO: 12-09 11:17:52: custom_trainer.py:78 * 140090313426688 current loss: [0.331687]
+INFO: 12-09 11:18:48: custom_trainer.py:66 * 140090313426688 epoch 1 progress 9545/31296
+INFO: 12-09 11:18:48: custom_trainer.py:77 * 140090313426688 phase = training step = 5100 time_cost = 56.42918252944946
+INFO: 12-09 11:18:48: custom_trainer.py:78 * 140090313426688 current loss: [0.6239244]
+INFO: 12-09 11:19:45: custom_trainer.py:66 * 140090313426688 epoch 1 progress 10345/31296
+INFO: 12-09 11:19:45: custom_trainer.py:77 * 140090313426688 phase = training step = 5200 time_cost = 56.59649682044983
+INFO: 12-09 11:19:45: custom_trainer.py:78 * 140090313426688 current loss: [1.0741668]
+INFO: 12-09 11:20:41: custom_trainer.py:66 * 140090313426688 epoch 1 progress 11145/31296
+INFO: 12-09 11:20:41: custom_trainer.py:77 * 140090313426688 phase = training step = 5300 time_cost = 56.333173751831055
+INFO: 12-09 11:20:41: custom_trainer.py:78 * 140090313426688 current loss: [0.20202865]
+INFO: 12-09 11:21:38: custom_trainer.py:66 * 140090313426688 epoch 1 progress 11945/31296
+INFO: 12-09 11:21:38: custom_trainer.py:77 * 140090313426688 phase = training step = 5400 time_cost = 56.9295289516449
+INFO: 12-09 11:21:38: custom_trainer.py:78 * 140090313426688 current loss: [0.7827629]
+INFO: 12-09 11:22:35: custom_trainer.py:66 * 140090313426688 epoch 1 progress 12745/31296
+INFO: 12-09 11:22:35: custom_trainer.py:77 * 140090313426688 phase = training step = 5500 time_cost = 56.573777198791504
+INFO: 12-09 11:22:35: custom_trainer.py:78 * 140090313426688 current loss: [0.91945034]
+INFO: 12-09 11:23:32: custom_trainer.py:66 * 140090313426688 epoch 1 progress 13545/31296
+INFO: 12-09 11:23:32: custom_trainer.py:77 * 140090313426688 phase = training step = 5600 time_cost = 56.76977849006653
+INFO: 12-09 11:23:32: custom_trainer.py:78 * 140090313426688 current loss: [0.5289885]
+INFO: 12-09 11:24:28: custom_trainer.py:66 * 140090313426688 epoch 1 progress 14345/31296
+INFO: 12-09 11:24:28: custom_trainer.py:77 * 140090313426688 phase = training step = 5700 time_cost = 56.90632390975952
+INFO: 12-09 11:24:28: custom_trainer.py:78 * 140090313426688 current loss: [0.9290587]
+INFO: 12-09 11:25:24: custom_trainer.py:66 * 140090313426688 epoch 1 progress 15145/31296
+INFO: 12-09 11:25:24: custom_trainer.py:77 * 140090313426688 phase = training step = 5800 time_cost = 55.71512818336487
+INFO: 12-09 11:25:24: custom_trainer.py:78 * 140090313426688 current loss: [0.31340367]
+INFO: 12-09 11:26:21: custom_trainer.py:66 * 140090313426688 epoch 1 progress 15945/31296
+INFO: 12-09 11:26:21: custom_trainer.py:77 * 140090313426688 phase = training step = 5900 time_cost = 56.42600417137146
+INFO: 12-09 11:26:21: custom_trainer.py:78 * 140090313426688 current loss: [2.2981255]
+INFO: 12-09 11:27:17: custom_trainer.py:66 * 140090313426688 epoch 1 progress 16745/31296
+INFO: 12-09 11:27:17: custom_trainer.py:77 * 140090313426688 phase = training step = 6000 time_cost = 56.468032360076904
+INFO: 12-09 11:27:17: custom_trainer.py:78 * 140090313426688 current loss: [1.0223422]
+INFO: 12-09 11:28:13: custom_trainer.py:66 * 140090313426688 epoch 1 progress 17545/31296
+INFO: 12-09 11:28:13: custom_trainer.py:77 * 140090313426688 phase = training step = 6100 time_cost = 56.3749577999115
+INFO: 12-09 11:28:13: custom_trainer.py:78 * 140090313426688 current loss: [0.19429341]
+INFO: 12-09 11:29:10: custom_trainer.py:66 * 140090313426688 epoch 1 progress 18345/31296
+INFO: 12-09 11:29:10: custom_trainer.py:77 * 140090313426688 phase = training step = 6200 time_cost = 56.792001247406006
+INFO: 12-09 11:29:10: custom_trainer.py:78 * 140090313426688 current loss: [0.61274743]
+INFO: 12-09 11:30:07: custom_trainer.py:66 * 140090313426688 epoch 1 progress 19145/31296
+INFO: 12-09 11:30:07: custom_trainer.py:77 * 140090313426688 phase = training step = 6300 time_cost = 56.85060262680054
+INFO: 12-09 11:30:07: custom_trainer.py:78 * 140090313426688 current loss: [0.8531618]
+INFO: 12-09 11:31:03: custom_trainer.py:66 * 140090313426688 epoch 1 progress 19945/31296
+INFO: 12-09 11:31:03: custom_trainer.py:77 * 140090313426688 phase = training step = 6400 time_cost = 56.37433910369873
+INFO: 12-09 11:31:03: custom_trainer.py:78 * 140090313426688 current loss: [0.5184367]
+INFO: 12-09 11:32:00: custom_trainer.py:66 * 140090313426688 epoch 1 progress 20745/31296
+INFO: 12-09 11:32:00: custom_trainer.py:77 * 140090313426688 phase = training step = 6500 time_cost = 56.676185131073
+INFO: 12-09 11:32:00: custom_trainer.py:78 * 140090313426688 current loss: [0.30227667]
+INFO: 12-09 11:32:57: custom_trainer.py:66 * 140090313426688 epoch 1 progress 21545/31296
+INFO: 12-09 11:32:57: custom_trainer.py:77 * 140090313426688 phase = training step = 6600 time_cost = 56.72828269004822
+INFO: 12-09 11:32:57: custom_trainer.py:78 * 140090313426688 current loss: [0.27992478]
+INFO: 12-09 11:33:54: custom_trainer.py:66 * 140090313426688 epoch 1 progress 22345/31296
+INFO: 12-09 11:33:54: custom_trainer.py:77 * 140090313426688 phase = training step = 6700 time_cost = 57.26708436012268
+INFO: 12-09 11:33:54: custom_trainer.py:78 * 140090313426688 current loss: [1.3383594]
+INFO: 12-09 11:34:51: custom_trainer.py:66 * 140090313426688 epoch 1 progress 23145/31296
+INFO: 12-09 11:34:51: custom_trainer.py:77 * 140090313426688 phase = training step = 6800 time_cost = 56.388723850250244
+INFO: 12-09 11:34:51: custom_trainer.py:78 * 140090313426688 current loss: [0.7281165]
+INFO: 12-09 11:35:47: custom_trainer.py:66 * 140090313426688 epoch 1 progress 23945/31296
+INFO: 12-09 11:35:47: custom_trainer.py:77 * 140090313426688 phase = training step = 6900 time_cost = 56.4015953540802
+INFO: 12-09 11:35:47: custom_trainer.py:78 * 140090313426688 current loss: [0.82835865]
+INFO: 12-09 11:36:44: custom_trainer.py:66 * 140090313426688 epoch 1 progress 24745/31296
+INFO: 12-09 11:36:44: custom_trainer.py:77 * 140090313426688 phase = training step = 7000 time_cost = 56.97700643539429
+INFO: 12-09 11:36:44: custom_trainer.py:78 * 140090313426688 current loss: [0.42251843]
+INFO: 12-09 11:37:41: custom_trainer.py:66 * 140090313426688 epoch 1 progress 25545/31296
+INFO: 12-09 11:37:41: custom_trainer.py:77 * 140090313426688 phase = training step = 7100 time_cost = 56.85523557662964
+INFO: 12-09 11:37:41: custom_trainer.py:78 * 140090313426688 current loss: [1.1910784]
+INFO: 12-09 11:38:37: custom_trainer.py:66 * 140090313426688 epoch 1 progress 26345/31296
+INFO: 12-09 11:38:37: custom_trainer.py:77 * 140090313426688 phase = training step = 7200 time_cost = 56.676718950271606
+INFO: 12-09 11:38:37: custom_trainer.py:78 * 140090313426688 current loss: [0.38495943]
+INFO: 12-09 11:39:34: custom_trainer.py:66 * 140090313426688 epoch 1 progress 27145/31296
+INFO: 12-09 11:39:34: custom_trainer.py:77 * 140090313426688 phase = training step = 7300 time_cost = 56.95445227622986
+INFO: 12-09 11:39:34: custom_trainer.py:78 * 140090313426688 current loss: [0.24470764]
+INFO: 12-09 11:40:31: custom_trainer.py:66 * 140090313426688 epoch 1 progress 27945/31296
+INFO: 12-09 11:40:31: custom_trainer.py:77 * 140090313426688 phase = training step = 7400 time_cost = 56.68836760520935
+INFO: 12-09 11:40:31: custom_trainer.py:78 * 140090313426688 current loss: [1.272874]
+INFO: 12-09 11:41:27: custom_trainer.py:66 * 140090313426688 epoch 1 progress 28745/31296
+INFO: 12-09 11:41:27: custom_trainer.py:77 * 140090313426688 phase = training step = 7500 time_cost = 56.35615396499634
+INFO: 12-09 11:41:27: custom_trainer.py:78 * 140090313426688 current loss: [0.7757619]
+INFO: 12-09 11:42:24: custom_trainer.py:66 * 140090313426688 epoch 1 progress 29545/31296
+INFO: 12-09 11:42:24: custom_trainer.py:77 * 140090313426688 phase = training step = 7600 time_cost = 56.32726049423218
+INFO: 12-09 11:42:24: custom_trainer.py:78 * 140090313426688 current loss: [1.4620292]
+INFO: 12-09 11:43:21: custom_trainer.py:66 * 140090313426688 epoch 1 progress 30345/31296
+INFO: 12-09 11:43:21: custom_trainer.py:77 * 140090313426688 phase = training step = 7700 time_cost = 56.746586322784424
+INFO: 12-09 11:43:21: custom_trainer.py:78 * 140090313426688 current loss: [0.12963521]
+INFO: 12-09 11:44:16: custom_trainer.py:66 * 140090313426688 epoch 1 progress 31145/31296
+INFO: 12-09 11:44:16: custom_trainer.py:77 * 140090313426688 phase = training step = 7800 time_cost = 55.65465807914734
+INFO: 12-09 11:44:16: custom_trainer.py:78 * 140090313426688 current loss: [0.28527036]
+INFO: 12-09 11:45:14: custom_trainer.py:66 * 140090313426688 epoch 2 progress 649/31296
+INFO: 12-09 11:45:14: custom_trainer.py:77 * 140090313426688 phase = training step = 7900 time_cost = 57.529337882995605
+INFO: 12-09 11:45:14: custom_trainer.py:78 * 140090313426688 current loss: [0.18082199]
+INFO: 12-09 11:46:10: custom_trainer.py:66 * 140090313426688 epoch 2 progress 1449/31296
+INFO: 12-09 11:46:10: custom_trainer.py:77 * 140090313426688 phase = training step = 8000 time_cost = 56.00683832168579
+INFO: 12-09 11:46:10: custom_trainer.py:78 * 140090313426688 current loss: [0.1487452]
+INFO: 12-09 11:47:06: custom_trainer.py:66 * 140090313426688 epoch 2 progress 2249/31296
+INFO: 12-09 11:47:06: custom_trainer.py:77 * 140090313426688 phase = training step = 8100 time_cost = 56.648539304733276
+INFO: 12-09 11:47:06: custom_trainer.py:78 * 140090313426688 current loss: [0.09498496]
+INFO: 12-09 11:48:03: custom_trainer.py:66 * 140090313426688 epoch 2 progress 3049/31296
+INFO: 12-09 11:48:03: custom_trainer.py:77 * 140090313426688 phase = training step = 8200 time_cost = 57.024749755859375
+INFO: 12-09 11:48:03: custom_trainer.py:78 * 140090313426688 current loss: [0.18414477]
+INFO: 12-09 11:49:00: custom_trainer.py:66 * 140090313426688 epoch 2 progress 3849/31296
+INFO: 12-09 11:49:00: custom_trainer.py:77 * 140090313426688 phase = training step = 8300 time_cost = 56.17245697975159
+INFO: 12-09 11:49:00: custom_trainer.py:78 * 140090313426688 current loss: [0.15017939]
+INFO: 12-09 11:49:56: custom_trainer.py:66 * 140090313426688 epoch 2 progress 4649/31296
+INFO: 12-09 11:49:56: custom_trainer.py:77 * 140090313426688 phase = training step = 8400 time_cost = 56.567386865615845
+INFO: 12-09 11:49:56: custom_trainer.py:78 * 140090313426688 current loss: [0.60376894]
+INFO: 12-09 11:50:53: custom_trainer.py:66 * 140090313426688 epoch 2 progress 5449/31296
+INFO: 12-09 11:50:53: custom_trainer.py:77 * 140090313426688 phase = training step = 8500 time_cost = 56.92945051193237
+INFO: 12-09 11:50:53: custom_trainer.py:78 * 140090313426688 current loss: [0.36033762]
+INFO: 12-09 11:51:50: custom_trainer.py:66 * 140090313426688 epoch 2 progress 6249/31296
+INFO: 12-09 11:51:50: custom_trainer.py:77 * 140090313426688 phase = training step = 8600 time_cost = 56.45725607872009
+INFO: 12-09 11:51:50: custom_trainer.py:78 * 140090313426688 current loss: [0.16723599]
+INFO: 12-09 11:52:46: custom_trainer.py:66 * 140090313426688 epoch 2 progress 7049/31296
+INFO: 12-09 11:52:46: custom_trainer.py:77 * 140090313426688 phase = training step = 8700 time_cost = 56.674041748046875
+INFO: 12-09 11:52:46: custom_trainer.py:78 * 140090313426688 current loss: [0.88493276]
+INFO: 12-09 11:53:43: custom_trainer.py:66 * 140090313426688 epoch 2 progress 7849/31296
+INFO: 12-09 11:53:43: custom_trainer.py:77 * 140090313426688 phase = training step = 8800 time_cost = 56.481643199920654
+INFO: 12-09 11:53:43: custom_trainer.py:78 * 140090313426688 current loss: [0.01545811]
+INFO: 12-09 11:54:39: custom_trainer.py:66 * 140090313426688 epoch 2 progress 8649/31296
+INFO: 12-09 11:54:39: custom_trainer.py:77 * 140090313426688 phase = training step = 8900 time_cost = 56.635666608810425
+INFO: 12-09 11:54:39: custom_trainer.py:78 * 140090313426688 current loss: [0.71247417]
+INFO: 12-09 11:55:36: custom_trainer.py:66 * 140090313426688 epoch 2 progress 9449/31296
+INFO: 12-09 11:55:36: custom_trainer.py:77 * 140090313426688 phase = training step = 9000 time_cost = 56.697855710983276
+INFO: 12-09 11:55:36: custom_trainer.py:78 * 140090313426688 current loss: [0.20512064]
+INFO: 12-09 11:56:33: custom_trainer.py:66 * 140090313426688 epoch 2 progress 10249/31296
+INFO: 12-09 11:56:33: custom_trainer.py:77 * 140090313426688 phase = training step = 9100 time_cost = 57.02321720123291
+INFO: 12-09 11:56:33: custom_trainer.py:78 * 140090313426688 current loss: [0.35743874]
+INFO: 12-09 11:57:30: custom_trainer.py:66 * 140090313426688 epoch 2 progress 11049/31296
+INFO: 12-09 11:57:30: custom_trainer.py:77 * 140090313426688 phase = training step = 9200 time_cost = 56.87480020523071
+INFO: 12-09 11:57:30: custom_trainer.py:78 * 140090313426688 current loss: [0.46988726]
+INFO: 12-09 11:58:27: custom_trainer.py:66 * 140090313426688 epoch 2 progress 11849/31296
+INFO: 12-09 11:58:27: custom_trainer.py:77 * 140090313426688 phase = training step = 9300 time_cost = 57.226895570755005
+INFO: 12-09 11:58:27: custom_trainer.py:78 * 140090313426688 current loss: [0.1325868]
+INFO: 12-09 11:59:24: custom_trainer.py:66 * 140090313426688 epoch 2 progress 12649/31296
+INFO: 12-09 11:59:24: custom_trainer.py:77 * 140090313426688 phase = training step = 9400 time_cost = 56.49461317062378
+INFO: 12-09 11:59:24: custom_trainer.py:78 * 140090313426688 current loss: [0.11116733]
+INFO: 12-09 12:00:21: custom_trainer.py:66 * 140090313426688 epoch 2 progress 13449/31296
+INFO: 12-09 12:00:21: custom_trainer.py:77 * 140090313426688 phase = training step = 9500 time_cost = 57.21299195289612
+INFO: 12-09 12:00:21: custom_trainer.py:78 * 140090313426688 current loss: [0.53861725]
+INFO: 12-09 12:01:17: custom_trainer.py:66 * 140090313426688 epoch 2 progress 14249/31296
+INFO: 12-09 12:01:17: custom_trainer.py:77 * 140090313426688 phase = training step = 9600 time_cost = 56.32719826698303
+INFO: 12-09 12:01:17: custom_trainer.py:78 * 140090313426688 current loss: [0.38121074]
+INFO: 12-09 12:02:13: custom_trainer.py:66 * 140090313426688 epoch 2 progress 15049/31296
+INFO: 12-09 12:02:13: custom_trainer.py:77 * 140090313426688 phase = training step = 9700 time_cost = 56.02611231803894
+INFO: 12-09 12:02:13: custom_trainer.py:78 * 140090313426688 current loss: [0.12568152]
+INFO: 12-09 12:03:10: custom_trainer.py:66 * 140090313426688 epoch 2 progress 15849/31296
+INFO: 12-09 12:03:10: custom_trainer.py:77 * 140090313426688 phase = training step = 9800 time_cost = 56.445520877838135
+INFO: 12-09 12:03:10: custom_trainer.py:78 * 140090313426688 current loss: [0.54647255]
+INFO: 12-09 12:04:06: custom_trainer.py:66 * 140090313426688 epoch 2 progress 16649/31296
+INFO: 12-09 12:04:06: custom_trainer.py:77 * 140090313426688 phase = training step = 9900 time_cost = 56.57857632637024
+INFO: 12-09 12:04:06: custom_trainer.py:78 * 140090313426688 current loss: [0.14425878]
+INFO: 12-09 12:05:03: custom_trainer.py:66 * 140090313426688 epoch 2 progress 17449/31296
+INFO: 12-09 12:05:03: custom_trainer.py:77 * 140090313426688 phase = training step = 10000 time_cost = 56.67025637626648
+INFO: 12-09 12:05:03: custom_trainer.py:78 * 140090313426688 current loss: [0.3793152]
+INFO: 12-09 12:06:00: custom_trainer.py:66 * 140090313426688 epoch 2 progress 18249/31296
+INFO: 12-09 12:06:00: custom_trainer.py:77 * 140090313426688 phase = training step = 10100 time_cost = 56.797532081604004
+INFO: 12-09 12:06:00: custom_trainer.py:78 * 140090313426688 current loss: [0.38671997]
+INFO: 12-09 12:06:56: custom_trainer.py:66 * 140090313426688 epoch 2 progress 19049/31296
+INFO: 12-09 12:06:56: custom_trainer.py:77 * 140090313426688 phase = training step = 10200 time_cost = 56.69859027862549
+INFO: 12-09 12:06:56: custom_trainer.py:78 * 140090313426688 current loss: [0.14260337]
+INFO: 12-09 12:07:53: custom_trainer.py:66 * 140090313426688 epoch 2 progress 19849/31296
+INFO: 12-09 12:07:53: custom_trainer.py:77 * 140090313426688 phase = training step = 10300 time_cost = 56.66052961349487
+INFO: 12-09 12:07:53: custom_trainer.py:78 * 140090313426688 current loss: [0.33967498]
+INFO: 12-09 12:08:49: custom_trainer.py:66 * 140090313426688 epoch 2 progress 20649/31296
+INFO: 12-09 12:08:49: custom_trainer.py:77 * 140090313426688 phase = training step = 10400 time_cost = 55.99235653877258
+INFO: 12-09 12:08:49: custom_trainer.py:78 * 140090313426688 current loss: [0.2908241]
+INFO: 12-09 12:09:45: custom_trainer.py:66 * 140090313426688 epoch 2 progress 21449/31296
+INFO: 12-09 12:09:45: custom_trainer.py:77 * 140090313426688 phase = training step = 10500 time_cost = 56.14524030685425
+INFO: 12-09 12:09:45: custom_trainer.py:78 * 140090313426688 current loss: [0.03351296]
+INFO: 12-09 12:10:42: custom_trainer.py:66 * 140090313426688 epoch 2 progress 22249/31296
+INFO: 12-09 12:10:42: custom_trainer.py:77 * 140090313426688 phase = training step = 10600 time_cost = 56.977296113967896
+INFO: 12-09 12:10:42: custom_trainer.py:78 * 140090313426688 current loss: [0.09279684]
+INFO: 12-09 12:11:39: custom_trainer.py:66 * 140090313426688 epoch 2 progress 23049/31296
+INFO: 12-09 12:11:39: custom_trainer.py:77 * 140090313426688 phase = training step = 10700 time_cost = 56.90079975128174
+INFO: 12-09 12:11:39: custom_trainer.py:78 * 140090313426688 current loss: [0.20410816]
+INFO: 12-09 12:12:36: custom_trainer.py:66 * 140090313426688 epoch 2 progress 23849/31296
+INFO: 12-09 12:12:36: custom_trainer.py:77 * 140090313426688 phase = training step = 10800 time_cost = 56.5613272190094
+INFO: 12-09 12:12:36: custom_trainer.py:78 * 140090313426688 current loss: [0.27732906]
+INFO: 12-09 12:13:32: custom_trainer.py:66 * 140090313426688 epoch 2 progress 24649/31296
+INFO: 12-09 12:13:32: custom_trainer.py:77 * 140090313426688 phase = training step = 10900 time_cost = 56.72235870361328
+INFO: 12-09 12:13:32: custom_trainer.py:78 * 140090313426688 current loss: [0.39254588]
+INFO: 12-09 12:14:29: custom_trainer.py:66 * 140090313426688 epoch 2 progress 25449/31296
+INFO: 12-09 12:14:29: custom_trainer.py:77 * 140090313426688 phase = training step = 11000 time_cost = 56.539536237716675
+INFO: 12-09 12:14:29: custom_trainer.py:78 * 140090313426688 current loss: [0.41698176]
+INFO: 12-09 12:15:26: custom_trainer.py:66 * 140090313426688 epoch 2 progress 26249/31296
+INFO: 12-09 12:15:26: custom_trainer.py:77 * 140090313426688 phase = training step = 11100 time_cost = 56.857837438583374
+INFO: 12-09 12:15:26: custom_trainer.py:78 * 140090313426688 current loss: [0.36285925]
+INFO: 12-09 12:16:22: custom_trainer.py:66 * 140090313426688 epoch 2 progress 27049/31296
+INFO: 12-09 12:16:22: custom_trainer.py:77 * 140090313426688 phase = training step = 11200 time_cost = 56.55146312713623
+INFO: 12-09 12:16:22: custom_trainer.py:78 * 140090313426688 current loss: [0.7987472]
+INFO: 12-09 12:17:18: custom_trainer.py:66 * 140090313426688 epoch 2 progress 27849/31296
+INFO: 12-09 12:17:18: custom_trainer.py:77 * 140090313426688 phase = training step = 11300 time_cost = 55.578288316726685
+INFO: 12-09 12:17:18: custom_trainer.py:78 * 140090313426688 current loss: [0.20955116]
+INFO: 12-09 12:18:15: custom_trainer.py:66 * 140090313426688 epoch 2 progress 28649/31296
+INFO: 12-09 12:18:15: custom_trainer.py:77 * 140090313426688 phase = training step = 11400 time_cost = 56.66830039024353
+INFO: 12-09 12:18:15: custom_trainer.py:78 * 140090313426688 current loss: [0.6910549]
+INFO: 12-09 12:19:12: custom_trainer.py:66 * 140090313426688 epoch 2 progress 29449/31296
+INFO: 12-09 12:19:12: custom_trainer.py:77 * 140090313426688 phase = training step = 11500 time_cost = 56.966428995132446
+INFO: 12-09 12:19:12: custom_trainer.py:78 * 140090313426688 current loss: [0.11815492]
+INFO: 12-09 12:20:08: custom_trainer.py:66 * 140090313426688 epoch 2 progress 30249/31296
+INFO: 12-09 12:20:08: custom_trainer.py:77 * 140090313426688 phase = training step = 11600 time_cost = 56.19571328163147
+INFO: 12-09 12:20:08: custom_trainer.py:78 * 140090313426688 current loss: [0.36908317]
+INFO: 12-09 12:21:04: custom_trainer.py:66 * 140090313426688 epoch 2 progress 31049/31296
+INFO: 12-09 12:21:04: custom_trainer.py:77 * 140090313426688 phase = training step = 11700 time_cost = 56.49650597572327
+INFO: 12-09 12:21:04: custom_trainer.py:78 * 140090313426688 current loss: [0.5577104]
+INFO: 12-09 12:22:02: custom_trainer.py:66 * 140090313426688 epoch 3 progress 553/31296
+INFO: 12-09 12:22:02: custom_trainer.py:77 * 140090313426688 phase = training step = 11800 time_cost = 57.46561002731323
+INFO: 12-09 12:22:02: custom_trainer.py:78 * 140090313426688 current loss: [0.0645778]
+INFO: 12-09 12:22:58: custom_trainer.py:66 * 140090313426688 epoch 3 progress 1353/31296
+INFO: 12-09 12:22:58: custom_trainer.py:77 * 140090313426688 phase = training step = 11900 time_cost = 56.68128204345703
+INFO: 12-09 12:22:58: custom_trainer.py:78 * 140090313426688 current loss: [0.07147097]
+INFO: 12-09 12:23:55: custom_trainer.py:66 * 140090313426688 epoch 3 progress 2153/31296
+INFO: 12-09 12:23:55: custom_trainer.py:77 * 140090313426688 phase = training step = 12000 time_cost = 56.51695275306702
+INFO: 12-09 12:23:55: custom_trainer.py:78 * 140090313426688 current loss: [0.3933416]
+INFO: 12-09 12:24:51: custom_trainer.py:66 * 140090313426688 epoch 3 progress 2953/31296
+INFO: 12-09 12:24:51: custom_trainer.py:77 * 140090313426688 phase = training step = 12100 time_cost = 56.35041165351868
+INFO: 12-09 12:24:51: custom_trainer.py:78 * 140090313426688 current loss: [0.11846144]
+INFO: 12-09 12:25:48: custom_trainer.py:66 * 140090313426688 epoch 3 progress 3753/31296
+INFO: 12-09 12:25:48: custom_trainer.py:77 * 140090313426688 phase = training step = 12200 time_cost = 56.430827140808105
+INFO: 12-09 12:25:48: custom_trainer.py:78 * 140090313426688 current loss: [0.01305983]
+INFO: 12-09 12:26:45: custom_trainer.py:66 * 140090313426688 epoch 3 progress 4553/31296
+INFO: 12-09 12:26:45: custom_trainer.py:77 * 140090313426688 phase = training step = 12300 time_cost = 56.87990379333496
+INFO: 12-09 12:26:45: custom_trainer.py:78 * 140090313426688 current loss: [0.15889539]
+INFO: 12-09 12:27:41: custom_trainer.py:66 * 140090313426688 epoch 3 progress 5353/31296
+INFO: 12-09 12:27:41: custom_trainer.py:77 * 140090313426688 phase = training step = 12400 time_cost = 56.84424042701721
+INFO: 12-09 12:27:41: custom_trainer.py:78 * 140090313426688 current loss: [0.02806911]
+INFO: 12-09 12:28:39: custom_trainer.py:66 * 140090313426688 epoch 3 progress 6153/31296
+INFO: 12-09 12:28:39: custom_trainer.py:77 * 140090313426688 phase = training step = 12500 time_cost = 57.60673117637634
+INFO: 12-09 12:28:39: custom_trainer.py:78 * 140090313426688 current loss: [0.17259513]
+INFO: 12-09 12:29:35: custom_trainer.py:66 * 140090313426688 epoch 3 progress 6953/31296
+INFO: 12-09 12:29:35: custom_trainer.py:77 * 140090313426688 phase = training step = 12600 time_cost = 55.847864627838135
+INFO: 12-09 12:29:35: custom_trainer.py:78 * 140090313426688 current loss: [0.40395176]
+INFO: 12-09 12:30:31: custom_trainer.py:66 * 140090313426688 epoch 3 progress 7753/31296
+INFO: 12-09 12:30:31: custom_trainer.py:77 * 140090313426688 phase = training step = 12700 time_cost = 56.22828674316406
+INFO: 12-09 12:30:31: custom_trainer.py:78 * 140090313426688 current loss: [0.27147642]
+INFO: 12-09 12:31:28: custom_trainer.py:66 * 140090313426688 epoch 3 progress 8553/31296
+INFO: 12-09 12:31:28: custom_trainer.py:77 * 140090313426688 phase = training step = 12800 time_cost = 56.815953969955444
+INFO: 12-09 12:31:28: custom_trainer.py:78 * 140090313426688 current loss: [0.00094631]
+INFO: 12-09 12:32:24: custom_trainer.py:66 * 140090313426688 epoch 3 progress 9353/31296
+INFO: 12-09 12:32:24: custom_trainer.py:77 * 140090313426688 phase = training step = 12900 time_cost = 56.60082006454468
+INFO: 12-09 12:32:24: custom_trainer.py:78 * 140090313426688 current loss: [0.00880289]
+INFO: 12-09 12:33:22: custom_trainer.py:66 * 140090313426688 epoch 3 progress 10153/31296
+INFO: 12-09 12:33:22: custom_trainer.py:77 * 140090313426688 phase = training step = 13000 time_cost = 57.069483518600464
+INFO: 12-09 12:33:22: custom_trainer.py:78 * 140090313426688 current loss: [0.14414999]
+INFO: 12-09 12:34:18: custom_trainer.py:66 * 140090313426688 epoch 3 progress 10953/31296
+INFO: 12-09 12:34:18: custom_trainer.py:77 * 140090313426688 phase = training step = 13100 time_cost = 56.48926496505737
+INFO: 12-09 12:34:18: custom_trainer.py:78 * 140090313426688 current loss: [0.20757186]
+INFO: 12-09 12:35:15: custom_trainer.py:66 * 140090313426688 epoch 3 progress 11753/31296
+INFO: 12-09 12:35:15: custom_trainer.py:77 * 140090313426688 phase = training step = 13200 time_cost = 56.587340116500854
+INFO: 12-09 12:35:15: custom_trainer.py:78 * 140090313426688 current loss: [0.05015185]
+INFO: 12-09 12:36:11: custom_trainer.py:66 * 140090313426688 epoch 3 progress 12553/31296
+INFO: 12-09 12:36:11: custom_trainer.py:77 * 140090313426688 phase = training step = 13300 time_cost = 55.9966082572937
+INFO: 12-09 12:36:11: custom_trainer.py:78 * 140090313426688 current loss: [0.5504255]
+INFO: 12-09 12:37:07: custom_trainer.py:66 * 140090313426688 epoch 3 progress 13353/31296
+INFO: 12-09 12:37:07: custom_trainer.py:77 * 140090313426688 phase = training step = 13400 time_cost = 56.51004481315613
+INFO: 12-09 12:37:07: custom_trainer.py:78 * 140090313426688 current loss: [0.05672973]
+INFO: 12-09 12:38:04: custom_trainer.py:66 * 140090313426688 epoch 3 progress 14153/31296
+INFO: 12-09 12:38:04: custom_trainer.py:77 * 140090313426688 phase = training step = 13500 time_cost = 56.54527020454407
+INFO: 12-09 12:38:04: custom_trainer.py:78 * 140090313426688 current loss: [0.40673333]
+INFO: 12-09 12:39:00: custom_trainer.py:66 * 140090313426688 epoch 3 progress 14953/31296
+INFO: 12-09 12:39:00: custom_trainer.py:77 * 140090313426688 phase = training step = 13600 time_cost = 56.516106605529785
+INFO: 12-09 12:39:00: custom_trainer.py:78 * 140090313426688 current loss: [0.8225787]
+INFO: 12-09 12:39:57: custom_trainer.py:66 * 140090313426688 epoch 3 progress 15753/31296
+INFO: 12-09 12:39:57: custom_trainer.py:77 * 140090313426688 phase = training step = 13700 time_cost = 56.615134716033936
+INFO: 12-09 12:39:57: custom_trainer.py:78 * 140090313426688 current loss: [0.19208859]
+INFO: 12-09 12:40:53: custom_trainer.py:66 * 140090313426688 epoch 3 progress 16553/31296
+INFO: 12-09 12:40:53: custom_trainer.py:77 * 140090313426688 phase = training step = 13800 time_cost = 56.61473536491394
+INFO: 12-09 12:40:53: custom_trainer.py:78 * 140090313426688 current loss: [0.10514084]
+INFO: 12-09 12:41:50: custom_trainer.py:66 * 140090313426688 epoch 3 progress 17353/31296
+INFO: 12-09 12:41:50: custom_trainer.py:77 * 140090313426688 phase = training step = 13900 time_cost = 56.954543352127075
+INFO: 12-09 12:41:50: custom_trainer.py:78 * 140090313426688 current loss: [0.29691872]
+INFO: 12-09 12:42:47: custom_trainer.py:66 * 140090313426688 epoch 3 progress 18153/31296
+INFO: 12-09 12:42:47: custom_trainer.py:77 * 140090313426688 phase = training step = 14000 time_cost = 56.792648792266846
+INFO: 12-09 12:42:47: custom_trainer.py:78 * 140090313426688 current loss: [0.10405245]
+INFO: 12-09 12:43:44: custom_trainer.py:66 * 140090313426688 epoch 3 progress 18953/31296
+INFO: 12-09 12:43:44: custom_trainer.py:77 * 140090313426688 phase = training step = 14100 time_cost = 56.93781518936157
+INFO: 12-09 12:43:44: custom_trainer.py:78 * 140090313426688 current loss: [0.14397365]
+INFO: 12-09 12:44:41: custom_trainer.py:66 * 140090313426688 epoch 3 progress 19753/31296
+INFO: 12-09 12:44:41: custom_trainer.py:77 * 140090313426688 phase = training step = 14200 time_cost = 57.10289454460144
+INFO: 12-09 12:44:41: custom_trainer.py:78 * 140090313426688 current loss: [0.00212102]
+INFO: 12-09 12:45:38: custom_trainer.py:66 * 140090313426688 epoch 3 progress 20553/31296
+INFO: 12-09 12:45:38: custom_trainer.py:77 * 140090313426688 phase = training step = 14300 time_cost = 56.337902784347534
+INFO: 12-09 12:45:38: custom_trainer.py:78 * 140090313426688 current loss: [0.45489872]
+INFO: 12-09 12:46:35: custom_trainer.py:66 * 140090313426688 epoch 3 progress 21353/31296
+INFO: 12-09 12:46:35: custom_trainer.py:77 * 140090313426688 phase = training step = 14400 time_cost = 57.00439453125
+INFO: 12-09 12:46:35: custom_trainer.py:78 * 140090313426688 current loss: [0.5398588]
+INFO: 12-09 12:47:31: custom_trainer.py:66 * 140090313426688 epoch 3 progress 22153/31296
+INFO: 12-09 12:47:31: custom_trainer.py:77 * 140090313426688 phase = training step = 14500 time_cost = 56.24215030670166
+INFO: 12-09 12:47:31: custom_trainer.py:78 * 140090313426688 current loss: [0.01163394]
+INFO: 12-09 12:48:27: custom_trainer.py:66 * 140090313426688 epoch 3 progress 22953/31296
+INFO: 12-09 12:48:27: custom_trainer.py:77 * 140090313426688 phase = training step = 14600 time_cost = 55.832995653152466
+INFO: 12-09 12:48:27: custom_trainer.py:78 * 140090313426688 current loss: [0.01500507]
+INFO: 12-09 12:49:23: custom_trainer.py:66 * 140090313426688 epoch 3 progress 23753/31296
+INFO: 12-09 12:49:23: custom_trainer.py:77 * 140090313426688 phase = training step = 14700 time_cost = 56.78259873390198
+INFO: 12-09 12:49:23: custom_trainer.py:78 * 140090313426688 current loss: [0.12736592]
+INFO: 12-09 12:50:20: custom_trainer.py:66 * 140090313426688 epoch 3 progress 24553/31296
+INFO: 12-09 12:50:20: custom_trainer.py:77 * 140090313426688 phase = training step = 14800 time_cost = 56.75488543510437
+INFO: 12-09 12:50:20: custom_trainer.py:78 * 140090313426688 current loss: [0.04209663]
+INFO: 12-09 12:51:17: custom_trainer.py:66 * 140090313426688 epoch 3 progress 25353/31296
+INFO: 12-09 12:51:17: custom_trainer.py:77 * 140090313426688 phase = training step = 14900 time_cost = 56.77903509140015
+INFO: 12-09 12:51:17: custom_trainer.py:78 * 140090313426688 current loss: [0.10716747]
+INFO: 12-09 12:52:14: custom_trainer.py:66 * 140090313426688 epoch 3 progress 26153/31296
+INFO: 12-09 12:52:14: custom_trainer.py:77 * 140090313426688 phase = training step = 15000 time_cost = 56.53446006774902
+INFO: 12-09 12:52:14: custom_trainer.py:78 * 140090313426688 current loss: [0.07271794]
+INFO: 12-09 12:53:10: custom_trainer.py:66 * 140090313426688 epoch 3 progress 26953/31296
+INFO: 12-09 12:53:10: custom_trainer.py:77 * 140090313426688 phase = training step = 15100 time_cost = 56.37855648994446
+INFO: 12-09 12:53:10: custom_trainer.py:78 * 140090313426688 current loss: [0.25062728]
+INFO: 12-09 12:54:06: custom_trainer.py:66 * 140090313426688 epoch 3 progress 27753/31296
+INFO: 12-09 12:54:06: custom_trainer.py:77 * 140090313426688 phase = training step = 15200 time_cost = 56.53147077560425
+INFO: 12-09 12:54:06: custom_trainer.py:78 * 140090313426688 current loss: [0.2841494]
+INFO: 12-09 12:55:03: custom_trainer.py:66 * 140090313426688 epoch 3 progress 28553/31296
+INFO: 12-09 12:55:03: custom_trainer.py:77 * 140090313426688 phase = training step = 15300 time_cost = 56.405787229537964
+INFO: 12-09 12:55:03: custom_trainer.py:78 * 140090313426688 current loss: [0.14022699]
+INFO: 12-09 12:55:59: custom_trainer.py:66 * 140090313426688 epoch 3 progress 29353/31296
+INFO: 12-09 12:55:59: custom_trainer.py:77 * 140090313426688 phase = training step = 15400 time_cost = 56.41810083389282
+INFO: 12-09 12:55:59: custom_trainer.py:78 * 140090313426688 current loss: [0.40546104]
+INFO: 12-09 12:56:56: custom_trainer.py:66 * 140090313426688 epoch 3 progress 30153/31296
+INFO: 12-09 12:56:56: custom_trainer.py:77 * 140090313426688 phase = training step = 15500 time_cost = 56.71385955810547
+INFO: 12-09 12:56:56: custom_trainer.py:78 * 140090313426688 current loss: [0.60086036]
+INFO: 12-09 12:57:53: custom_trainer.py:66 * 140090313426688 epoch 3 progress 30953/31296
+INFO: 12-09 12:57:53: custom_trainer.py:77 * 140090313426688 phase = training step = 15600 time_cost = 57.07187056541443
+INFO: 12-09 12:57:53: custom_trainer.py:78 * 140090313426688 current loss: [0.3721185]
+INFO: 12-09 12:58:50: custom_trainer.py:66 * 140090313426688 epoch 4 progress 457/31296
+INFO: 12-09 12:58:50: custom_trainer.py:77 * 140090313426688 phase = training step = 15700 time_cost = 57.181792974472046
+INFO: 12-09 12:58:50: custom_trainer.py:78 * 140090313426688 current loss: [0.35655493]
+INFO: 12-09 12:59:46: custom_trainer.py:66 * 140090313426688 epoch 4 progress 1257/31296
+INFO: 12-09 12:59:46: custom_trainer.py:77 * 140090313426688 phase = training step = 15800 time_cost = 56.27757406234741
+INFO: 12-09 12:59:46: custom_trainer.py:78 * 140090313426688 current loss: [0.00400374]
+INFO: 12-09 13:00:44: custom_trainer.py:66 * 140090313426688 epoch 4 progress 2057/31296
+INFO: 12-09 13:00:44: custom_trainer.py:77 * 140090313426688 phase = training step = 15900 time_cost = 57.015477895736694
+INFO: 12-09 13:00:44: custom_trainer.py:78 * 140090313426688 current loss: [0.34232348]
+INFO: 12-09 13:01:40: custom_trainer.py:66 * 140090313426688 epoch 4 progress 2857/31296
+INFO: 12-09 13:01:40: custom_trainer.py:77 * 140090313426688 phase = training step = 16000 time_cost = 56.702871561050415
+INFO: 12-09 13:01:40: custom_trainer.py:78 * 140090313426688 current loss: [0.0353987]
+INFO: 12-09 13:02:37: custom_trainer.py:66 * 140090313426688 epoch 4 progress 3657/31296
+INFO: 12-09 13:02:37: custom_trainer.py:77 * 140090313426688 phase = training step = 16100 time_cost = 56.794541358947754
+INFO: 12-09 13:02:37: custom_trainer.py:78 * 140090313426688 current loss: [0.01159519]
+INFO: 12-09 13:03:34: custom_trainer.py:66 * 140090313426688 epoch 4 progress 4457/31296
+INFO: 12-09 13:03:34: custom_trainer.py:77 * 140090313426688 phase = training step = 16200 time_cost = 57.0448534488678
+INFO: 12-09 13:03:34: custom_trainer.py:78 * 140090313426688 current loss: [0.13001187]
+INFO: 12-09 13:04:30: custom_trainer.py:66 * 140090313426688 epoch 4 progress 5257/31296
+INFO: 12-09 13:04:30: custom_trainer.py:77 * 140090313426688 phase = training step = 16300 time_cost = 55.63118004798889
+INFO: 12-09 13:04:30: custom_trainer.py:78 * 140090313426688 current loss: [0.2824103]
+INFO: 12-09 13:05:26: custom_trainer.py:66 * 140090313426688 epoch 4 progress 6057/31296
+INFO: 12-09 13:05:26: custom_trainer.py:77 * 140090313426688 phase = training step = 16400 time_cost = 56.171918630599976
+INFO: 12-09 13:05:26: custom_trainer.py:78 * 140090313426688 current loss: [0.21239135]
+INFO: 12-09 13:06:23: custom_trainer.py:66 * 140090313426688 epoch 4 progress 6857/31296
+INFO: 12-09 13:06:23: custom_trainer.py:77 * 140090313426688 phase = training step = 16500 time_cost = 56.76212430000305
+INFO: 12-09 13:06:23: custom_trainer.py:78 * 140090313426688 current loss: [0.38241208]
+INFO: 12-09 13:07:19: custom_trainer.py:66 * 140090313426688 epoch 4 progress 7657/31296
+INFO: 12-09 13:07:19: custom_trainer.py:77 * 140090313426688 phase = training step = 16600 time_cost = 56.82772159576416
+INFO: 12-09 13:07:19: custom_trainer.py:78 * 140090313426688 current loss: [0.00241846]
+INFO: 12-09 13:08:16: custom_trainer.py:66 * 140090313426688 epoch 4 progress 8457/31296
+INFO: 12-09 13:08:16: custom_trainer.py:77 * 140090313426688 phase = training step = 16700 time_cost = 56.379857301712036
+INFO: 12-09 13:08:16: custom_trainer.py:78 * 140090313426688 current loss: [0.02063634]
+INFO: 12-09 13:09:13: custom_trainer.py:66 * 140090313426688 epoch 4 progress 9257/31296
+INFO: 12-09 13:09:13: custom_trainer.py:77 * 140090313426688 phase = training step = 16800 time_cost = 56.78919172286987
+INFO: 12-09 13:09:13: custom_trainer.py:78 * 140090313426688 current loss: [0.04849755]
+INFO: 12-09 13:10:09: custom_trainer.py:66 * 140090313426688 epoch 4 progress 10057/31296
+INFO: 12-09 13:10:09: custom_trainer.py:77 * 140090313426688 phase = training step = 16900 time_cost = 56.561264991760254
+INFO: 12-09 13:10:09: custom_trainer.py:78 * 140090313426688 current loss: [0.13616046]
+INFO: 12-09 13:11:06: custom_trainer.py:66 * 140090313426688 epoch 4 progress 10857/31296
+INFO: 12-09 13:11:06: custom_trainer.py:77 * 140090313426688 phase = training step = 17000 time_cost = 56.9352331161499
+INFO: 12-09 13:11:06: custom_trainer.py:78 * 140090313426688 current loss: [0.00280005]
+INFO: 12-09 13:12:03: custom_trainer.py:66 * 140090313426688 epoch 4 progress 11657/31296
+INFO: 12-09 13:12:03: custom_trainer.py:77 * 140090313426688 phase = training step = 17100 time_cost = 56.83926010131836
+INFO: 12-09 13:12:03: custom_trainer.py:78 * 140090313426688 current loss: [0.00611773]
+INFO: 12-09 13:13:00: custom_trainer.py:66 * 140090313426688 epoch 4 progress 12457/31296
+INFO: 12-09 13:13:00: custom_trainer.py:77 * 140090313426688 phase = training step = 17200 time_cost = 56.59905457496643
+INFO: 12-09 13:13:00: custom_trainer.py:78 * 140090313426688 current loss: [0.00461133]
+INFO: 12-09 13:13:56: custom_trainer.py:66 * 140090313426688 epoch 4 progress 13257/31296
+INFO: 12-09 13:13:56: custom_trainer.py:77 * 140090313426688 phase = training step = 17300 time_cost = 56.591641664505005
+INFO: 12-09 13:13:56: custom_trainer.py:78 * 140090313426688 current loss: [0.08656937]
+INFO: 12-09 13:14:52: custom_trainer.py:66 * 140090313426688 epoch 4 progress 14057/31296
+INFO: 12-09 13:14:52: custom_trainer.py:77 * 140090313426688 phase = training step = 17400 time_cost = 56.24385046958923
+INFO: 12-09 13:14:52: custom_trainer.py:78 * 140090313426688 current loss: [0.06773725]
+INFO: 12-09 13:15:49: custom_trainer.py:66 * 140090313426688 epoch 4 progress 14857/31296
+INFO: 12-09 13:15:49: custom_trainer.py:77 * 140090313426688 phase = training step = 17500 time_cost = 56.18730711936951
+INFO: 12-09 13:15:49: custom_trainer.py:78 * 140090313426688 current loss: [0.00076512]
+INFO: 12-09 13:16:45: custom_trainer.py:66 * 140090313426688 epoch 4 progress 15657/31296
+INFO: 12-09 13:16:45: custom_trainer.py:77 * 140090313426688 phase = training step = 17600 time_cost = 56.612778186798096
+INFO: 12-09 13:16:45: custom_trainer.py:78 * 140090313426688 current loss: [0.1781332]
+INFO: 12-09 13:17:41: custom_trainer.py:66 * 140090313426688 epoch 4 progress 16457/31296
+INFO: 12-09 13:17:41: custom_trainer.py:77 * 140090313426688 phase = training step = 17700 time_cost = 56.08972477912903
+INFO: 12-09 13:17:41: custom_trainer.py:78 * 140090313426688 current loss: [0.00191176]
+INFO: 12-09 13:18:38: custom_trainer.py:66 * 140090313426688 epoch 4 progress 17257/31296
+INFO: 12-09 13:18:38: custom_trainer.py:77 * 140090313426688 phase = training step = 17800 time_cost = 56.30552864074707
+INFO: 12-09 13:18:38: custom_trainer.py:78 * 140090313426688 current loss: [0.00125015]
+INFO: 12-09 13:19:34: custom_trainer.py:66 * 140090313426688 epoch 4 progress 18057/31296
+INFO: 12-09 13:19:34: custom_trainer.py:77 * 140090313426688 phase = training step = 17900 time_cost = 56.34873604774475
+INFO: 12-09 13:19:34: custom_trainer.py:78 * 140090313426688 current loss: [0.00315071]
+INFO: 12-09 13:20:30: custom_trainer.py:66 * 140090313426688 epoch 4 progress 18857/31296
+INFO: 12-09 13:20:30: custom_trainer.py:77 * 140090313426688 phase = training step = 18000 time_cost = 56.396888732910156
+INFO: 12-09 13:20:30: custom_trainer.py:78 * 140090313426688 current loss: [0.04722614]
+INFO: 12-09 13:21:27: custom_trainer.py:66 * 140090313426688 epoch 4 progress 19657/31296
+INFO: 12-09 13:21:27: custom_trainer.py:77 * 140090313426688 phase = training step = 18100 time_cost = 56.49928903579712
+INFO: 12-09 13:21:27: custom_trainer.py:78 * 140090313426688 current loss: [0.00111466]
+INFO: 12-09 13:22:23: custom_trainer.py:66 * 140090313426688 epoch 4 progress 20457/31296
+INFO: 12-09 13:22:23: custom_trainer.py:77 * 140090313426688 phase = training step = 18200 time_cost = 56.58704471588135
+INFO: 12-09 13:22:23: custom_trainer.py:78 * 140090313426688 current loss: [0.03685252]
+INFO: 12-09 13:23:20: custom_trainer.py:66 * 140090313426688 epoch 4 progress 21257/31296
+INFO: 12-09 13:23:20: custom_trainer.py:77 * 140090313426688 phase = training step = 18300 time_cost = 56.7523455619812
+INFO: 12-09 13:23:20: custom_trainer.py:78 * 140090313426688 current loss: [0.00068274]
+INFO: 12-09 13:24:17: custom_trainer.py:66 * 140090313426688 epoch 4 progress 22057/31296
+INFO: 12-09 13:24:17: custom_trainer.py:77 * 140090313426688 phase = training step = 18400 time_cost = 56.703747272491455
+INFO: 12-09 13:24:17: custom_trainer.py:78 * 140090313426688 current loss: [0.00879144]
+INFO: 12-09 13:25:13: custom_trainer.py:66 * 140090313426688 epoch 4 progress 22857/31296
+INFO: 12-09 13:25:13: custom_trainer.py:77 * 140090313426688 phase = training step = 18500 time_cost = 56.592543601989746
+INFO: 12-09 13:25:13: custom_trainer.py:78 * 140090313426688 current loss: [0.08966129]
+INFO: 12-09 13:26:09: custom_trainer.py:66 * 140090313426688 epoch 4 progress 23657/31296
+INFO: 12-09 13:26:09: custom_trainer.py:77 * 140090313426688 phase = training step = 18600 time_cost = 55.459370136260986
+INFO: 12-09 13:26:09: custom_trainer.py:78 * 140090313426688 current loss: [0.02009671]
+INFO: 12-09 13:27:06: custom_trainer.py:66 * 140090313426688 epoch 4 progress 24457/31296
+INFO: 12-09 13:27:06: custom_trainer.py:77 * 140090313426688 phase = training step = 18700 time_cost = 57.05174136161804
+INFO: 12-09 13:27:06: custom_trainer.py:78 * 140090313426688 current loss: [0.029557]
+INFO: 12-09 13:28:02: custom_trainer.py:66 * 140090313426688 epoch 4 progress 25257/31296
+INFO: 12-09 13:28:02: custom_trainer.py:77 * 140090313426688 phase = training step = 18800 time_cost = 56.270477294921875
+INFO: 12-09 13:28:02: custom_trainer.py:78 * 140090313426688 current loss: [0.21116634]
+INFO: 12-09 13:28:59: custom_trainer.py:66 * 140090313426688 epoch 4 progress 26057/31296
+INFO: 12-09 13:28:59: custom_trainer.py:77 * 140090313426688 phase = training step = 18900 time_cost = 56.263179302215576
+INFO: 12-09 13:28:59: custom_trainer.py:78 * 140090313426688 current loss: [0.26041013]
+INFO: 12-09 13:29:55: custom_trainer.py:66 * 140090313426688 epoch 4 progress 26857/31296
+INFO: 12-09 13:29:55: custom_trainer.py:77 * 140090313426688 phase = training step = 19000 time_cost = 56.60746431350708
+INFO: 12-09 13:29:55: custom_trainer.py:78 * 140090313426688 current loss: [0.0056157]
+INFO: 12-09 13:30:51: custom_trainer.py:66 * 140090313426688 epoch 4 progress 27657/31296
+INFO: 12-09 13:30:51: custom_trainer.py:77 * 140090313426688 phase = training step = 19100 time_cost = 56.33663535118103
+INFO: 12-09 13:30:51: custom_trainer.py:78 * 140090313426688 current loss: [0.00470163]
+INFO: 12-09 13:31:48: custom_trainer.py:66 * 140090313426688 epoch 4 progress 28457/31296
+INFO: 12-09 13:31:48: custom_trainer.py:77 * 140090313426688 phase = training step = 19200 time_cost = 56.278061866760254
+INFO: 12-09 13:31:48: custom_trainer.py:78 * 140090313426688 current loss: [0.01098127]
+INFO: 12-09 13:32:45: custom_trainer.py:66 * 140090313426688 epoch 4 progress 29257/31296
+INFO: 12-09 13:32:45: custom_trainer.py:77 * 140090313426688 phase = training step = 19300 time_cost = 56.801464796066284
+INFO: 12-09 13:32:45: custom_trainer.py:78 * 140090313426688 current loss: [0.00247319]
+INFO: 12-09 13:33:41: custom_trainer.py:66 * 140090313426688 epoch 4 progress 30057/31296
+INFO: 12-09 13:33:41: custom_trainer.py:77 * 140090313426688 phase = training step = 19400 time_cost = 56.65788245201111
+INFO: 12-09 13:33:41: custom_trainer.py:78 * 140090313426688 current loss: [0.16319303]
+INFO: 12-09 13:34:37: custom_trainer.py:66 * 140090313426688 epoch 4 progress 30857/31296
+INFO: 12-09 13:34:37: custom_trainer.py:77 * 140090313426688 phase = training step = 19500 time_cost = 56.08328652381897
+INFO: 12-09 13:34:37: custom_trainer.py:78 * 140090313426688 current loss: [0.00147071]
+INFO: 12-09 13:35:11: static_trainer.py:623 * 140090313426688 save model on static....
+INFO: 12-09 13:35:24: run_trainer.py:99 * 140090313426688 end of run train and eval .....
+INFO: 12-09 13:54:53: params.py:43 * 140626341328640 ./examples/seqlab_ernie_fc_ch_infer.json
+INFO: 12-09 13:54:53: params.py:52 * 140626341328640 {
+    "dataset_reader": {
+        "predict_reader": {
+            "config": {
+                "batch_size": 2,
+                "data_path": "./data/test_data",
+                "epoch": 1,
+                "need_data_distribute": false,
+                "need_generate_examples": true,
+                "sampling_rate": 1.0,
+                "shuffle": false
+            },
+            "fields": [
+                {
+                    "data_type": "string",
+                    "embedding": null,
+                    "max_seq_len": 512,
+                    "name": "text_a",
+                    "need_convert": true,
+                    "padding_id": 0,
+                    "reader": {
+                        "type": "ErnieTextFieldReader"
+                    },
+                    "tokenizer": {
+                        "params": null,
+                        "split_char": " ",
+                        "type": "FullTokenizer",
+                        "unk_token": "[UNK]"
+                    },
+                    "truncation_type": 0,
+                    "vocab_path": "../../models_hub/ernie_3.0_base_ch_dir/vocab.txt"
+                }
+            ],
+            "name": "predict_reader",
+            "type": "BasicDataSetReader"
+        }
+    },
+    "inference": {
+        "PADDLE_IS_LOCAL": 1,
+        "PADDLE_PLACE_TYPE": "gpu",
+        "extra_param": {
+            "meta": {
+                "job_type": "sequence_labeling"
+            }
+        },
+        "inference_model_path": "./output/seqlab_ernie_3.0_base_fc_ch/save_inference_model/inference_step_19561",
+        "is_ernie": true,
+        "output_path": "./output/4000.txt"
+    }
+}
+WARNING: 12-09 13:54:53: register.py:25 * 140626341328640 Key WordsegTokenizer already in registry tokenizer.
+INFO: 12-09 13:55:40: params.py:43 * 139987317556992 ./examples/seqlab_ernie_fc_ch_infer.json
+INFO: 12-09 13:55:40: params.py:52 * 139987317556992 {
+    "dataset_reader": {
+        "predict_reader": {
+            "config": {
+                "batch_size": 2,
+                "data_path": "./data/test_data",
+                "epoch": 1,
+                "need_data_distribute": false,
+                "need_generate_examples": true,
+                "sampling_rate": 1.0,
+                "shuffle": false
+            },
+            "fields": [
+                {
+                    "data_type": "string",
+                    "embedding": null,
+                    "max_seq_len": 512,
+                    "name": "text_a",
+                    "need_convert": true,
+                    "padding_id": 0,
+                    "reader": {
+                        "type": "ErnieTextFieldReader"
+                    },
+                    "tokenizer": {
+                        "params": null,
+                        "split_char": " ",
+                        "type": "FullTokenizer",
+                        "unk_token": "[UNK]"
+                    },
+                    "truncation_type": 0,
+                    "vocab_path": "/home/aistudio/work/ernie_dqa_task1/applications/models_hub/ernie_3.0_x_base_ch/vocab.txt"
+                }
+            ],
+            "name": "predict_reader",
+            "type": "BasicDataSetReader"
+        }
+    },
+    "inference": {
+        "PADDLE_IS_LOCAL": 1,
+        "PADDLE_PLACE_TYPE": "gpu",
+        "extra_param": {
+            "meta": {
+                "job_type": "sequence_labeling"
+            }
+        },
+        "inference_model_path": "./output/seqlab_ernie_3.0_base_fc_ch/save_inference_model/inference_step_19561",
+        "is_ernie": true,
+        "output_path": "./output/4000.txt"
+    }
+}
+WARNING: 12-09 13:55:40: register.py:25 * 139987317556992 Key WordsegTokenizer already in registry tokenizer.
+INFO: 12-09 13:55:40: params.py:43 * 139987317556992 ./output/seqlab_ernie_3.0_base_fc_ch/save_inference_model/inference_step_19561/infer_data_params.json
+INFO: 12-09 13:55:40: params.py:52 * 139987317556992 {
+    "fields": [
+        "text_a#src_ids",
+        "text_a#sent_ids",
+        "text_a#mask_ids",
+        "text_a#src_ids2",
+        "text_a#sent_ids2",
+        "text_a#mask_ids2"
+    ]
+}
+INFO: 12-09 13:55:40: inference.py:53 * 139987317556992 init env, build inference....
+INFO: 12-09 13:55:40: inference.py:82 * 139987317556992 gpu inference....
+INFO: 12-09 13:55:43: custom_inference.py:31 * 139987317556992 start do inference....
+INFO: 12-09 14:05:18: params.py:43 * 140079401731840 ./examples/seqlab_ernie_fc_ch_infer.json
+INFO: 12-09 14:05:18: params.py:52 * 140079401731840 {
+    "dataset_reader": {
+        "predict_reader": {
+            "config": {
+                "batch_size": 2,
+                "data_path": "./data/test_data",
+                "epoch": 1,
+                "need_data_distribute": false,
+                "need_generate_examples": true,
+                "sampling_rate": 1.0,
+                "shuffle": false
+            },
+            "fields": [
+                {
+                    "data_type": "string",
+                    "embedding": null,
+                    "max_seq_len": 512,
+                    "name": "text_a",
+                    "need_convert": true,
+                    "padding_id": 0,
+                    "reader": {
+                        "type": "ErnieTextFieldReader"
+                    },
+                    "tokenizer": {
+                        "params": null,
+                        "split_char": " ",
+                        "type": "FullTokenizer",
+                        "unk_token": "[UNK]"
+                    },
+                    "truncation_type": 0,
+                    "vocab_path": "/home/aistudio/work/ernie_dqa_task1/applications/models_hub/ernie_3.0_x_base_ch/vocab.txt"
+                }
+            ],
+            "name": "predict_reader",
+            "type": "BasicDataSetReader"
+        }
+    },
+    "inference": {
+        "PADDLE_IS_LOCAL": 1,
+        "PADDLE_PLACE_TYPE": "gpu",
+        "extra_param": {
+            "meta": {
+                "job_type": "sequence_labeling"
+            }
+        },
+        "inference_model_path": "./output/seqlab_ernie_3.0_base_fc_ch/save_inference_model/inference_step_19561",
+        "is_ernie": true,
+        "output_path": "./output/4000.txt"
+    }
+}
+WARNING: 12-09 14:05:18: register.py:25 * 140079401731840 Key WordsegTokenizer already in registry tokenizer.
+INFO: 12-09 14:05:18: params.py:43 * 140079401731840 ./output/seqlab_ernie_3.0_base_fc_ch/save_inference_model/inference_step_19561/infer_data_params.json
+INFO: 12-09 14:05:18: params.py:52 * 140079401731840 {
+    "fields": [
+        "text_a#src_ids",
+        "text_a#sent_ids",
+        "text_a#mask_ids",
+        "text_a#src_ids2",
+        "text_a#sent_ids2",
+        "text_a#mask_ids2"
+    ]
+}
+INFO: 12-09 14:05:18: inference.py:53 * 140079401731840 init env, build inference....
+INFO: 12-09 14:05:18: inference.py:82 * 140079401731840 gpu inference....
+INFO: 12-09 14:05:22: custom_inference.py:31 * 140079401731840 start do inference....
+INFO: 12-09 14:07:25: params.py:43 * 140173660198656 ./examples/seqlab_ernie_fc_ch_infer.json
+INFO: 12-09 14:07:25: params.py:52 * 140173660198656 {
+    "dataset_reader": {
+        "predict_reader": {
+            "config": {
+                "batch_size": 4,
+                "data_path": "./data/test_data",
+                "epoch": 1,
+                "need_data_distribute": false,
+                "need_generate_examples": true,
+                "sampling_rate": 1.0,
+                "shuffle": false
+            },
+            "fields": [
+                {
+                    "data_type": "string",
+                    "embedding": null,
+                    "max_seq_len": 512,
+                    "name": "text_a",
+                    "need_convert": true,
+                    "padding_id": 0,
+                    "reader": {
+                        "type": "ErnieTextFieldReader"
+                    },
+                    "tokenizer": {
+                        "params": null,
+                        "split_char": " ",
+                        "type": "FullTokenizer",
+                        "unk_token": "[UNK]"
+                    },
+                    "truncation_type": 0,
+                    "vocab_path": "/home/aistudio/work/ernie_dqa_task1/applications/models_hub/ernie_3.0_x_base_ch/vocab.txt"
+                }
+            ],
+            "name": "predict_reader",
+            "type": "BasicDataSetReader"
+        }
+    },
+    "inference": {
+        "PADDLE_IS_LOCAL": 1,
+        "PADDLE_PLACE_TYPE": "gpu",
+        "extra_param": {
+            "meta": {
+                "job_type": "sequence_labeling"
+            }
+        },
+        "inference_model_path": "./output/seqlab_ernie_3.0_base_fc_ch/save_inference_model/inference_step_19561",
+        "is_ernie": true,
+        "output_path": "./output/4000.txt"
+    }
+}
+WARNING: 12-09 14:07:25: register.py:25 * 140173660198656 Key WordsegTokenizer already in registry tokenizer.
+INFO: 12-09 14:07:26: params.py:43 * 140173660198656 ./output/seqlab_ernie_3.0_base_fc_ch/save_inference_model/inference_step_19561/infer_data_params.json
+INFO: 12-09 14:07:26: params.py:52 * 140173660198656 {
+    "fields": [
+        "text_a#src_ids",
+        "text_a#sent_ids",
+        "text_a#mask_ids",
+        "text_a#src_ids2",
+        "text_a#sent_ids2",
+        "text_a#mask_ids2"
+    ]
+}
+INFO: 12-09 14:07:26: inference.py:53 * 140173660198656 init env, build inference....
+INFO: 12-09 14:07:26: inference.py:82 * 140173660198656 gpu inference....
+INFO: 12-09 14:07:29: custom_inference.py:31 * 140173660198656 start do inference....
+INFO: 12-09 14:10:25: params.py:43 * 140072001566464 ./examples/seqlab_ernie_fc_ch.json
+INFO: 12-09 14:10:25: params.py:52 * 140072001566464 {
+    "dataset_reader": {
+        "dev_reader": {
+            "config": {
+                "batch_size": 8,
+                "data_path": "./data/dev_data",
+                "epoch": 1,
+                "need_data_distribute": true,
+                "need_generate_examples": false,
+                "sampling_rate": 1.0,
+                "shuffle": false
+            },
+            "fields": [
+                {
+                    "data_type": "string",
+                    "embedding": null,
+                    "max_seq_len": 512,
+                    "name": "text_a",
+                    "need_convert": true,
+                    "padding_id": 0,
+                    "reader": {
+                        "type": "ErnieTextFieldReader"
+                    },
+                    "tokenizer": {
+                        "params": null,
+                        "split_char": " ",
+                        "type": "FullTokenizer",
+                        "unk_token": "[UNK]"
+                    },
+                    "truncation_type": 0,
+                    "vocab_path": "/home/aistudio/work/ernie_dqa_task1/applications/models_hub/ernie_3.0_x_base_ch/vocab.txt"
+                }
+            ],
+            "name": "dev_reader",
+            "type": "BasicDataSetReader"
+        },
+        "test_reader": {
+            "config": {
+                "batch_size": 8,
+                "data_path": "./data/test_data",
+                "epoch": 1,
+                "need_data_distribute": true,
+                "need_generate_examples": false,
+                "sampling_rate": 1.0,
+                "shuffle": false
+            },
+            "fields": [
+                {
+                    "data_type": "string",
+                    "embedding": null,
+                    "max_seq_len": 512,
+                    "name": "text_a",
+                    "need_convert": true,
+                    "padding_id": 0,
+                    "reader": {
+                        "type": "ErnieTextFieldReader"
+                    },
+                    "tokenizer": {
+                        "params": null,
+                        "split_char": " ",
+                        "type": "FullTokenizer",
+                        "unk_token": "[UNK]"
+                    },
+                    "truncation_type": 0,
+                    "vocab_path": "/home/aistudio/work/ernie_dqa_task1/applications/models_hub/ernie_3.0_x_base_ch/vocab.txt"
+                }
+            ],
+            "name": "test_reader",
+            "type": "BasicDataSetReader"
+        },
+        "train_reader": {
+            "config": {
+                "batch_size": 8,
+                "data_path": "./data/train_data",
+                "epoch": 5,
+                "need_data_distribute": true,
+                "need_generate_examples": false,
+                "sampling_rate": 1.0,
+                "shuffle": true
+            },
+            "fields": [
+                {
+                    "data_type": "string",
+                    "embedding": null,
+                    "max_seq_len": 512,
+                    "name": "text_a",
+                    "need_convert": true,
+                    "padding_id": 0,
+                    "reader": {
+                        "type": "ErnieTextFieldReader"
+                    },
+                    "tokenizer": {
+                        "params": null,
+                        "split_char": " ",
+                        "type": "FullTokenizer",
+                        "unk_token": "[UNK]"
+                    },
+                    "truncation_type": 0,
+                    "vocab_path": "/home/aistudio/work/ernie_dqa_task1/applications/models_hub/ernie_3.0_x_base_ch/vocab.txt"
+                }
+            ],
+            "name": "train_reader",
+            "type": "BasicDataSetReader"
+        }
+    },
+    "model": {
+        "embedding": {
+            "config_path": "/home/aistudio/work/ernie_dqa_task1/applications/models_hub/ernie_3.0_x_base_ch/ernie_config.json"
+        },
+        "is_dygraph": 1,
+        "optimization": {
+            "decr_every_n_nan_or_inf": 2,
+            "decr_ratio": 0.8,
+            "incr_every_n_steps": 100,
+            "incr_ratio": 2.0,
+            "init_loss_scaling": 128,
+            "learning_rate": 2e-05,
+            "use_dynamic_loss_scaling": false,
+            "use_lr_decay": true,
+            "warmup_proportion": 0.1,
+            "warmup_steps": 0,
+            "weight_decay": 0.01
+        },
+        "type": "ErnieFcSeqLabel"
+    },
+    "trainer": {
+        "PADDLE_IS_FLEET": 0,
+        "PADDLE_PLACE_TYPE": "gpu",
+        "eval_step": 100,
+        "extra_param": {
+            "meta": {
+                "job_type": "sequence_labeling"
+            }
+        },
+        "is_eval_dev": 0,
+        "is_eval_test": 1,
+        "load_checkpoint": "/home/aistudio/work/ernie_dqa_task1_seg_attention/applications/tasks/sequence_labeling/output/seqlab_ernie_3.0_base_fc_ch/save_checkpoints/checkpoints_step_19561",
+        "load_parameters": "",
+        "output_path": "./output/seqlab_ernie_3.0_base_fc_ch",
+        "pre_train_model": [
+            {
+                "name": "ernie_3.0_base_ch",
+                "params_path": "/home/aistudio/work/ernie_dqa_task1/applications/models_hub/ernie_3.0_x_base_ch/params"
+            }
+        ],
+        "save_model_step": 10,
+        "train_log_step": 100,
+        "type": "CustomTrainer",
+        "use_amp": false
+    }
+}
+WARNING: 12-09 14:10:25: register.py:25 * 140072001566464 Key WordsegTokenizer already in registry tokenizer.
+INFO: 12-09 14:10:25: run_trainer.py:87 * 140072001566464 run trainer.... pid = 1399
+INFO: 12-09 14:10:29: run_trainer.py:54 * 140072001566464 Device count: 1
+INFO: 12-09 14:10:29: run_trainer.py:55 * 140072001566464 Num train examples: 31296
+INFO: 12-09 14:10:29: run_trainer.py:56 * 140072001566464 Max train steps: 19560
+INFO: 12-09 14:10:29: run_trainer.py:57 * 140072001566464 Num warmup steps: 1956
+INFO: 12-09 14:10:29: static_trainer.py:196 * 140072001566464 parser meta ....
+INFO: 12-09 14:10:29: static_trainer.py:226 * 140072001566464 init environment on static mode......
+INFO: 12-09 14:10:29: static_trainer.py:260 * 140072001566464 gpu place....
+INFO: 12-09 14:10:29: static_trainer.py:422 * 140072001566464 init_model_net.....
+INFO: 12-09 14:10:46: static_trainer.py:592 * 140072001566464 load_model_params on static mode....
+INFO: 12-09 14:10:51: static_trainer.py:763 * 140072001566464 Load model from /home/aistudio/work/ernie_dqa_task1_seg_attention/applications/tasks/sequence_labeling/output/seqlab_ernie_3.0_base_fc_ch/save_checkpoints/checkpoints_step_19561
+INFO: 12-09 14:11:59: custom_trainer.py:66 * 140072001566464 epoch 0 progress 841/31296
+INFO: 12-09 14:11:59: custom_trainer.py:77 * 140072001566464 phase = training step = 100 time_cost = 67.55826735496521
+INFO: 12-09 14:11:59: custom_trainer.py:78 * 140072001566464 current loss: [0.02503231]
+INFO: 12-09 14:13:19: params.py:43 * 140326661363456 ./examples/seqlab_ernie_fc_ch.json
+INFO: 12-09 14:13:19: params.py:52 * 140326661363456 {
+    "dataset_reader": {
+        "dev_reader": {
+            "config": {
+                "batch_size": 8,
+                "data_path": "./data/dev_data",
+                "epoch": 1,
+                "need_data_distribute": true,
+                "need_generate_examples": false,
+                "sampling_rate": 1.0,
+                "shuffle": false
+            },
+            "fields": [
+                {
+                    "data_type": "string",
+                    "embedding": null,
+                    "max_seq_len": 512,
+                    "name": "text_a",
+                    "need_convert": true,
+                    "padding_id": 0,
+                    "reader": {
+                        "type": "ErnieTextFieldReader"
+                    },
+                    "tokenizer": {
+                        "params": null,
+                        "split_char": " ",
+                        "type": "FullTokenizer",
+                        "unk_token": "[UNK]"
+                    },
+                    "truncation_type": 0,
+                    "vocab_path": "/home/aistudio/work/ernie_dqa_task1/applications/models_hub/ernie_3.0_x_base_ch/vocab.txt"
+                }
+            ],
+            "name": "dev_reader",
+            "type": "BasicDataSetReader"
+        },
+        "test_reader": {
+            "config": {
+                "batch_size": 8,
+                "data_path": "./data/test_data",
+                "epoch": 1,
+                "need_data_distribute": true,
+                "need_generate_examples": false,
+                "sampling_rate": 1.0,
+                "shuffle": false
+            },
+            "fields": [
+                {
+                    "data_type": "string",
+                    "embedding": null,
+                    "max_seq_len": 512,
+                    "name": "text_a",
+                    "need_convert": true,
+                    "padding_id": 0,
+                    "reader": {
+                        "type": "ErnieTextFieldReader"
+                    },
+                    "tokenizer": {
+                        "params": null,
+                        "split_char": " ",
+                        "type": "FullTokenizer",
+                        "unk_token": "[UNK]"
+                    },
+                    "truncation_type": 0,
+                    "vocab_path": "/home/aistudio/work/ernie_dqa_task1/applications/models_hub/ernie_3.0_x_base_ch/vocab.txt"
+                }
+            ],
+            "name": "test_reader",
+            "type": "BasicDataSetReader"
+        },
+        "train_reader": {
+            "config": {
+                "batch_size": 8,
+                "data_path": "./data/train_data",
+                "epoch": 5,
+                "need_data_distribute": true,
+                "need_generate_examples": false,
+                "sampling_rate": 1.0,
+                "shuffle": true
+            },
+            "fields": [
+                {
+                    "data_type": "string",
+                    "embedding": null,
+                    "max_seq_len": 512,
+                    "name": "text_a",
+                    "need_convert": true,
+                    "padding_id": 0,
+                    "reader": {
+                        "type": "ErnieTextFieldReader"
+                    },
+                    "tokenizer": {
+                        "params": null,
+                        "split_char": " ",
+                        "type": "FullTokenizer",
+                        "unk_token": "[UNK]"
+                    },
+                    "truncation_type": 0,
+                    "vocab_path": "/home/aistudio/work/ernie_dqa_task1/applications/models_hub/ernie_3.0_x_base_ch/vocab.txt"
+                }
+            ],
+            "name": "train_reader",
+            "type": "BasicDataSetReader"
+        }
+    },
+    "model": {
+        "embedding": {
+            "config_path": "/home/aistudio/work/ernie_dqa_task1/applications/models_hub/ernie_3.0_x_base_ch/ernie_config.json"
+        },
+        "is_dygraph": 1,
+        "optimization": {
+            "decr_every_n_nan_or_inf": 2,
+            "decr_ratio": 0.8,
+            "incr_every_n_steps": 100,
+            "incr_ratio": 2.0,
+            "init_loss_scaling": 128,
+            "learning_rate": 2e-05,
+            "use_dynamic_loss_scaling": false,
+            "use_lr_decay": true,
+            "warmup_proportion": 0.1,
+            "warmup_steps": 0,
+            "weight_decay": 0.01
+        },
+        "type": "ErnieFcSeqLabel"
+    },
+    "trainer": {
+        "PADDLE_IS_FLEET": 0,
+        "PADDLE_PLACE_TYPE": "gpu",
+        "eval_step": 100,
+        "extra_param": {
+            "meta": {
+                "job_type": "sequence_labeling"
+            }
+        },
+        "is_eval_dev": 0,
+        "is_eval_test": 1,
+        "load_checkpoint": "/home/aistudio/work/ernie_dqa_task1_seg_attention/applications/tasks/sequence_labeling/output/seqlab_ernie_3.0_base_fc_ch/save_checkpoints/checkpoints_step_19561",
+        "load_parameters": "",
+        "output_path": "./output/seqlab_ernie_3.0_base_fc_ch",
+        "pre_train_model": [
+            {
+                "name": "ernie_3.0_base_ch",
+                "params_path": "/home/aistudio/work/ernie_dqa_task1/applications/models_hub/ernie_3.0_x_base_ch/params"
+            }
+        ],
+        "save_model_step": 10,
+        "train_log_step": 100,
+        "type": "CustomTrainer",
+        "use_amp": false
+    }
+}
+WARNING: 12-09 14:13:19: register.py:25 * 140326661363456 Key WordsegTokenizer already in registry tokenizer.
+INFO: 12-09 14:13:19: run_trainer.py:87 * 140326661363456 run trainer.... pid = 1927
+INFO: 12-09 14:13:23: run_trainer.py:54 * 140326661363456 Device count: 1
+INFO: 12-09 14:13:23: run_trainer.py:55 * 140326661363456 Num train examples: 31296
+INFO: 12-09 14:13:23: run_trainer.py:56 * 140326661363456 Max train steps: 19560
+INFO: 12-09 14:13:23: run_trainer.py:57 * 140326661363456 Num warmup steps: 1956
+INFO: 12-09 14:13:23: static_trainer.py:196 * 140326661363456 parser meta ....
+INFO: 12-09 14:13:23: static_trainer.py:226 * 140326661363456 init environment on static mode......
+INFO: 12-09 14:13:23: static_trainer.py:260 * 140326661363456 gpu place....
+INFO: 12-09 14:13:23: static_trainer.py:422 * 140326661363456 init_model_net.....
+INFO: 12-09 14:13:40: static_trainer.py:592 * 140326661363456 load_model_params on static mode....
+INFO: 12-09 14:13:45: static_trainer.py:763 * 140326661363456 Load model from /home/aistudio/work/ernie_dqa_task1_seg_attention/applications/tasks/sequence_labeling/output/seqlab_ernie_3.0_base_fc_ch/save_checkpoints/checkpoints_step_19561
+INFO: 12-09 14:14:04: static_trainer.py:623 * 140326661363456 save model on static....
+INFO: 12-09 14:14:22: static_trainer.py:623 * 140326661363456 save model on static....
+INFO: 12-09 14:15:01: params.py:43 * 140061935617792 ./examples/seqlab_ernie_fc_ch_infer.json
+INFO: 12-09 14:15:01: params.py:52 * 140061935617792 {
+    "dataset_reader": {
+        "predict_reader": {
+            "config": {
+                "batch_size": 4,
+                "data_path": "./data/test_data",
+                "epoch": 1,
+                "need_data_distribute": false,
+                "need_generate_examples": true,
+                "sampling_rate": 1.0,
+                "shuffle": false
+            },
+            "fields": [
+                {
+                    "data_type": "string",
+                    "embedding": null,
+                    "max_seq_len": 512,
+                    "name": "text_a",
+                    "need_convert": true,
+                    "padding_id": 0,
+                    "reader": {
+                        "type": "ErnieTextFieldReader"
+                    },
+                    "tokenizer": {
+                        "params": null,
+                        "split_char": " ",
+                        "type": "FullTokenizer",
+                        "unk_token": "[UNK]"
+                    },
+                    "truncation_type": 0,
+                    "vocab_path": "/home/aistudio/work/ernie_dqa_task1/applications/models_hub/ernie_3.0_x_base_ch/vocab.txt"
+                }
+            ],
+            "name": "predict_reader",
+            "type": "BasicDataSetReader"
+        }
+    },
+    "inference": {
+        "PADDLE_IS_LOCAL": 1,
+        "PADDLE_PLACE_TYPE": "gpu",
+        "extra_param": {
+            "meta": {
+                "job_type": "sequence_labeling"
+            }
+        },
+        "inference_model_path": "./output/seqlab_ernie_3.0_base_fc_ch/save_inference_model/inference_step_10",
+        "is_ernie": true,
+        "output_path": "./output/4000.txt"
+    }
+}
+WARNING: 12-09 14:15:01: register.py:25 * 140061935617792 Key WordsegTokenizer already in registry tokenizer.
+INFO: 12-09 14:15:01: params.py:43 * 140061935617792 ./output/seqlab_ernie_3.0_base_fc_ch/save_inference_model/inference_step_10/infer_data_params.json
+INFO: 12-09 14:15:01: params.py:52 * 140061935617792 {
+    "fields": [
+        "text_a#src_ids",
+        "text_a#sent_ids",
+        "text_a#mask_ids",
+        "text_a#src_ids2",
+        "text_a#sent_ids2",
+        "text_a#mask_ids2"
+    ]
+}
+INFO: 12-09 14:15:01: inference.py:53 * 140061935617792 init env, build inference....
+INFO: 12-09 14:15:01: inference.py:82 * 140061935617792 gpu inference....
+INFO: 12-09 14:15:04: custom_inference.py:31 * 140061935617792 start do inference....
+INFO: 12-09 14:17:05: params.py:43 * 140648827762432 ./examples/seqlab_ernie_fc_ch_infer.json
+INFO: 12-09 14:17:05: params.py:52 * 140648827762432 {
+    "dataset_reader": {
+        "predict_reader": {
+            "config": {
+                "batch_size": 4,
+                "data_path": "./data/test_data",
+                "epoch": 1,
+                "need_data_distribute": false,
+                "need_generate_examples": true,
+                "sampling_rate": 1.0,
+                "shuffle": false
+            },
+            "fields": [
+                {
+                    "data_type": "string",
+                    "embedding": null,
+                    "max_seq_len": 512,
+                    "name": "text_a",
+                    "need_convert": true,
+                    "padding_id": 0,
+                    "reader": {
+                        "type": "ErnieTextFieldReader"
+                    },
+                    "tokenizer": {
+                        "params": null,
+                        "split_char": " ",
+                        "type": "FullTokenizer",
+                        "unk_token": "[UNK]"
+                    },
+                    "truncation_type": 0,
+                    "vocab_path": "/home/aistudio/work/ernie_dqa_task1/applications/models_hub/ernie_3.0_x_base_ch/vocab.txt"
+                }
+            ],
+            "name": "predict_reader",
+            "type": "BasicDataSetReader"
+        }
+    },
+    "inference": {
+        "PADDLE_IS_LOCAL": 1,
+        "PADDLE_PLACE_TYPE": "gpu",
+        "extra_param": {
+            "meta": {
+                "job_type": "sequence_labeling"
+            }
+        },
+        "inference_model_path": "./output/seqlab_ernie_3.0_base_fc_ch/save_inference_model/inference_step_10",
+        "is_ernie": true,
+        "output_path": "./output/4000.txt"
+    }
+}
+WARNING: 12-09 14:17:05: register.py:25 * 140648827762432 Key WordsegTokenizer already in registry tokenizer.
+INFO: 12-09 14:17:05: params.py:43 * 140648827762432 ./output/seqlab_ernie_3.0_base_fc_ch/save_inference_model/inference_step_10/infer_data_params.json
+INFO: 12-09 14:17:05: params.py:52 * 140648827762432 {
+    "fields": [
+        "text_a#src_ids",
+        "text_a#sent_ids",
+        "text_a#mask_ids",
+        "text_a#src_ids2",
+        "text_a#sent_ids2",
+        "text_a#mask_ids2"
+    ]
+}
+INFO: 12-09 14:17:05: inference.py:53 * 140648827762432 init env, build inference....
+INFO: 12-09 14:17:05: inference.py:82 * 140648827762432 gpu inference....
+INFO: 12-09 14:17:08: custom_inference.py:31 * 140648827762432 start do inference....
+INFO: 12-09 14:17:50: params.py:43 * 140567697061632 ./examples/seqlab_ernie_fc_ch.json
+INFO: 12-09 14:17:50: params.py:52 * 140567697061632 {
+    "dataset_reader": {
+        "dev_reader": {
+            "config": {
+                "batch_size": 8,
+                "data_path": "./data/dev_data",
+                "epoch": 1,
+                "need_data_distribute": true,
+                "need_generate_examples": false,
+                "sampling_rate": 1.0,
+                "shuffle": false
+            },
+            "fields": [
+                {
+                    "data_type": "string",
+                    "embedding": null,
+                    "max_seq_len": 512,
+                    "name": "text_a",
+                    "need_convert": true,
+                    "padding_id": 0,
+                    "reader": {
+                        "type": "ErnieTextFieldReader"
+                    },
+                    "tokenizer": {
+                        "params": null,
+                        "split_char": " ",
+                        "type": "FullTokenizer",
+                        "unk_token": "[UNK]"
+                    },
+                    "truncation_type": 0,
+                    "vocab_path": "/home/aistudio/work/ernie_dqa_task1/applications/models_hub/ernie_3.0_x_base_ch/vocab.txt"
+                }
+            ],
+            "name": "dev_reader",
+            "type": "BasicDataSetReader"
+        },
+        "test_reader": {
+            "config": {
+                "batch_size": 8,
+                "data_path": "./data/test_data",
+                "epoch": 1,
+                "need_data_distribute": true,
+                "need_generate_examples": false,
+                "sampling_rate": 1.0,
+                "shuffle": false
+            },
+            "fields": [
+                {
+                    "data_type": "string",
+                    "embedding": null,
+                    "max_seq_len": 512,
+                    "name": "text_a",
+                    "need_convert": true,
+                    "padding_id": 0,
+                    "reader": {
+                        "type": "ErnieTextFieldReader"
+                    },
+                    "tokenizer": {
+                        "params": null,
+                        "split_char": " ",
+                        "type": "FullTokenizer",
+                        "unk_token": "[UNK]"
+                    },
+                    "truncation_type": 0,
+                    "vocab_path": "/home/aistudio/work/ernie_dqa_task1/applications/models_hub/ernie_3.0_x_base_ch/vocab.txt"
+                }
+            ],
+            "name": "test_reader",
+            "type": "BasicDataSetReader"
+        },
+        "train_reader": {
+            "config": {
+                "batch_size": 8,
+                "data_path": "./data/train_data",
+                "epoch": 5,
+                "need_data_distribute": true,
+                "need_generate_examples": false,
+                "sampling_rate": 1.0,
+                "shuffle": true
+            },
+            "fields": [
+                {
+                    "data_type": "string",
+                    "embedding": null,
+                    "max_seq_len": 512,
+                    "name": "text_a",
+                    "need_convert": true,
+                    "padding_id": 0,
+                    "reader": {
+                        "type": "ErnieTextFieldReader"
+                    },
+                    "tokenizer": {
+                        "params": null,
+                        "split_char": " ",
+                        "type": "FullTokenizer",
+                        "unk_token": "[UNK]"
+                    },
+                    "truncation_type": 0,
+                    "vocab_path": "/home/aistudio/work/ernie_dqa_task1/applications/models_hub/ernie_3.0_x_base_ch/vocab.txt"
+                }
+            ],
+            "name": "train_reader",
+            "type": "BasicDataSetReader"
+        }
+    },
+    "model": {
+        "embedding": {
+            "config_path": "/home/aistudio/work/ernie_dqa_task1/applications/models_hub/ernie_3.0_x_base_ch/ernie_config.json"
+        },
+        "is_dygraph": 1,
+        "optimization": {
+            "decr_every_n_nan_or_inf": 2,
+            "decr_ratio": 0.8,
+            "incr_every_n_steps": 100,
+            "incr_ratio": 2.0,
+            "init_loss_scaling": 128,
+            "learning_rate": 2e-05,
+            "use_dynamic_loss_scaling": false,
+            "use_lr_decay": true,
+            "warmup_proportion": 0.1,
+            "warmup_steps": 0,
+            "weight_decay": 0.01
+        },
+        "type": "ErnieFcSeqLabel"
+    },
+    "trainer": {
+        "PADDLE_IS_FLEET": 0,
+        "PADDLE_PLACE_TYPE": "gpu",
+        "eval_step": 100,
+        "extra_param": {
+            "meta": {
+                "job_type": "sequence_labeling"
+            }
+        },
+        "is_eval_dev": 0,
+        "is_eval_test": 1,
+        "load_checkpoint": "/home/aistudio/work/ernie_dqa_task1_seg_attention/applications/tasks/sequence_labeling/output/seqlab_ernie_3.0_base_fc_ch/save_checkpoints/checkpoints_step_19561",
+        "load_parameters": "",
+        "output_path": "./output/seqlab_ernie_3.0_base_fc_ch",
+        "pre_train_model": [
+            {
+                "name": "ernie_3.0_base_ch",
+                "params_path": "/home/aistudio/work/ernie_dqa_task1/applications/models_hub/ernie_3.0_x_base_ch/params"
+            }
+        ],
+        "save_model_step": 10,
+        "train_log_step": 100,
+        "type": "CustomTrainer",
+        "use_amp": false
+    }
+}
+WARNING: 12-09 14:17:50: register.py:25 * 140567697061632 Key WordsegTokenizer already in registry tokenizer.
+INFO: 12-09 14:17:50: run_trainer.py:87 * 140567697061632 run trainer.... pid = 2914
+INFO: 12-09 14:17:54: run_trainer.py:54 * 140567697061632 Device count: 1
+INFO: 12-09 14:17:54: run_trainer.py:55 * 140567697061632 Num train examples: 31296
+INFO: 12-09 14:17:54: run_trainer.py:56 * 140567697061632 Max train steps: 19560
+INFO: 12-09 14:17:54: run_trainer.py:57 * 140567697061632 Num warmup steps: 1956
+INFO: 12-09 14:17:54: static_trainer.py:196 * 140567697061632 parser meta ....
+INFO: 12-09 14:17:54: static_trainer.py:226 * 140567697061632 init environment on static mode......
+INFO: 12-09 14:17:54: static_trainer.py:260 * 140567697061632 gpu place....
+INFO: 12-09 14:17:54: static_trainer.py:422 * 140567697061632 init_model_net.....
+INFO: 12-09 14:18:11: static_trainer.py:592 * 140567697061632 load_model_params on static mode....
+INFO: 12-09 14:18:16: static_trainer.py:763 * 140567697061632 Load model from /home/aistudio/work/ernie_dqa_task1_seg_attention/applications/tasks/sequence_labeling/output/seqlab_ernie_3.0_base_fc_ch/save_checkpoints/checkpoints_step_19561
+INFO: 12-09 14:18:33: static_trainer.py:623 * 140567697061632 save model on static....
+INFO: 12-09 14:18:51: static_trainer.py:623 * 140567697061632 save model on static....
+INFO: 12-09 14:18:59: params.py:43 * 139761878161152 ./examples/seqlab_ernie_fc_ch_infer.json
+INFO: 12-09 14:18:59: params.py:52 * 139761878161152 {
+    "dataset_reader": {
+        "predict_reader": {
+            "config": {
+                "batch_size": 4,
+                "data_path": "./data/test_data",
+                "epoch": 1,
+                "need_data_distribute": false,
+                "need_generate_examples": true,
+                "sampling_rate": 1.0,
+                "shuffle": false
+            },
+            "fields": [
+                {
+                    "data_type": "string",
+                    "embedding": null,
+                    "max_seq_len": 512,
+                    "name": "text_a",
+                    "need_convert": true,
+                    "padding_id": 0,
+                    "reader": {
+                        "type": "ErnieTextFieldReader"
+                    },
+                    "tokenizer": {
+                        "params": null,
+                        "split_char": " ",
+                        "type": "FullTokenizer",
+                        "unk_token": "[UNK]"
+                    },
+                    "truncation_type": 0,
+                    "vocab_path": "/home/aistudio/work/ernie_dqa_task1/applications/models_hub/ernie_3.0_x_base_ch/vocab.txt"
+                }
+            ],
+            "name": "predict_reader",
+            "type": "BasicDataSetReader"
+        }
+    },
+    "inference": {
+        "PADDLE_IS_LOCAL": 1,
+        "PADDLE_PLACE_TYPE": "gpu",
+        "extra_param": {
+            "meta": {
+                "job_type": "sequence_labeling"
+            }
+        },
+        "inference_model_path": "./output/seqlab_ernie_3.0_base_fc_ch/save_inference_model/inference_step_10",
+        "is_ernie": true,
+        "output_path": "./output/4000.txt"
+    }
+}
+WARNING: 12-09 14:18:59: register.py:25 * 139761878161152 Key WordsegTokenizer already in registry tokenizer.
+INFO: 12-09 14:18:59: params.py:43 * 139761878161152 ./output/seqlab_ernie_3.0_base_fc_ch/save_inference_model/inference_step_10/infer_data_params.json
+INFO: 12-09 14:18:59: params.py:52 * 139761878161152 {
+    "fields": [
+        "text_a#src_ids",
+        "text_a#sent_ids",
+        "text_a#mask_ids",
+        "text_a#src_ids2",
+        "text_a#sent_ids2",
+        "text_a#mask_ids2"
+    ]
+}
+INFO: 12-09 14:18:59: inference.py:53 * 139761878161152 init env, build inference....
+INFO: 12-09 14:18:59: inference.py:82 * 139761878161152 gpu inference....
+INFO: 12-09 14:19:02: custom_inference.py:31 * 139761878161152 start do inference....
+INFO: 12-09 14:21:12: custom_inference.py:96 * 139761878161152 total_time:88.67488169670105
+INFO: 12-09 14:21:12: run_infer.py:145 * 139761878161152 os exit.
+INFO: 12-09 15:00:18: params.py:43 * 139833791702784 ./examples/seqlab_ernie_fc_ch.json
+INFO: 12-09 15:00:18: params.py:52 * 139833791702784 {
+    "dataset_reader": {
+        "dev_reader": {
+            "config": {
+                "batch_size": 8,
+                "data_path": "./data/dev_data",
+                "epoch": 1,
+                "need_data_distribute": true,
+                "need_generate_examples": false,
+                "sampling_rate": 1.0,
+                "shuffle": false
+            },
+            "fields": [
+                {
+                    "data_type": "string",
+                    "embedding": null,
+                    "max_seq_len": 512,
+                    "name": "text_a",
+                    "need_convert": true,
+                    "padding_id": 0,
+                    "reader": {
+                        "type": "ErnieTextFieldReader"
+                    },
+                    "tokenizer": {
+                        "params": null,
+                        "split_char": " ",
+                        "type": "FullTokenizer",
+                        "unk_token": "[UNK]"
+                    },
+                    "truncation_type": 0,
+                    "vocab_path": "/home/aistudio/work/ernie_dqa_task1/applications/models_hub/ernie_3.0_x_base_ch/vocab.txt"
+                }
+            ],
+            "name": "dev_reader",
+            "type": "BasicDataSetReader"
+        },
+        "test_reader": {
+            "config": {
+                "batch_size": 8,
+                "data_path": "./data/test_data",
+                "epoch": 1,
+                "need_data_distribute": true,
+                "need_generate_examples": false,
+                "sampling_rate": 1.0,
+                "shuffle": false
+            },
+            "fields": [
+                {
+                    "data_type": "string",
+                    "embedding": null,
+                    "max_seq_len": 512,
+                    "name": "text_a",
+                    "need_convert": true,
+                    "padding_id": 0,
+                    "reader": {
+                        "type": "ErnieTextFieldReader"
+                    },
+                    "tokenizer": {
+                        "params": null,
+                        "split_char": " ",
+                        "type": "FullTokenizer",
+                        "unk_token": "[UNK]"
+                    },
+                    "truncation_type": 0,
+                    "vocab_path": "/home/aistudio/work/ernie_dqa_task1/applications/models_hub/ernie_3.0_x_base_ch/vocab.txt"
+                }
+            ],
+            "name": "test_reader",
+            "type": "BasicDataSetReader"
+        },
+        "train_reader": {
+            "config": {
+                "batch_size": 6,
+                "data_path": "./data/train_data",
+                "epoch": 5,
+                "need_data_distribute": true,
+                "need_generate_examples": false,
+                "sampling_rate": 1.0,
+                "shuffle": true
+            },
+            "fields": [
+                {
+                    "data_type": "string",
+                    "embedding": null,
+                    "max_seq_len": 512,
+                    "name": "text_a",
+                    "need_convert": true,
+                    "padding_id": 0,
+                    "reader": {
+                        "type": "ErnieTextFieldReader"
+                    },
+                    "tokenizer": {
+                        "params": null,
+                        "split_char": " ",
+                        "type": "FullTokenizer",
+                        "unk_token": "[UNK]"
+                    },
+                    "truncation_type": 0,
+                    "vocab_path": "/home/aistudio/work/ernie_dqa_task1/applications/models_hub/ernie_3.0_x_base_ch/vocab.txt"
+                }
+            ],
+            "name": "train_reader",
+            "type": "BasicDataSetReader"
+        }
+    },
+    "model": {
+        "embedding": {
+            "config_path": "/home/aistudio/work/ernie_dqa_task1/applications/models_hub/ernie_3.0_x_base_ch/ernie_config.json"
+        },
+        "is_dygraph": 1,
+        "optimization": {
+            "decr_every_n_nan_or_inf": 2,
+            "decr_ratio": 0.8,
+            "incr_every_n_steps": 100,
+            "incr_ratio": 2.0,
+            "init_loss_scaling": 128,
+            "learning_rate": 2e-05,
+            "use_dynamic_loss_scaling": false,
+            "use_lr_decay": true,
+            "warmup_proportion": 0.1,
+            "warmup_steps": 0,
+            "weight_decay": 0.01
+        },
+        "type": "ErnieFcSeqLabel"
+    },
+    "trainer": {
+        "PADDLE_IS_FLEET": 0,
+        "PADDLE_PLACE_TYPE": "gpu",
+        "eval_step": 100,
+        "extra_param": {
+            "meta": {
+                "job_type": "sequence_labeling"
+            }
+        },
+        "is_eval_dev": 0,
+        "is_eval_test": 1,
+        "load_checkpoint": "",
+        "load_parameters": "",
+        "output_path": "./output/seqlab_ernie_3.0_base_fc_ch",
+        "pre_train_model": [
+            {
+                "name": "ernie_3.0_base_ch",
+                "params_path": "/home/aistudio/work/ernie_dqa_task1/applications/models_hub/ernie_3.0_x_base_ch/params"
+            }
+        ],
+        "save_model_step": 1500,
+        "train_log_step": 100,
+        "type": "CustomTrainer",
+        "use_amp": false
+    }
+}
+WARNING: 12-09 15:00:18: register.py:25 * 139833791702784 Key WordsegTokenizer already in registry tokenizer.
+INFO: 12-09 15:00:18: run_trainer.py:87 * 139833791702784 run trainer.... pid = 1203
+INFO: 12-09 15:00:23: run_trainer.py:54 * 139833791702784 Device count: 1
+INFO: 12-09 15:00:23: run_trainer.py:55 * 139833791702784 Num train examples: 31296
+INFO: 12-09 15:00:23: run_trainer.py:56 * 139833791702784 Max train steps: 26080
+INFO: 12-09 15:00:23: run_trainer.py:57 * 139833791702784 Num warmup steps: 2608
+INFO: 12-09 15:00:23: static_trainer.py:196 * 139833791702784 parser meta ....
+INFO: 12-09 15:00:23: static_trainer.py:698 * 139833791702784 pre_train_model's name = ernie_3.0_base_ch
+INFO: 12-09 15:00:23: static_trainer.py:226 * 139833791702784 init environment on static mode......
+INFO: 12-09 15:00:23: static_trainer.py:260 * 139833791702784 gpu place....
+INFO: 12-09 15:00:23: static_trainer.py:422 * 139833791702784 init_model_net.....
+INFO: 12-09 15:00:41: static_trainer.py:592 * 139833791702784 load_model_params on static mode....
+INFO: 12-09 15:00:41: static_trainer.py:612 * 139833791702784 pre_train_model's name = ernie_3.0_base_ch
+INFO: 12-09 15:03:52: custom_trainer.py:66 * 139833791702784 epoch 0 progress 631/31296
+INFO: 12-09 15:03:52: custom_trainer.py:77 * 139833791702784 phase = training step = 100 time_cost = 188.2328586578369
+INFO: 12-09 15:03:52: custom_trainer.py:78 * 139833791702784 current loss: [33.828873]
+INFO: 12-09 15:06:51: custom_trainer.py:66 * 139833791702784 epoch 0 progress 1231/31296
+INFO: 12-09 15:06:51: custom_trainer.py:77 * 139833791702784 phase = training step = 200 time_cost = 179.5777506828308
+INFO: 12-09 15:06:51: custom_trainer.py:78 * 139833791702784 current loss: [2.2728457]
+INFO: 12-09 15:09:53: custom_trainer.py:66 * 139833791702784 epoch 0 progress 1831/31296
+INFO: 12-09 15:09:53: custom_trainer.py:77 * 139833791702784 phase = training step = 300 time_cost = 181.94560718536377
+INFO: 12-09 15:09:53: custom_trainer.py:78 * 139833791702784 current loss: [1.3554693]
+INFO: 12-09 15:12:51: custom_trainer.py:66 * 139833791702784 epoch 0 progress 2431/31296
+INFO: 12-09 15:12:51: custom_trainer.py:77 * 139833791702784 phase = training step = 400 time_cost = 177.29653477668762
+INFO: 12-09 15:12:51: custom_trainer.py:78 * 139833791702784 current loss: [1.8025914]
+INFO: 12-09 15:15:51: custom_trainer.py:66 * 139833791702784 epoch 0 progress 3031/31296
+INFO: 12-09 15:15:51: custom_trainer.py:77 * 139833791702784 phase = training step = 500 time_cost = 180.39079999923706
+INFO: 12-09 15:15:51: custom_trainer.py:78 * 139833791702784 current loss: [2.371116]
+INFO: 12-09 15:18:51: custom_trainer.py:66 * 139833791702784 epoch 0 progress 3631/31296
+INFO: 12-09 15:18:51: custom_trainer.py:77 * 139833791702784 phase = training step = 600 time_cost = 180.08978819847107
+INFO: 12-09 15:18:51: custom_trainer.py:78 * 139833791702784 current loss: [1.4921906]
+INFO: 12-09 15:21:47: custom_trainer.py:66 * 139833791702784 epoch 0 progress 4231/31296
+INFO: 12-09 15:21:47: custom_trainer.py:77 * 139833791702784 phase = training step = 700 time_cost = 176.35881638526917
+INFO: 12-09 15:21:47: custom_trainer.py:78 * 139833791702784 current loss: [1.9404655]
+INFO: 12-09 15:24:48: custom_trainer.py:66 * 139833791702784 epoch 0 progress 4831/31296
+INFO: 12-09 15:24:48: custom_trainer.py:77 * 139833791702784 phase = training step = 800 time_cost = 180.3538360595703
+INFO: 12-09 15:24:48: custom_trainer.py:78 * 139833791702784 current loss: [1.579716]
+INFO: 12-09 15:27:46: custom_trainer.py:66 * 139833791702784 epoch 0 progress 5431/31296
+INFO: 12-09 15:27:46: custom_trainer.py:77 * 139833791702784 phase = training step = 900 time_cost = 178.18998193740845
+INFO: 12-09 15:27:46: custom_trainer.py:78 * 139833791702784 current loss: [1.5365634]
+INFO: 12-09 15:30:43: custom_trainer.py:66 * 139833791702784 epoch 0 progress 6031/31296
+INFO: 12-09 15:30:43: custom_trainer.py:77 * 139833791702784 phase = training step = 1000 time_cost = 177.1820821762085
+INFO: 12-09 15:30:43: custom_trainer.py:78 * 139833791702784 current loss: [1.2248905]
+INFO: 12-09 15:33:45: custom_trainer.py:66 * 139833791702784 epoch 0 progress 6631/31296
+INFO: 12-09 15:33:45: custom_trainer.py:77 * 139833791702784 phase = training step = 1100 time_cost = 181.3814697265625
+INFO: 12-09 15:33:45: custom_trainer.py:78 * 139833791702784 current loss: [1.4146075]
+INFO: 12-09 15:36:45: custom_trainer.py:66 * 139833791702784 epoch 0 progress 7231/31296
+INFO: 12-09 15:36:45: custom_trainer.py:77 * 139833791702784 phase = training step = 1200 time_cost = 180.45016646385193
+INFO: 12-09 15:36:45: custom_trainer.py:78 * 139833791702784 current loss: [0.9531765]
+INFO: 12-09 15:39:43: custom_trainer.py:66 * 139833791702784 epoch 0 progress 7831/31296
+INFO: 12-09 15:39:43: custom_trainer.py:77 * 139833791702784 phase = training step = 1300 time_cost = 178.43609356880188
+INFO: 12-09 15:39:43: custom_trainer.py:78 * 139833791702784 current loss: [0.47518754]
+INFO: 12-09 15:42:43: custom_trainer.py:66 * 139833791702784 epoch 0 progress 8431/31296
+INFO: 12-09 15:42:43: custom_trainer.py:77 * 139833791702784 phase = training step = 1400 time_cost = 179.3923077583313
+INFO: 12-09 15:42:43: custom_trainer.py:78 * 139833791702784 current loss: [0.9460836]
+INFO: 12-09 15:45:43: custom_trainer.py:66 * 139833791702784 epoch 0 progress 9031/31296
+INFO: 12-09 15:45:43: custom_trainer.py:77 * 139833791702784 phase = training step = 1500 time_cost = 180.14440727233887
+INFO: 12-09 15:45:43: custom_trainer.py:78 * 139833791702784 current loss: [0.89863396]
+INFO: 12-09 15:45:43: static_trainer.py:623 * 139833791702784 save model on static....
+INFO: 12-09 15:48:59: custom_trainer.py:66 * 139833791702784 epoch 0 progress 9631/31296
+INFO: 12-09 15:48:59: custom_trainer.py:77 * 139833791702784 phase = training step = 1600 time_cost = 195.5949423313141
+INFO: 12-09 15:48:59: custom_trainer.py:78 * 139833791702784 current loss: [0.97161806]
+INFO: 12-09 15:52:00: custom_trainer.py:66 * 139833791702784 epoch 0 progress 10231/31296
+INFO: 12-09 15:52:00: custom_trainer.py:77 * 139833791702784 phase = training step = 1700 time_cost = 181.8177535533905
+INFO: 12-09 15:52:00: custom_trainer.py:78 * 139833791702784 current loss: [0.8871488]
+INFO: 12-09 15:54:59: custom_trainer.py:66 * 139833791702784 epoch 0 progress 10831/31296
+INFO: 12-09 15:54:59: custom_trainer.py:77 * 139833791702784 phase = training step = 1800 time_cost = 178.61928153038025
+INFO: 12-09 15:54:59: custom_trainer.py:78 * 139833791702784 current loss: [0.42015275]
+INFO: 12-09 15:57:57: custom_trainer.py:66 * 139833791702784 epoch 0 progress 11431/31296
+INFO: 12-09 15:57:57: custom_trainer.py:77 * 139833791702784 phase = training step = 1900 time_cost = 177.67343735694885
+INFO: 12-09 15:57:57: custom_trainer.py:78 * 139833791702784 current loss: [1.1447401]
+INFO: 12-09 16:00:54: custom_trainer.py:66 * 139833791702784 epoch 0 progress 12031/31296
+INFO: 12-09 16:00:54: custom_trainer.py:77 * 139833791702784 phase = training step = 2000 time_cost = 177.13755869865417
+INFO: 12-09 16:00:54: custom_trainer.py:78 * 139833791702784 current loss: [2.4625807]
+INFO: 12-09 16:03:55: custom_trainer.py:66 * 139833791702784 epoch 0 progress 12631/31296
+INFO: 12-09 16:03:55: custom_trainer.py:77 * 139833791702784 phase = training step = 2100 time_cost = 181.1777946949005
+INFO: 12-09 16:03:55: custom_trainer.py:78 * 139833791702784 current loss: [0.83312166]
+INFO: 12-09 16:06:58: custom_trainer.py:66 * 139833791702784 epoch 0 progress 13231/31296
+INFO: 12-09 16:06:58: custom_trainer.py:77 * 139833791702784 phase = training step = 2200 time_cost = 183.18633365631104
+INFO: 12-09 16:06:58: custom_trainer.py:78 * 139833791702784 current loss: [0.33206123]
+INFO: 12-09 16:10:00: custom_trainer.py:66 * 139833791702784 epoch 0 progress 13831/31296
+INFO: 12-09 16:10:00: custom_trainer.py:77 * 139833791702784 phase = training step = 2300 time_cost = 181.5515215396881
+INFO: 12-09 16:10:00: custom_trainer.py:78 * 139833791702784 current loss: [3.9646988]
+INFO: 12-09 16:13:00: custom_trainer.py:66 * 139833791702784 epoch 0 progress 14431/31296
+INFO: 12-09 16:13:00: custom_trainer.py:77 * 139833791702784 phase = training step = 2400 time_cost = 180.4564564228058
+INFO: 12-09 16:13:00: custom_trainer.py:78 * 139833791702784 current loss: [2.4603748]
+INFO: 12-09 16:16:02: custom_trainer.py:66 * 139833791702784 epoch 0 progress 15031/31296
+INFO: 12-09 16:16:02: custom_trainer.py:77 * 139833791702784 phase = training step = 2500 time_cost = 181.3463020324707
+INFO: 12-09 16:16:02: custom_trainer.py:78 * 139833791702784 current loss: [0.33562672]
+INFO: 12-09 16:19:04: custom_trainer.py:66 * 139833791702784 epoch 0 progress 15631/31296
+INFO: 12-09 16:19:04: custom_trainer.py:77 * 139833791702784 phase = training step = 2600 time_cost = 182.38446307182312
+INFO: 12-09 16:19:04: custom_trainer.py:78 * 139833791702784 current loss: [2.7097933]
+INFO: 12-09 16:22:03: custom_trainer.py:66 * 139833791702784 epoch 0 progress 16231/31296
+INFO: 12-09 16:22:03: custom_trainer.py:77 * 139833791702784 phase = training step = 2700 time_cost = 178.7116255760193
+INFO: 12-09 16:22:03: custom_trainer.py:78 * 139833791702784 current loss: [1.377548]
+INFO: 12-09 16:25:03: custom_trainer.py:66 * 139833791702784 epoch 0 progress 16831/31296
+INFO: 12-09 16:25:03: custom_trainer.py:77 * 139833791702784 phase = training step = 2800 time_cost = 180.05321335792542
+INFO: 12-09 16:25:03: custom_trainer.py:78 * 139833791702784 current loss: [0.66509306]
+INFO: 12-09 16:28:05: custom_trainer.py:66 * 139833791702784 epoch 0 progress 17431/31296
+INFO: 12-09 16:28:05: custom_trainer.py:77 * 139833791702784 phase = training step = 2900 time_cost = 181.81150150299072
+INFO: 12-09 16:28:05: custom_trainer.py:78 * 139833791702784 current loss: [1.188894]
+INFO: 12-09 16:31:05: custom_trainer.py:66 * 139833791702784 epoch 0 progress 18031/31296
+INFO: 12-09 16:31:05: custom_trainer.py:77 * 139833791702784 phase = training step = 3000 time_cost = 180.50412225723267
+INFO: 12-09 16:31:05: custom_trainer.py:78 * 139833791702784 current loss: [1.5562396]
+INFO: 12-09 16:31:05: static_trainer.py:623 * 139833791702784 save model on static....
+INFO: 12-09 16:34:15: custom_trainer.py:66 * 139833791702784 epoch 0 progress 18631/31296
+INFO: 12-09 16:34:15: custom_trainer.py:77 * 139833791702784 phase = training step = 3100 time_cost = 189.71955490112305
+INFO: 12-09 16:34:15: custom_trainer.py:78 * 139833791702784 current loss: [0.7578865]
+INFO: 12-09 16:37:11: custom_trainer.py:66 * 139833791702784 epoch 0 progress 19231/31296
+INFO: 12-09 16:37:11: custom_trainer.py:77 * 139833791702784 phase = training step = 3200 time_cost = 176.47750401496887
+INFO: 12-09 16:37:11: custom_trainer.py:78 * 139833791702784 current loss: [1.7663838]
+INFO: 12-09 16:40:12: custom_trainer.py:66 * 139833791702784 epoch 0 progress 19831/31296
+INFO: 12-09 16:40:12: custom_trainer.py:77 * 139833791702784 phase = training step = 3300 time_cost = 180.9279181957245
+INFO: 12-09 16:40:12: custom_trainer.py:78 * 139833791702784 current loss: [1.7275124]
+INFO: 12-09 16:43:13: custom_trainer.py:66 * 139833791702784 epoch 0 progress 20431/31296
+INFO: 12-09 16:43:13: custom_trainer.py:77 * 139833791702784 phase = training step = 3400 time_cost = 180.65462636947632
+INFO: 12-09 16:43:13: custom_trainer.py:78 * 139833791702784 current loss: [1.1487098]
+INFO: 12-09 16:46:12: custom_trainer.py:66 * 139833791702784 epoch 0 progress 21031/31296
+INFO: 12-09 16:46:12: custom_trainer.py:77 * 139833791702784 phase = training step = 3500 time_cost = 178.76790595054626
+INFO: 12-09 16:46:12: custom_trainer.py:78 * 139833791702784 current loss: [1.4851494]
+INFO: 12-09 16:49:12: custom_trainer.py:66 * 139833791702784 epoch 0 progress 21631/31296
+INFO: 12-09 16:49:12: custom_trainer.py:77 * 139833791702784 phase = training step = 3600 time_cost = 180.8794710636139
+INFO: 12-09 16:49:12: custom_trainer.py:78 * 139833791702784 current loss: [1.1273462]
+INFO: 12-09 16:52:06: custom_trainer.py:66 * 139833791702784 epoch 0 progress 22231/31296
+INFO: 12-09 16:52:06: custom_trainer.py:77 * 139833791702784 phase = training step = 3700 time_cost = 173.59044313430786
+INFO: 12-09 16:52:06: custom_trainer.py:78 * 139833791702784 current loss: [1.1815871]
+INFO: 12-09 16:55:04: custom_trainer.py:66 * 139833791702784 epoch 0 progress 22831/31296
+INFO: 12-09 16:55:04: custom_trainer.py:77 * 139833791702784 phase = training step = 3800 time_cost = 178.08700132369995
+INFO: 12-09 16:55:04: custom_trainer.py:78 * 139833791702784 current loss: [0.8893844]
+INFO: 12-09 16:58:02: custom_trainer.py:66 * 139833791702784 epoch 0 progress 23431/31296
+INFO: 12-09 16:58:02: custom_trainer.py:77 * 139833791702784 phase = training step = 3900 time_cost = 177.47328996658325
+INFO: 12-09 16:58:02: custom_trainer.py:78 * 139833791702784 current loss: [0.7567738]
+INFO: 12-09 17:01:01: custom_trainer.py:66 * 139833791702784 epoch 0 progress 24031/31296
+INFO: 12-09 17:01:01: custom_trainer.py:77 * 139833791702784 phase = training step = 4000 time_cost = 179.49972772598267
+INFO: 12-09 17:01:01: custom_trainer.py:78 * 139833791702784 current loss: [1.6087697]
+INFO: 12-09 17:04:02: custom_trainer.py:66 * 139833791702784 epoch 0 progress 24631/31296
+INFO: 12-09 17:04:02: custom_trainer.py:77 * 139833791702784 phase = training step = 4100 time_cost = 180.84403228759766
+INFO: 12-09 17:04:02: custom_trainer.py:78 * 139833791702784 current loss: [1.8242888]
+INFO: 12-09 17:07:03: custom_trainer.py:66 * 139833791702784 epoch 0 progress 25231/31296
+INFO: 12-09 17:07:03: custom_trainer.py:77 * 139833791702784 phase = training step = 4200 time_cost = 181.14212131500244
+INFO: 12-09 17:07:03: custom_trainer.py:78 * 139833791702784 current loss: [0.59231627]
+INFO: 12-09 17:10:02: custom_trainer.py:66 * 139833791702784 epoch 0 progress 25831/31296
+INFO: 12-09 17:10:02: custom_trainer.py:77 * 139833791702784 phase = training step = 4300 time_cost = 178.550616979599
+INFO: 12-09 17:10:02: custom_trainer.py:78 * 139833791702784 current loss: [0.95091474]
+INFO: 12-09 17:13:00: custom_trainer.py:66 * 139833791702784 epoch 0 progress 26431/31296
+INFO: 12-09 17:13:00: custom_trainer.py:77 * 139833791702784 phase = training step = 4400 time_cost = 178.6942584514618
+INFO: 12-09 17:13:00: custom_trainer.py:78 * 139833791702784 current loss: [0.22964117]
+INFO: 12-09 17:15:59: custom_trainer.py:66 * 139833791702784 epoch 0 progress 27031/31296
+INFO: 12-09 17:15:59: custom_trainer.py:77 * 139833791702784 phase = training step = 4500 time_cost = 179.09343719482422
+INFO: 12-09 17:15:59: custom_trainer.py:78 * 139833791702784 current loss: [1.4655969]
+INFO: 12-09 17:15:59: static_trainer.py:623 * 139833791702784 save model on static....
+INFO: 12-09 17:19:13: custom_trainer.py:66 * 139833791702784 epoch 0 progress 27631/31296
+INFO: 12-09 17:19:13: custom_trainer.py:77 * 139833791702784 phase = training step = 4600 time_cost = 193.06872701644897
+INFO: 12-09 17:19:13: custom_trainer.py:78 * 139833791702784 current loss: [0.05760331]
+INFO: 12-09 17:22:13: custom_trainer.py:66 * 139833791702784 epoch 0 progress 28231/31296
+INFO: 12-09 17:22:13: custom_trainer.py:77 * 139833791702784 phase = training step = 4700 time_cost = 180.1544132232666
+INFO: 12-09 17:22:13: custom_trainer.py:78 * 139833791702784 current loss: [0.24666879]
+INFO: 12-09 17:25:13: custom_trainer.py:66 * 139833791702784 epoch 0 progress 28831/31296
+INFO: 12-09 17:25:13: custom_trainer.py:77 * 139833791702784 phase = training step = 4800 time_cost = 180.47284817695618
+INFO: 12-09 17:25:13: custom_trainer.py:78 * 139833791702784 current loss: [0.31090435]
+INFO: 12-09 17:28:11: custom_trainer.py:66 * 139833791702784 epoch 0 progress 29431/31296
+INFO: 12-09 17:28:11: custom_trainer.py:77 * 139833791702784 phase = training step = 4900 time_cost = 177.90704560279846
+INFO: 12-09 17:28:11: custom_trainer.py:78 * 139833791702784 current loss: [0.4176794]
+INFO: 12-09 17:31:10: custom_trainer.py:66 * 139833791702784 epoch 0 progress 30031/31296
+INFO: 12-09 17:31:10: custom_trainer.py:77 * 139833791702784 phase = training step = 5000 time_cost = 178.78373003005981
+INFO: 12-09 17:31:10: custom_trainer.py:78 * 139833791702784 current loss: [0.6377829]
+INFO: 12-09 17:34:08: custom_trainer.py:66 * 139833791702784 epoch 0 progress 30631/31296
+INFO: 12-09 17:34:08: custom_trainer.py:77 * 139833791702784 phase = training step = 5100 time_cost = 177.87243556976318
+INFO: 12-09 17:34:08: custom_trainer.py:78 * 139833791702784 current loss: [0.46586955]
+INFO: 12-09 17:37:07: custom_trainer.py:66 * 139833791702784 epoch 0 progress 31231/31296
+INFO: 12-09 17:37:07: custom_trainer.py:77 * 139833791702784 phase = training step = 5200 time_cost = 179.0985608100891
+INFO: 12-09 17:37:07: custom_trainer.py:78 * 139833791702784 current loss: [0.36235702]
+INFO: 12-09 17:40:04: custom_trainer.py:66 * 139833791702784 epoch 1 progress 535/31296
+INFO: 12-09 17:40:04: custom_trainer.py:77 * 139833791702784 phase = training step = 5300 time_cost = 177.55547094345093
+INFO: 12-09 17:40:04: custom_trainer.py:78 * 139833791702784 current loss: [0.5351204]
+INFO: 12-09 17:43:06: custom_trainer.py:66 * 139833791702784 epoch 1 progress 1135/31296
+INFO: 12-09 17:43:06: custom_trainer.py:77 * 139833791702784 phase = training step = 5400 time_cost = 181.9266197681427
+INFO: 12-09 17:43:06: custom_trainer.py:78 * 139833791702784 current loss: [1.6857367]
+INFO: 12-09 17:46:08: custom_trainer.py:66 * 139833791702784 epoch 1 progress 1735/31296
+INFO: 12-09 17:46:08: custom_trainer.py:77 * 139833791702784 phase = training step = 5500 time_cost = 181.96106243133545
+INFO: 12-09 17:46:08: custom_trainer.py:78 * 139833791702784 current loss: [0.8018068]
+INFO: 12-09 17:49:08: custom_trainer.py:66 * 139833791702784 epoch 1 progress 2335/31296
+INFO: 12-09 17:49:08: custom_trainer.py:77 * 139833791702784 phase = training step = 5600 time_cost = 179.33017778396606
+INFO: 12-09 17:49:08: custom_trainer.py:78 * 139833791702784 current loss: [0.43283248]
+INFO: 12-09 17:52:06: custom_trainer.py:66 * 139833791702784 epoch 1 progress 2935/31296
+INFO: 12-09 17:52:06: custom_trainer.py:77 * 139833791702784 phase = training step = 5700 time_cost = 178.54589533805847
+INFO: 12-09 17:52:06: custom_trainer.py:78 * 139833791702784 current loss: [0.6993451]
+INFO: 12-09 17:55:05: custom_trainer.py:66 * 139833791702784 epoch 1 progress 3535/31296
+INFO: 12-09 17:55:05: custom_trainer.py:77 * 139833791702784 phase = training step = 5800 time_cost = 178.7265384197235
+INFO: 12-09 17:55:05: custom_trainer.py:78 * 139833791702784 current loss: [0.10501201]
+INFO: 12-09 17:58:04: custom_trainer.py:66 * 139833791702784 epoch 1 progress 4135/31296
+INFO: 12-09 17:58:04: custom_trainer.py:77 * 139833791702784 phase = training step = 5900 time_cost = 178.90599179267883
+INFO: 12-09 17:58:04: custom_trainer.py:78 * 139833791702784 current loss: [0.26887435]
+INFO: 12-09 18:01:05: custom_trainer.py:66 * 139833791702784 epoch 1 progress 4735/31296
+INFO: 12-09 18:01:05: custom_trainer.py:77 * 139833791702784 phase = training step = 6000 time_cost = 180.95630311965942
+INFO: 12-09 18:01:05: custom_trainer.py:78 * 139833791702784 current loss: [0.2998163]
+INFO: 12-09 18:01:05: static_trainer.py:623 * 139833791702784 save model on static....
+INFO: 12-09 18:04:19: custom_trainer.py:66 * 139833791702784 epoch 1 progress 5335/31296
+INFO: 12-09 18:04:19: custom_trainer.py:77 * 139833791702784 phase = training step = 6100 time_cost = 193.84902429580688
+INFO: 12-09 18:04:19: custom_trainer.py:78 * 139833791702784 current loss: [0.82573473]
+INFO: 12-09 18:07:19: custom_trainer.py:66 * 139833791702784 epoch 1 progress 5935/31296
+INFO: 12-09 18:07:19: custom_trainer.py:77 * 139833791702784 phase = training step = 6200 time_cost = 180.7693452835083
+INFO: 12-09 18:07:19: custom_trainer.py:78 * 139833791702784 current loss: [1.126183]
+INFO: 12-09 18:10:18: custom_trainer.py:66 * 139833791702784 epoch 1 progress 6535/31296
+INFO: 12-09 18:10:18: custom_trainer.py:77 * 139833791702784 phase = training step = 6300 time_cost = 178.4729835987091
+INFO: 12-09 18:10:18: custom_trainer.py:78 * 139833791702784 current loss: [0.74536645]
+INFO: 12-09 18:13:20: custom_trainer.py:66 * 139833791702784 epoch 1 progress 7135/31296
+INFO: 12-09 18:13:20: custom_trainer.py:77 * 139833791702784 phase = training step = 6400 time_cost = 181.7529284954071
+INFO: 12-09 18:13:20: custom_trainer.py:78 * 139833791702784 current loss: [1.2168624]
+INFO: 12-09 18:16:20: custom_trainer.py:66 * 139833791702784 epoch 1 progress 7735/31296
+INFO: 12-09 18:16:20: custom_trainer.py:77 * 139833791702784 phase = training step = 6500 time_cost = 180.0851891040802
+INFO: 12-09 18:16:20: custom_trainer.py:78 * 139833791702784 current loss: [0.3797577]
+INFO: 12-09 18:19:19: custom_trainer.py:66 * 139833791702784 epoch 1 progress 8335/31296
+INFO: 12-09 18:19:19: custom_trainer.py:77 * 139833791702784 phase = training step = 6600 time_cost = 178.99076914787292
+INFO: 12-09 18:19:19: custom_trainer.py:78 * 139833791702784 current loss: [1.0895097]
+INFO: 12-09 18:22:20: custom_trainer.py:66 * 139833791702784 epoch 1 progress 8935/31296
+INFO: 12-09 18:22:20: custom_trainer.py:77 * 139833791702784 phase = training step = 6700 time_cost = 181.13598227500916
+INFO: 12-09 18:22:20: custom_trainer.py:78 * 139833791702784 current loss: [0.6454239]
+INFO: 12-09 18:25:19: custom_trainer.py:66 * 139833791702784 epoch 1 progress 9535/31296
+INFO: 12-09 18:25:19: custom_trainer.py:77 * 139833791702784 phase = training step = 6800 time_cost = 179.52894115447998
+INFO: 12-09 18:25:19: custom_trainer.py:78 * 139833791702784 current loss: [2.7506006]
+INFO: 12-09 18:28:18: custom_trainer.py:66 * 139833791702784 epoch 1 progress 10135/31296
+INFO: 12-09 18:28:18: custom_trainer.py:77 * 139833791702784 phase = training step = 6900 time_cost = 179.05857253074646
+INFO: 12-09 18:28:18: custom_trainer.py:78 * 139833791702784 current loss: [0.99111605]
+INFO: 12-09 18:31:15: custom_trainer.py:66 * 139833791702784 epoch 1 progress 10735/31296
+INFO: 12-09 18:31:15: custom_trainer.py:77 * 139833791702784 phase = training step = 7000 time_cost = 176.87375807762146
+INFO: 12-09 18:31:15: custom_trainer.py:78 * 139833791702784 current loss: [1.250511]
+INFO: 12-09 18:34:17: custom_trainer.py:66 * 139833791702784 epoch 1 progress 11335/31296
+INFO: 12-09 18:34:17: custom_trainer.py:77 * 139833791702784 phase = training step = 7100 time_cost = 181.49516582489014
+INFO: 12-09 18:34:17: custom_trainer.py:78 * 139833791702784 current loss: [0.09520605]
+INFO: 12-09 18:37:17: custom_trainer.py:66 * 139833791702784 epoch 1 progress 11935/31296
+INFO: 12-09 18:37:17: custom_trainer.py:77 * 139833791702784 phase = training step = 7200 time_cost = 180.0034203529358
+INFO: 12-09 18:37:17: custom_trainer.py:78 * 139833791702784 current loss: [0.7943447]
+INFO: 12-09 18:40:19: custom_trainer.py:66 * 139833791702784 epoch 1 progress 12535/31296
+INFO: 12-09 18:40:19: custom_trainer.py:77 * 139833791702784 phase = training step = 7300 time_cost = 181.7682912349701
+INFO: 12-09 18:40:19: custom_trainer.py:78 * 139833791702784 current loss: [0.5892722]
+INFO: 12-09 18:43:17: custom_trainer.py:66 * 139833791702784 epoch 1 progress 13135/31296
+INFO: 12-09 18:43:17: custom_trainer.py:77 * 139833791702784 phase = training step = 7400 time_cost = 178.29948616027832
+INFO: 12-09 18:43:17: custom_trainer.py:78 * 139833791702784 current loss: [0.6520395]
+INFO: 12-09 18:46:16: custom_trainer.py:66 * 139833791702784 epoch 1 progress 13735/31296
+INFO: 12-09 18:46:16: custom_trainer.py:77 * 139833791702784 phase = training step = 7500 time_cost = 179.21170139312744
+INFO: 12-09 18:46:16: custom_trainer.py:78 * 139833791702784 current loss: [0.14185482]
+INFO: 12-09 18:46:16: static_trainer.py:623 * 139833791702784 save model on static....
+INFO: 12-09 18:49:38: custom_trainer.py:66 * 139833791702784 epoch 1 progress 14335/31296
+INFO: 12-09 18:49:38: custom_trainer.py:77 * 139833791702784 phase = training step = 7600 time_cost = 202.1339075565338
+INFO: 12-09 18:49:38: custom_trainer.py:78 * 139833791702784 current loss: [1.1896367]
+INFO: 12-09 18:52:38: custom_trainer.py:66 * 139833791702784 epoch 1 progress 14935/31296
+INFO: 12-09 18:52:38: custom_trainer.py:77 * 139833791702784 phase = training step = 7700 time_cost = 179.59165334701538
+INFO: 12-09 18:52:38: custom_trainer.py:78 * 139833791702784 current loss: [0.43389103]
+INFO: 12-09 18:55:38: custom_trainer.py:66 * 139833791702784 epoch 1 progress 15535/31296
+INFO: 12-09 18:55:38: custom_trainer.py:77 * 139833791702784 phase = training step = 7800 time_cost = 180.24012064933777
+INFO: 12-09 18:55:38: custom_trainer.py:78 * 139833791702784 current loss: [0.24539256]
+INFO: 12-09 18:58:39: custom_trainer.py:66 * 139833791702784 epoch 1 progress 16135/31296
+INFO: 12-09 18:58:39: custom_trainer.py:77 * 139833791702784 phase = training step = 7900 time_cost = 180.85408735275269
+INFO: 12-09 18:58:39: custom_trainer.py:78 * 139833791702784 current loss: [1.2652874]
+INFO: 12-09 19:01:39: custom_trainer.py:66 * 139833791702784 epoch 1 progress 16735/31296
+INFO: 12-09 19:01:39: custom_trainer.py:77 * 139833791702784 phase = training step = 8000 time_cost = 179.96550750732422
+INFO: 12-09 19:01:39: custom_trainer.py:78 * 139833791702784 current loss: [0.57202727]
+INFO: 12-09 19:04:38: custom_trainer.py:66 * 139833791702784 epoch 1 progress 17335/31296
+INFO: 12-09 19:04:38: custom_trainer.py:77 * 139833791702784 phase = training step = 8100 time_cost = 179.31011247634888
+INFO: 12-09 19:04:38: custom_trainer.py:78 * 139833791702784 current loss: [0.24627462]
+INFO: 12-09 19:07:37: custom_trainer.py:66 * 139833791702784 epoch 1 progress 17935/31296
+INFO: 12-09 19:07:37: custom_trainer.py:77 * 139833791702784 phase = training step = 8200 time_cost = 179.08239126205444
+INFO: 12-09 19:07:37: custom_trainer.py:78 * 139833791702784 current loss: [1.2920744]
+INFO: 12-09 19:10:38: custom_trainer.py:66 * 139833791702784 epoch 1 progress 18535/31296
+INFO: 12-09 19:10:38: custom_trainer.py:77 * 139833791702784 phase = training step = 8300 time_cost = 180.51546382904053
+INFO: 12-09 19:10:38: custom_trainer.py:78 * 139833791702784 current loss: [0.20665243]
+INFO: 12-09 19:13:37: custom_trainer.py:66 * 139833791702784 epoch 1 progress 19135/31296
+INFO: 12-09 19:13:37: custom_trainer.py:77 * 139833791702784 phase = training step = 8400 time_cost = 179.75021743774414
+INFO: 12-09 19:13:37: custom_trainer.py:78 * 139833791702784 current loss: [0.3656258]
+INFO: 12-09 19:16:36: custom_trainer.py:66 * 139833791702784 epoch 1 progress 19735/31296
+INFO: 12-09 19:16:36: custom_trainer.py:77 * 139833791702784 phase = training step = 8500 time_cost = 178.65177989006042
+INFO: 12-09 19:16:36: custom_trainer.py:78 * 139833791702784 current loss: [1.0202025]
+INFO: 12-09 19:19:36: custom_trainer.py:66 * 139833791702784 epoch 1 progress 20335/31296
+INFO: 12-09 19:19:36: custom_trainer.py:77 * 139833791702784 phase = training step = 8600 time_cost = 179.71717047691345
+INFO: 12-09 19:19:36: custom_trainer.py:78 * 139833791702784 current loss: [0.6058088]
+INFO: 12-09 19:22:35: custom_trainer.py:66 * 139833791702784 epoch 1 progress 20935/31296
+INFO: 12-09 19:22:35: custom_trainer.py:77 * 139833791702784 phase = training step = 8700 time_cost = 178.7076678276062
+INFO: 12-09 19:22:35: custom_trainer.py:78 * 139833791702784 current loss: [0.5638676]
+INFO: 12-09 19:25:32: custom_trainer.py:66 * 139833791702784 epoch 1 progress 21535/31296
+INFO: 12-09 19:25:32: custom_trainer.py:77 * 139833791702784 phase = training step = 8800 time_cost = 177.76838445663452
+INFO: 12-09 19:25:32: custom_trainer.py:78 * 139833791702784 current loss: [1.1628175]
+INFO: 12-09 19:28:34: custom_trainer.py:66 * 139833791702784 epoch 1 progress 22135/31296
+INFO: 12-09 19:28:34: custom_trainer.py:77 * 139833791702784 phase = training step = 8900 time_cost = 181.59421634674072
+INFO: 12-09 19:28:34: custom_trainer.py:78 * 139833791702784 current loss: [0.7706342]
+INFO: 12-09 19:31:33: custom_trainer.py:66 * 139833791702784 epoch 1 progress 22735/31296
+INFO: 12-09 19:31:33: custom_trainer.py:77 * 139833791702784 phase = training step = 9000 time_cost = 179.15857338905334
+INFO: 12-09 19:31:33: custom_trainer.py:78 * 139833791702784 current loss: [0.14398512]
+INFO: 12-09 19:31:33: static_trainer.py:623 * 139833791702784 save model on static....
+INFO: 12-09 19:35:03: custom_trainer.py:66 * 139833791702784 epoch 1 progress 23335/31296
+INFO: 12-09 19:35:03: custom_trainer.py:77 * 139833791702784 phase = training step = 9100 time_cost = 210.1472499370575
+INFO: 12-09 19:35:03: custom_trainer.py:78 * 139833791702784 current loss: [0.6270451]
+INFO: 12-09 19:38:04: custom_trainer.py:66 * 139833791702784 epoch 1 progress 23935/31296
+INFO: 12-09 19:38:04: custom_trainer.py:77 * 139833791702784 phase = training step = 9200 time_cost = 180.89205241203308
+INFO: 12-09 19:38:04: custom_trainer.py:78 * 139833791702784 current loss: [1.1032059]
+INFO: 12-09 19:41:03: custom_trainer.py:66 * 139833791702784 epoch 1 progress 24535/31296
+INFO: 12-09 19:41:03: custom_trainer.py:77 * 139833791702784 phase = training step = 9300 time_cost = 179.24918913841248
+INFO: 12-09 19:41:03: custom_trainer.py:78 * 139833791702784 current loss: [0.8243351]
+INFO: 12-09 19:44:00: custom_trainer.py:66 * 139833791702784 epoch 1 progress 25135/31296
+INFO: 12-09 19:44:00: custom_trainer.py:77 * 139833791702784 phase = training step = 9400 time_cost = 176.70678448677063
+INFO: 12-09 19:44:00: custom_trainer.py:78 * 139833791702784 current loss: [0.6879449]
+INFO: 12-09 19:47:00: custom_trainer.py:66 * 139833791702784 epoch 1 progress 25735/31296
+INFO: 12-09 19:47:00: custom_trainer.py:77 * 139833791702784 phase = training step = 9500 time_cost = 179.55971002578735
+INFO: 12-09 19:47:00: custom_trainer.py:78 * 139833791702784 current loss: [0.8391713]
+INFO: 12-09 19:49:58: custom_trainer.py:66 * 139833791702784 epoch 1 progress 26335/31296
+INFO: 12-09 19:49:58: custom_trainer.py:77 * 139833791702784 phase = training step = 9600 time_cost = 178.77992820739746
+INFO: 12-09 19:49:58: custom_trainer.py:78 * 139833791702784 current loss: [1.1736611]
+INFO: 12-09 19:52:56: custom_trainer.py:66 * 139833791702784 epoch 1 progress 26935/31296
+INFO: 12-09 19:52:56: custom_trainer.py:77 * 139833791702784 phase = training step = 9700 time_cost = 177.9195520877838
+INFO: 12-09 19:52:56: custom_trainer.py:78 * 139833791702784 current loss: [1.5257131]
+INFO: 12-09 19:55:57: custom_trainer.py:66 * 139833791702784 epoch 1 progress 27535/31296
+INFO: 12-09 19:55:57: custom_trainer.py:77 * 139833791702784 phase = training step = 9800 time_cost = 180.33304476737976
+INFO: 12-09 19:55:57: custom_trainer.py:78 * 139833791702784 current loss: [0.3809353]
+INFO: 12-09 19:58:55: custom_trainer.py:66 * 139833791702784 epoch 1 progress 28135/31296
+INFO: 12-09 19:58:55: custom_trainer.py:77 * 139833791702784 phase = training step = 9900 time_cost = 178.5043921470642
+INFO: 12-09 19:58:55: custom_trainer.py:78 * 139833791702784 current loss: [0.40917346]
+INFO: 12-09 20:01:56: custom_trainer.py:66 * 139833791702784 epoch 1 progress 28735/31296
+INFO: 12-09 20:01:56: custom_trainer.py:77 * 139833791702784 phase = training step = 10000 time_cost = 180.36523175239563
+INFO: 12-09 20:01:56: custom_trainer.py:78 * 139833791702784 current loss: [0.50727487]
+INFO: 12-09 20:04:55: custom_trainer.py:66 * 139833791702784 epoch 1 progress 29335/31296
+INFO: 12-09 20:04:55: custom_trainer.py:77 * 139833791702784 phase = training step = 10100 time_cost = 179.81886172294617
+INFO: 12-09 20:04:55: custom_trainer.py:78 * 139833791702784 current loss: [0.52361786]
+INFO: 12-09 20:07:51: custom_trainer.py:66 * 139833791702784 epoch 1 progress 29935/31296
+INFO: 12-09 20:07:51: custom_trainer.py:77 * 139833791702784 phase = training step = 10200 time_cost = 175.75955724716187
+INFO: 12-09 20:07:51: custom_trainer.py:78 * 139833791702784 current loss: [0.1862627]
+INFO: 12-09 20:10:53: custom_trainer.py:66 * 139833791702784 epoch 1 progress 30535/31296
+INFO: 12-09 20:10:53: custom_trainer.py:77 * 139833791702784 phase = training step = 10300 time_cost = 182.33392453193665
+INFO: 12-09 20:10:53: custom_trainer.py:78 * 139833791702784 current loss: [2.6395435]
+INFO: 12-09 20:13:54: custom_trainer.py:66 * 139833791702784 epoch 1 progress 31135/31296
+INFO: 12-09 20:13:54: custom_trainer.py:77 * 139833791702784 phase = training step = 10400 time_cost = 180.91176199913025
+INFO: 12-09 20:13:54: custom_trainer.py:78 * 139833791702784 current loss: [0.02857763]
+INFO: 12-09 20:16:52: custom_trainer.py:66 * 139833791702784 epoch 2 progress 439/31296
+INFO: 12-09 20:16:52: custom_trainer.py:77 * 139833791702784 phase = training step = 10500 time_cost = 177.24476718902588
+INFO: 12-09 20:16:52: custom_trainer.py:78 * 139833791702784 current loss: [0.56387883]
+INFO: 12-09 20:16:52: static_trainer.py:623 * 139833791702784 save model on static....
+INFO: 12-09 20:20:20: custom_trainer.py:66 * 139833791702784 epoch 2 progress 1039/31296
+INFO: 12-09 20:20:20: custom_trainer.py:77 * 139833791702784 phase = training step = 10600 time_cost = 208.70047664642334
+INFO: 12-09 20:20:20: custom_trainer.py:78 * 139833791702784 current loss: [0.04468453]
+INFO: 12-09 20:23:21: custom_trainer.py:66 * 139833791702784 epoch 2 progress 1639/31296
+INFO: 12-09 20:23:21: custom_trainer.py:77 * 139833791702784 phase = training step = 10700 time_cost = 180.37260031700134
+INFO: 12-09 20:23:21: custom_trainer.py:78 * 139833791702784 current loss: [2.6883883]
+INFO: 12-09 20:26:21: custom_trainer.py:66 * 139833791702784 epoch 2 progress 2239/31296
+INFO: 12-09 20:26:21: custom_trainer.py:77 * 139833791702784 phase = training step = 10800 time_cost = 180.24327039718628
+INFO: 12-09 20:26:21: custom_trainer.py:78 * 139833791702784 current loss: [0.3089936]
+INFO: 12-09 20:29:21: custom_trainer.py:66 * 139833791702784 epoch 2 progress 2839/31296
+INFO: 12-09 20:29:21: custom_trainer.py:77 * 139833791702784 phase = training step = 10900 time_cost = 180.02373242378235
+INFO: 12-09 20:29:21: custom_trainer.py:78 * 139833791702784 current loss: [0.18147288]
+INFO: 12-09 20:32:20: custom_trainer.py:66 * 139833791702784 epoch 2 progress 3439/31296
+INFO: 12-09 20:32:20: custom_trainer.py:77 * 139833791702784 phase = training step = 11000 time_cost = 179.36311101913452
+INFO: 12-09 20:32:20: custom_trainer.py:78 * 139833791702784 current loss: [0.49904987]
+INFO: 12-09 20:35:19: custom_trainer.py:66 * 139833791702784 epoch 2 progress 4039/31296
+INFO: 12-09 20:35:19: custom_trainer.py:77 * 139833791702784 phase = training step = 11100 time_cost = 178.45799827575684
+INFO: 12-09 20:35:19: custom_trainer.py:78 * 139833791702784 current loss: [0.01742702]
+INFO: 12-09 20:38:20: custom_trainer.py:66 * 139833791702784 epoch 2 progress 4639/31296
+INFO: 12-09 20:38:20: custom_trainer.py:77 * 139833791702784 phase = training step = 11200 time_cost = 181.50923490524292
+INFO: 12-09 20:38:20: custom_trainer.py:78 * 139833791702784 current loss: [0.08483671]
+INFO: 12-09 20:41:21: custom_trainer.py:66 * 139833791702784 epoch 2 progress 5239/31296
+INFO: 12-09 20:41:21: custom_trainer.py:77 * 139833791702784 phase = training step = 11300 time_cost = 180.8030731678009
+INFO: 12-09 20:41:21: custom_trainer.py:78 * 139833791702784 current loss: [0.5012068]
+INFO: 12-09 20:44:19: custom_trainer.py:66 * 139833791702784 epoch 2 progress 5839/31296
+INFO: 12-09 20:44:19: custom_trainer.py:77 * 139833791702784 phase = training step = 11400 time_cost = 178.27162408828735
+INFO: 12-09 20:44:19: custom_trainer.py:78 * 139833791702784 current loss: [0.01519757]
+INFO: 12-09 20:47:14: custom_trainer.py:66 * 139833791702784 epoch 2 progress 6439/31296
+INFO: 12-09 20:47:14: custom_trainer.py:77 * 139833791702784 phase = training step = 11500 time_cost = 175.03599953651428
+INFO: 12-09 20:47:14: custom_trainer.py:78 * 139833791702784 current loss: [0.5194822]
+INFO: 12-09 20:50:14: custom_trainer.py:66 * 139833791702784 epoch 2 progress 7039/31296
+INFO: 12-09 20:50:14: custom_trainer.py:77 * 139833791702784 phase = training step = 11600 time_cost = 179.44519782066345
+INFO: 12-09 20:50:14: custom_trainer.py:78 * 139833791702784 current loss: [0.37272426]
+INFO: 12-09 20:53:12: custom_trainer.py:66 * 139833791702784 epoch 2 progress 7639/31296
+INFO: 12-09 20:53:12: custom_trainer.py:77 * 139833791702784 phase = training step = 11700 time_cost = 177.8484752178192
+INFO: 12-09 20:53:12: custom_trainer.py:78 * 139833791702784 current loss: [0.06745298]
+INFO: 12-09 20:56:10: custom_trainer.py:66 * 139833791702784 epoch 2 progress 8239/31296
+INFO: 12-09 20:56:10: custom_trainer.py:77 * 139833791702784 phase = training step = 11800 time_cost = 178.55945301055908
+INFO: 12-09 20:56:10: custom_trainer.py:78 * 139833791702784 current loss: [0.07529217]
+INFO: 12-09 20:59:13: custom_trainer.py:66 * 139833791702784 epoch 2 progress 8839/31296
+INFO: 12-09 20:59:13: custom_trainer.py:77 * 139833791702784 phase = training step = 11900 time_cost = 182.64318919181824
+INFO: 12-09 20:59:13: custom_trainer.py:78 * 139833791702784 current loss: [0.01994503]
+INFO: 12-09 21:02:14: custom_trainer.py:66 * 139833791702784 epoch 2 progress 9439/31296
+INFO: 12-09 21:02:14: custom_trainer.py:77 * 139833791702784 phase = training step = 12000 time_cost = 181.322762966156
+INFO: 12-09 21:02:14: custom_trainer.py:78 * 139833791702784 current loss: [0.4727849]
+INFO: 12-09 21:02:14: static_trainer.py:623 * 139833791702784 save model on static....
+INFO: 12-09 21:05:27: custom_trainer.py:66 * 139833791702784 epoch 2 progress 10039/31296
+INFO: 12-09 21:05:27: custom_trainer.py:77 * 139833791702784 phase = training step = 12100 time_cost = 193.03533291816711
+INFO: 12-09 21:05:27: custom_trainer.py:78 * 139833791702784 current loss: [0.23838274]
+INFO: 12-09 21:08:27: custom_trainer.py:66 * 139833791702784 epoch 2 progress 10639/31296
+INFO: 12-09 21:08:27: custom_trainer.py:77 * 139833791702784 phase = training step = 12200 time_cost = 179.8626630306244
+INFO: 12-09 21:08:27: custom_trainer.py:78 * 139833791702784 current loss: [0.32358724]
+INFO: 12-09 21:11:27: custom_trainer.py:66 * 139833791702784 epoch 2 progress 11239/31296
+INFO: 12-09 21:11:27: custom_trainer.py:77 * 139833791702784 phase = training step = 12300 time_cost = 179.40630531311035
+INFO: 12-09 21:11:27: custom_trainer.py:78 * 139833791702784 current loss: [0.48241243]
+INFO: 12-09 21:14:27: custom_trainer.py:66 * 139833791702784 epoch 2 progress 11839/31296
+INFO: 12-09 21:14:27: custom_trainer.py:77 * 139833791702784 phase = training step = 12400 time_cost = 180.5280282497406
+INFO: 12-09 21:14:27: custom_trainer.py:78 * 139833791702784 current loss: [0.59757435]
+INFO: 12-09 21:17:28: custom_trainer.py:66 * 139833791702784 epoch 2 progress 12439/31296
+INFO: 12-09 21:17:28: custom_trainer.py:77 * 139833791702784 phase = training step = 12500 time_cost = 180.9507291316986
+INFO: 12-09 21:17:28: custom_trainer.py:78 * 139833791702784 current loss: [0.85604215]
+INFO: 12-09 21:20:29: custom_trainer.py:66 * 139833791702784 epoch 2 progress 13039/31296
+INFO: 12-09 21:20:29: custom_trainer.py:77 * 139833791702784 phase = training step = 12600 time_cost = 181.1029736995697
+INFO: 12-09 21:20:29: custom_trainer.py:78 * 139833791702784 current loss: [1.5904403]
+INFO: 12-09 21:23:31: custom_trainer.py:66 * 139833791702784 epoch 2 progress 13639/31296
+INFO: 12-09 21:23:31: custom_trainer.py:77 * 139833791702784 phase = training step = 12700 time_cost = 182.23065567016602
+INFO: 12-09 21:23:31: custom_trainer.py:78 * 139833791702784 current loss: [0.20855664]
+INFO: 12-09 21:26:31: custom_trainer.py:66 * 139833791702784 epoch 2 progress 14239/31296
+INFO: 12-09 21:26:31: custom_trainer.py:77 * 139833791702784 phase = training step = 12800 time_cost = 179.72805404663086
+INFO: 12-09 21:26:31: custom_trainer.py:78 * 139833791702784 current loss: [0.62156165]
+INFO: 12-09 21:29:32: custom_trainer.py:66 * 139833791702784 epoch 2 progress 14839/31296
+INFO: 12-09 21:29:32: custom_trainer.py:77 * 139833791702784 phase = training step = 12900 time_cost = 180.62059140205383
+INFO: 12-09 21:29:32: custom_trainer.py:78 * 139833791702784 current loss: [0.33242676]
+INFO: 12-09 21:32:32: custom_trainer.py:66 * 139833791702784 epoch 2 progress 15439/31296
+INFO: 12-09 21:32:32: custom_trainer.py:77 * 139833791702784 phase = training step = 13000 time_cost = 180.45127820968628
+INFO: 12-09 21:32:32: custom_trainer.py:78 * 139833791702784 current loss: [0.10495948]
+INFO: 12-09 21:35:30: custom_trainer.py:66 * 139833791702784 epoch 2 progress 16039/31296
+INFO: 12-09 21:35:30: custom_trainer.py:77 * 139833791702784 phase = training step = 13100 time_cost = 177.77397680282593
+INFO: 12-09 21:35:30: custom_trainer.py:78 * 139833791702784 current loss: [0.7313894]

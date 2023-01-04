@@ -1,0 +1,8 @@
+*.un~
+*~
+*.pyc
+*.swp
+*.swn
+*.swo
+dist/
+paddle_ernie.egg-info/
