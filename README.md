@@ -210,7 +210,13 @@ example:
 -README.MD
 -main.ipynb #所有在AI Studio项目运行的顺序，基本上能够完成：数据处理->训练->推理->提交文件生成的所有流程
 ```
-## 使用方式
+## 3.使用方式
 > 本项目结构非常简单，使用方式可以直接启动本项目新的AI Studio项目副本，按照main.ipynb的指示即可完成所有操作
 A：在AI Studio上[运行本项目](https://aistudio.baidu.com/aistudio/projectdetail/4950227)  
 B：运行AISTUdio的副本，按照main.ipynb指示操作即可
+
+## 4.参数设置、参数遍历
+```
+参数设置均为官方默认设置，epoch随着模型的优化，改为5，直接采用5个epoch,保存模型文件每1500step保存一次，直接使用附近提交多次，寻找最好的一次
+模型作为最后的模型
+```
