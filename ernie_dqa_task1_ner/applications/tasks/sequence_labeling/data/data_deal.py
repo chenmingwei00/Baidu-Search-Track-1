@@ -1,13 +1,13 @@
 
 
 import json
-def test_data_split():
+def test_data_split(mode):
     """
     首先对预测文本doc_text,按照最大文本512 进行分割，分别预测，最后答案进行合并
     """
     max_seq_len=505
-    with open('./test_data/test_pre.json','r',encoding='utf-8') as train_file,\
-            open('./test_data/test.json','w',encoding='utf-8') as pre_del_file:
+    with open('./dev_data/{}.json'.format(mode),'r',encoding='utf-8') as train_file,\
+            open('./dev_data/{}_new.json'.format(mode),'w',encoding='utf-8') as pre_del_file:
         lines=train_file.readlines()
         id=0
         for line in lines:
@@ -37,6 +37,8 @@ def test_data_split():
                 t_data_line=json.dumps(t_data,ensure_ascii=False)
                 pre_del_file.write(t_data_line+'\n')
             id+=1
+    shutil.move('./dev_data/{}.json'.format(mode), './{}.json'.format(mode))
+
 from tqdm import tqdm
 def train_data_split():
     """
