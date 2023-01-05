@@ -56,21 +56,160 @@ example:
    query选择性的把第一段的value信息添加到第二段中，指导第二段的答案预测，最终单个模型预测为0.68025.
 6) 最终模型融合，简单的使用三个模型，进行1：2投票，最终提交结果为0.689
 ```
-## 项目结构
-> 一目了然的项目结构能帮助更多人了解，目录树以及设计思想都很重要~
+## 2.项目结构
+> 项目结构如下:
 ```
-
--|ernie_dqa_task1_ner
---|applications
---|erniekit
--|ernie_dqa_task1_ner_crf
+├── applications
+│   ├── __init__.py
+│   ├── models_hub  #用来存储预训练模型的路径，例如：ernie_3.0_base_ch_dir
+│   └── tasks
+│       ├── __init__.py
+│       └── sequence_labeling
+│           ├── begin_train.sh #项目启动训练脚本
+│           ├── data  #验证数据集，训练数据集，测试数据集等
+│           │   ├── data_deal.py #数据处理以及提交最后文件等代码
+│           │   ├── data_static.py
+│           │   ├── dev_data
+│           │   ├── test_data
+│           │   └── train_data
+│           ├── dict 
+│           │   ├── vocab_label_map.txt
+│           │   └── vocab.txt
+│           ├── evaluate.py
+│           ├── evaluate.sh
+│           ├── examples #模型训练以及模型推理的参数json文件
+│           │   ├── seqlab_ernie_fc_ch_infer.json
+│           │   └── seqlab_ernie_fc_ch.json
+│           ├── final_submit.py  #生成最后提交文件的代码
+│           ├── final_submit.sh  #生成最后提交文件的代码
+│           ├── inference
+│           │   ├── custom_inference.py
+│           │   └── __init__.py
+│           ├── log #训练测试日志
+│           │   ├── test.log
+│           │   ├── test.log.2022-11-24
+│           │   ├── test.log.wf
+│           │   └── test.log.wf.2022-11-24
+│           ├── model #模型结构代码
+│           │   ├── ernie_fc_sequence_label.py
+│           │   ├── __init__.py
+│           │   └── t.py
+│           ├── output #模型保存地方
+│           │   ├── 4000.txt
+│           │   ├── 4001.txt
+│           │   ├── seqlab_ernie_3.0_base_fc_ch
+│           │   │   ├── save_checkpoints
+│           │   │   └── save_inference_model
+│           │   └── subtask1_test_pred_ner.txt
+│           ├── preprocess
+│           │   └── dev.txt
+│           ├── preprocess.py
+│           ├── run_infer.py
+│           ├── run_trainer.py
+│           └── trainer
+│               ├── custom_dynamic_trainer.py
+│               ├── custom_trainer.py
+│               └── __init__.py
+├── erniekit  #提供baseline的原有文件，其中对抗训练代码在static_trainer.py，数据处理代码在ernie_text_field_reader.py文件中
+│   ├── build.sh
+│   ├── ci.yml
+│   ├── common
+│   │   ├── __init__.py
+│   │   ├── jit_wenxin.py
+│   │   ├── register.py
+│   │   └── rule.py
+│   ├── controller
+│   │   ├── dynamic_trainer.py
+│   │   ├── evaluate.py
+│   │   ├── inference.py
+│   │   ├── __init__.py
+│   │   ├── static_trainer_ernie_gen.py
+│   │   └── static_trainer.py
+│   ├── data
+│   │   ├── data_set_ernie3.py
+│   │   ├── data_set.py
+│   │   ├── data_set_reader
+│   │   │   ├── base_dataset_reader.py
+│   │   │   ├── basic_dataset_reader.py
+│   │   │   └── __init__.py
+│   │   ├── field.py
+│   │   ├── field_reader
+│   │   │   ├── base_field_reader.py
+│   │   │   ├── custom_text_field_reader.py
+│   │   │   ├── ernie_classification_field_reader.py
+│   │   │   ├── ernie_seqlabel_label_field_reader.py
+│   │   │   ├── ernie_text_field_reader_for_doc.py
+│   │   │   ├── ernie_text_field_reader_for_multilingual.py
+│   │   │   ├── ernie_text_field_reader.py
+│   │   │   ├── __init__.py
+│   │   │   ├── scalar_array_field_reader.py
+│   │   │   ├── scalar_field_reader.py
+│   │   │   └── text_field_reader.py
+│   │   ├── __init__.py
+│   │   ├── reader_config.py
+│   │   ├── tokenizer
+│   │   │   ├── custom_tokenizer.py
+│   │   │   ├── doie_basic_tokenizer.py
+│   │   │   ├── doie_ernie_tiny_tokenizer.py
+│   │   │   ├── ernie_sim_slim_tokenizer.py
+│   │   │   ├── __init__.py
+│   │   │   ├── lac_tokenizer.py
+│   │   │   ├── mrc_tokenizer.py
+│   │   │   ├── nlpc_wordseg_tokenizer.py
+│   │   │   ├── tokenization_erniem.py
+│   │   │   ├── tokenization_mix.py
+│   │   │   ├── tokenization_spm.py
+│   │   │   ├── tokenization_utils.py
+│   │   │   ├── tokenization_wp.py
+│   │   │   └── tokenizer.py
+│   │   ├── util_helper.py
+│   │   └── vocabulary.py
+│   ├── __init__.py
+│   ├── metrics
+│   │   ├── chunk_metrics.py
+│   │   ├── gen_eval.py
+│   │   ├── __init__.py
+│   │   ├── metrics.py
+│   │   ├── mrr.py
+│   │   ├── tokenization.py
+│   │   └── tuple.py
+│   ├── model
+│   │   ├── base_ernie_model.py
+│   │   ├── __init__.py
+│   │   └── model.py
+│   ├── modules
+│   │   ├── encoder.py
+│   │   ├── ernie_config.py
+│   │   ├── ernie_factory.py
+│   │   ├── ernie_gen.py
+│   │   ├── ernie_lr.py
+│   │   ├── ernie.py
+│   │   ├── __init__.py
+│   │   ├── token_embedding
+│   │   │   ├── base_token_embedding.py
+│   │   │   ├── custom_fluid_embedding.py
+│   │   │   ├── custom_token_embedding.py
+│   │   │   └── __init__.py
+│   │   └── transformer_encoder_gen.py
+│   ├── utils
+│   │   ├── args.py
+│   │   ├── __init__.py
+│   │   ├── log.py
+│   │   ├── multi_process_eval.py
+│   │   ├── params.py
+│   │   ├── util_helper.py
+│   │   └── visual_manager.py
+│   └── version.py
+└── readme.md
+######其余模型项目结构如上
+-|ernie_dqa_task1_ner_crf  
 -|ernie_dqa_task1_seg_attention
 -|ernie_dqa_task1_seg_attention_cls
 -|combine.py
 -README.MD
--main.ipynb
+-main.ipynb #所有在AI Studio项目运行的顺序，基本上能够完成：数据处理->训练->推理->提交文件生成的所有流程
 ```
 ## 使用方式
-> 相信你的Fans已经看到这里了，快告诉他们如何快速上手这个项目吧~  
-A：在AI Studio上[运行本项目](https://aistudio.baidu.com/aistudio/usercenter)  
-B：此处由项目作者进行撰写使用方式。
+> 本项目结构非常简单，使用方式可以直接启动本项目新的AI Studio项目副本，按照main.ipynb的指示即可完成所有操作
+A：在AI Studio上[运行本项目](https://aistudio.baidu.com/aistudio/projectdetail/4950227)  
+B：运行AISTUdio的副本，按照main.ipynb指示操作即可
