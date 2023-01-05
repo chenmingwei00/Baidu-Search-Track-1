@@ -57,6 +57,13 @@ example:
    query选择性的把第一段的value信息添加到第二段中，指导第二段的答案预测，最终单个模型预测为0.68025.
 6) 最终模型融合，简单的使用三个模型，进行1：2投票，最终提交结果为0.689
 ```
+### 1.3 数据处理代码注释：
+```
+ 1)测试数据按照512分割为9613个数据代码在/ernie_dqa_task1_ner/applications/tasks/sequence_labeling/data/data_deal.py的te
+   st_data_split函数
+ 2)原始训练数据处理为实体识别训练数据代码位置在/ernie_dqa_task1_ner/applications/tasks/sequence_labeling/data/data_deal.p
+   y的train_data_ner函数
+```
 ## 2.项目结构
 > 项目结构如下:
 ```
