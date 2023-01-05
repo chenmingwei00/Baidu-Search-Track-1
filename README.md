@@ -1,5 +1,6 @@
 # 【飞桨学习赛：百度搜索首届技术创新挑战赛：赛道一】第5名方案
 > 【飞桨学习赛：百度搜索首届技术创新挑战赛：赛道一】第5名方案(任务一)
+>  方案思路请结合---百度挑战赛答辩.pptx--一起理解
 ```
 子任务 1：答案抽取 具体描述请查看竞赛链接
 https://aistudio.baidu.com/aistudio/competition/detail/660/0/task-definition
