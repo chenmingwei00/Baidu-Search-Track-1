@@ -1,1 +1,1 @@
-python evaluate.py ./output/4000.txt
+python evaluate.py ./output/subtask1_test_pred_seg.txt

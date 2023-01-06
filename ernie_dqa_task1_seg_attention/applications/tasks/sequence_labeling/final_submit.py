@@ -1,7 +1,7 @@
 import json
-def predict_deal():
-    with open('./output/4001.txt','r',encoding='utf-8') as pre_answer,\
-        open('./data/test_data/test.json','r',encoding='utf-8') as ori_json,\
+def predict_deal(mode):
+    with open('./output/40001.txt','r',encoding='utf-8') as pre_answer,\
+        open('./data/{}_data/{}_new.json'.format(mode,mode),'r',encoding='utf-8') as ori_json,\
         open('./output/subtask1_test_pred_seg.txt','w',encoding='utf-8') as final_pre:
         pre_lines=pre_answer.readlines()
         input_lines=ori_json.readlines()
@@ -44,4 +44,6 @@ def predict_deal():
             final_pre.write(line)
     print('finished construct submit files.............')
 if __name__ == '__main__':
-    predict_deal()
+    import sys
+    mode=sys.argv[1]
+    predict_deal(mode)
