@@ -1,5 +1,5 @@
 
-
+import shutil
 import json
 def test_data_split(mode):
     """
@@ -38,6 +38,7 @@ def test_data_split(mode):
                 pre_del_file.write(t_data_line+'\n')
             id+=1
     shutil.move('./dev_data/{}.json'.format(mode), './{}.json'.format(mode))
+    print('finished test_data constructs........................')
 
 from tqdm import tqdm
 def train_data_split():
@@ -283,8 +284,11 @@ def predict_deal():
 
 if __name__ == '__main__':
     # train_data_split()
-    train_data_ner()
+    # train_data_ner()
     # predict_deal()
+    import sys
+    mode=sys.argv[1]
+    test_data_split(mode)
 
 
     # with open('./train_data/train.json','r',encoding='utf-8') as files_read:
