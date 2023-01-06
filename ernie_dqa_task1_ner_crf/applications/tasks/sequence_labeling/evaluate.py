@@ -91,7 +91,7 @@ if __name__ == '__main__':
     references = []
     predictions_result = []
     predictions_score = []
-    with open('data/dev_data/dev.json') as f:
+    with open('./data/dev.json') as f:
         for line in f:
             if line == '':
                 continue
