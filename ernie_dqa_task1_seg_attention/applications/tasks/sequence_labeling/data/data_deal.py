@@ -1,13 +1,14 @@
 
-
+import shutil
 import json
-def test_data_split():
+def test_data_split(mode):
     """
     首先对预测文本doc_text,按照最大文本512 进行分割，分别预测，最后答案进行合并
+    512-3-len(query) 就是每一个截断最大doc的长度
     """
-    max_seq_len=505
-    with open('./test_data/test_pre.json','r',encoding='utf-8') as train_file,\
-            open('./test_data/test.json','w',encoding='utf-8') as pre_del_file:
+    max_seq_len=512-3
+    with open('./{}_data/{}.json'.format(mode,mode),'r',encoding='utf-8') as train_file,\
+            open('./{}_data/{}_new.json'.format(mode,mode),'w',encoding='utf-8') as pre_del_file:
         lines=train_file.readlines()
         id=0
         for line in lines:
@@ -15,7 +16,7 @@ def test_data_split():
             query=t_data['query']
             doc_text=t_data['doc_text']
             if len(query)+len(doc_text)>max_seq_len:
-                doc_len=max_seq_len-len(query)
+                doc_len=(max_seq_len-len(query))*2# 由于目前模型可以由2倍的长度
                 new_docs=[]
                 for k in range(len(doc_text)):
                     if len(new_docs)<doc_len:
@@ -37,6 +38,8 @@ def test_data_split():
                 t_data_line=json.dumps(t_data,ensure_ascii=False)
                 pre_del_file.write(t_data_line+'\n')
             id+=1
+    shutil.move('./{}_data/{}.json'.format(mode,mode), './{}.json'.format(mode))
+    print('finished {} files split......................'.format(mode))
 import  math
 
 def test_move_split():
@@ -278,21 +281,22 @@ def train_data_ner():
 import math
 import math
 def predict_deal():
-    with open('./test_data/4000.txt','r',encoding='utf-8') as pre_answer,\
-        open('./test_data/test_new.json','r',encoding='utf-8') as ori_json,\
-        open('./test_data/subtask1_test_pred.txt','w',encoding='utf-8') as final_pre:
-        pre_lines=pre_answer.readlines()
-        input_lines=ori_json.readlines()
+    with open('./test_data/40001.txt', 'r', encoding='utf-8') as pre_answer, \
+            open('./test_data/test_new.json', 'r', encoding='utf-8') as ori_json, \
+            open('./test_data/subtask1_test_pred.txt', 'w', encoding='utf-8') as final_pre:
+        pre_lines = pre_answer.readlines()
+        input_lines = ori_json.readlines()
 
-        assert len(pre_lines)==len(input_lines)
-        id2answer={}
-        for t_pre,t_input in zip(pre_lines,input_lines):
-            t_inputs=json.loads(t_input)
+        assert len(pre_lines) == len(input_lines)
+        id2answer = {}
+        for t_pre, t_input in zip(pre_lines, input_lines):
+            # t_pre=t_pre.replace('sep]','')
+            t_inputs = json.loads(t_input)
             if t_inputs['id'] not in id2answer:
-                id2answer[t_inputs['id']]=[t_pre]
+                id2answer[t_inputs['id']] = [t_pre]
             else:
                 id2answer[t_inputs['id']].append(t_pre)
-        id2answer_list=sorted(id2answer.items(),key=lambda k:k[0])
+        id2answer_list = sorted(id2answer.items(), key=lambda k: k[0])
         for id, ansers_t in id2answer_list:
             trues_answer = []
             true_answer_score = []
@@ -300,20 +304,27 @@ def predict_deal():
             no_answer_scores = []
             for t_ans in ansers_t:
                 t_ans = t_ans.strip().split('\t')
-                if t_ans[1] == 'NoAnswer':
+                if t_ans[1] == 'NoAnswer' or t_ans[1]=="sep]" or t_ans[1]=="[sep]":
                     no_answer_scores.append(float(t_ans[0]))
                     no_answer.append(t_ans[1])
                 else:
-                    trues_answer.append(t_ans[1])
-                    true_answer_score.append(float(t_ans[0]))
-            if len(trues_answer)<=0:
-                score=sum(no_answer_scores)/len(no_answer_scores)
-                line=str(score)+'\t'+'NoAnswer'+'\n'
+                    t_pre = t_ans[1].replace('sep]', '')
+                    if len(t_pre) > 1:
+                        trues_answer.append(t_pre)
+                        true_answer_score.append(float(t_ans[0]))
+            if len(trues_answer) <= 0:
+                try:
+                    score = sum(no_answer_scores) / len(no_answer_scores)
+                    line = str(score) + '\t' + 'NoAnswer' + '\n'
+                except:
+                    score = 0.9
+                    line = str(score) + '\t' + 'NoAnswer' + '\n'
             else:
-                score=sum(true_answer_score)/len(true_answer_score)
-                line=str(score)+'\t'+''.join(trues_answer)+'\n'
-                line=line.replace('#','')
+                score = sum(true_answer_score) / len(true_answer_score)
+                line = str(score) + '\t' + ';'.join(trues_answer) + '\n'
+                line = line.replace('#', '')
             final_pre.write(line)
+
 import copy
 from tqdm import tqdm
 def train_nearest_context():
@@ -509,9 +520,14 @@ def train_data_split2seg():
 
 
 if __name__ == '__main__':
+    import sys
+    mode=sys.argv[1]
+    test_data_split(mode)
+    # test_data_split()
+    # predict_deal()
     # train_data_split()
     # train_data_ner()
-    train_data_split2seg()
+    # train_data_split2seg()
     # train_nearest_context()
 
     # with open('./train_data/train.json','r',encoding='utf-8') as files_read:
